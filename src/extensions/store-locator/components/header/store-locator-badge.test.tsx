@@ -14,14 +14,54 @@
  * limitations under the License.
  */
 import { render, screen } from '@testing-library/react';
-import { describe, expect, test } from 'vitest';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, test, vi } from 'vitest';
+import { AllProvidersWrapper } from '@/test-utils/context-provider';
+import { useStoreLocator } from '@/extensions/store-locator/providers/store-locator';
+
+// Mock the lazy-loaded sheet so we can assert it mounts without pulling the full store-locator UI.
+vi.mock('@/extensions/store-locator/components/header/store-locator-sheet', () => ({
+    default: ({ open }: { open: boolean }) => <div data-testid="mock-store-locator-sheet" data-open={open} />,
+}));
+
 import StoreLocatorBadge from './store-locator-badge';
 
+// Opens the store locator programmatically — exactly what selecting "Collect at Boutique" on a cart
+// line item does via openStoreLocator().
+function OpenLocatorButton() {
+    const open = useStoreLocator((s) => s.open);
+    return (
+        <button type="button" onClick={() => open()}>
+            open-locator
+        </button>
+    );
+}
+
 describe('Luxury StoreLocatorBadge', () => {
-    test('does not render a find-a-store icon in the header', () => {
-        const { container } = render(<StoreLocatorBadge />);
-        expect(container).toBeEmptyDOMElement();
-        expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    test('renders no find-a-store icon in the header by default', () => {
+        render(
+            <AllProvidersWrapper>
+                <StoreLocatorBadge />
+            </AllProvidersWrapper>
+        );
         expect(screen.queryByRole('button')).not.toBeInTheDocument();
+        expect(screen.queryByRole('link')).not.toBeInTheDocument();
+        expect(screen.queryByTestId('mock-store-locator-sheet')).not.toBeInTheDocument();
+    });
+
+    test('mounts the store-locator sheet when opened programmatically (cart "Collect at Boutique")', async () => {
+        render(
+            <AllProvidersWrapper>
+                <StoreLocatorBadge />
+                <OpenLocatorButton />
+            </AllProvidersWrapper>
+        );
+        expect(screen.queryByTestId('mock-store-locator-sheet')).not.toBeInTheDocument();
+
+        await userEvent.click(screen.getByRole('button', { name: 'open-locator' }));
+
+        const sheet = await screen.findByTestId('mock-store-locator-sheet');
+        expect(sheet).toBeInTheDocument();
+        expect(sheet).toHaveAttribute('data-open', 'true');
     });
 });

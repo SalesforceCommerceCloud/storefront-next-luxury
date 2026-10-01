@@ -18,7 +18,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { getTranslation } from '@salesforce/storefront-next-runtime/i18n';
 import StoreLocatorList from './list';
-import { useStoreLocatorList } from '@/extensions/store-locator/hooks/use-luxury-store-locator-list';
+import { useStoreLocatorList } from '@/extensions/store-locator/hooks/use-store-locator-list';
 
 const { t } = getTranslation();
 
@@ -88,7 +88,7 @@ const baseState = {
     setPage: vi.fn(),
 };
 
-vi.mock('@/extensions/store-locator/hooks/use-luxury-store-locator-list', () => ({
+vi.mock('@/extensions/store-locator/hooks/use-store-locator-list', () => ({
     useStoreLocatorList: vi.fn(() => baseState),
 }));
 
@@ -98,8 +98,15 @@ describe('StoreLocatorList', () => {
         baseState.setPage.mockClear();
     });
 
-    test('renders boutique items and Load More when more results', () => {
+    test('renders status and items, shows Load More when more results', () => {
         render(<StoreLocatorList />);
+
+        const statusText = t('extStoreLocator:storeLocator.list.statusInput', {
+            distanceText: `${baseState.config.radius} ${baseState.config.radiusUnit}`,
+            postal: baseState.searchParams.postalCode,
+            countryName: 'United States',
+        });
+        expect(screen.getByText(statusText)).toBeInTheDocument();
 
         expect(screen.getByText('A')).toBeInTheDocument();
         expect(screen.getByText('B')).toBeInTheDocument();
@@ -170,6 +177,14 @@ describe('StoreLocatorList', () => {
 
         render(<StoreLocatorList />);
         expect(screen.getByText(t('extStoreLocator:storeLocator.list.fetchError'))).toBeInTheDocument();
+    });
+
+    test('renders device mode status message', () => {
+        const state = { ...baseState, mode: 'device' as const, searchParams: null };
+        vi.mocked(useStoreLocatorList).mockReturnValueOnce(state as any);
+
+        render(<StoreLocatorList />);
+        expect(screen.getByText(t('extStoreLocator:storeLocator.list.statusLocation'))).toBeInTheDocument();
     });
 
     test('renders radio group items with disabled state when inventoryId is not present', () => {

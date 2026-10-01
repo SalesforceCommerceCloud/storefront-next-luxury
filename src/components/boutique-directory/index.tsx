@@ -28,12 +28,25 @@ export const boutiqueStageLeft = 'relative min-h-[18rem] overflow-hidden lg:h-fu
 export const boutiqueStageRight =
     '@container flex min-h-0 flex-col border-border px-[var(--page-gutter)] pt-16 pb-8 lg:h-full lg:overflow-y-auto lg:overscroll-y-contain lg:border-l lg:py-8';
 
+/** Per-boutique pickup availability for the item being collected (keyed by store id). */
+export type BoutiqueAvailabilityMap = Record<string, { inStock: boolean; ats?: number }>;
+
 type BoutiqueDirectoryProps = {
     stores: ShopperStores.schemas['Store'][];
     selectedId?: string;
     onSelect: (id: string) => void;
     lead?: ReactElement | null;
     chrome?: ReactElement | null;
+    /**
+     * `'page'` (default) is the full-width, two-column boutiques-page layout. `'panel'` is a compact
+     * single-column layout for a constrained container such as the cart "Collect at Boutique" sheet.
+     */
+    layout?: 'page' | 'panel';
+    /**
+     * When provided, boutiques stocking the collected item are sorted first and badged "in stock"; boutiques
+     * that don't are badged unavailable and cannot be selected. Omit for a plain boutique list.
+     */
+    availability?: BoutiqueAvailabilityMap;
 };
 
 function regionName(countryCode: string | undefined, locale: string): string | undefined {
@@ -55,16 +68,35 @@ export default function BoutiqueDirectory({
     onSelect,
     lead,
     chrome,
+    layout = 'page',
+    availability,
 }: BoutiqueDirectoryProps): ReactElement {
     const { t, i18n } = useTranslation('watch');
     const [countryCode, setCountryCode] = useState('');
     const [postalQuery, setPostalQuery] = useState('');
     const [focusedId, setFocusedId] = useState(selectedId || stores[0]?.id || '');
     const countries = useMemo(() => boutiqueCountryCodes(stores), [stores]);
-    const visible = useMemo(
+    const filtered = useMemo(
         () => filterBoutiques(stores, countryCode, postalQuery),
         [stores, countryCode, postalQuery]
     );
+    // With availability, surface in-stock boutiques first without dropping the others (they stay selectable-off).
+    const visible = useMemo(() => {
+        if (!availability) return filtered;
+        const inStockRank = (store: ShopperStores.schemas['Store']) =>
+            Number(Boolean(store.id && availability[store.id]?.inStock));
+        return [...filtered].sort((a, b) => inStockRank(b) - inStockRank(a));
+    }, [filtered, availability]);
+
+    const isPanel = layout === 'panel';
+    const stageClass = isPanel ? 'flex min-h-0 flex-1 flex-col' : boutiqueStageGrid;
+    const leftClass = isPanel ? 'relative h-44 shrink-0 overflow-hidden' : boutiqueStageLeft;
+    const rightClass = isPanel
+        ? '@container flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pt-6 pb-4'
+        : boutiqueStageRight;
+    const listGridClass = isPanel
+        ? 'mt-6 grid grid-cols-1 gap-4'
+        : 'mt-6 grid grid-cols-1 gap-4 @md:grid-cols-2 @3xl:grid-cols-3';
 
     useEffect(() => {
         if (selectedId) setFocusedId(selectedId);
@@ -81,17 +113,21 @@ export default function BoutiqueDirectory({
             className="flex h-full min-h-0 flex-col"
             data-testid="boutique-directory"
             data-slot="luxury-boutique-finder">
-            <div className={boutiqueStageGrid}>
-                <div className={boutiqueStageLeft}>
+            <div className={stageClass}>
+                <div className={leftClass}>
                     <BoutiqueMap stores={visible.length ? visible : stores} selectedId={focusedId} />
                 </div>
-                <div className={boutiqueStageRight}>
+                <div className={rightClass}>
                     {chrome ? <div className="mb-8">{chrome}</div> : null}
                     {lead ? <div className="mb-6">{lead}</div> : null}
-                    <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-muted-foreground">
-                        {t('boutiquesPage.directoryTitle', { defaultValue: 'Our boutiques' })}
-                    </p>
-                    <p className="mt-2 font-serif text-2xl">{t('boutiquesPage.stepLocation')}</p>
+                    {isPanel ? null : (
+                        <>
+                            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+                                {t('boutiquesPage.directoryTitle', { defaultValue: 'Our boutiques' })}
+                            </p>
+                            <p className="mt-2 font-serif text-2xl">{t('boutiquesPage.stepLocation')}</p>
+                        </>
+                    )}
                     <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2" data-testid="boutique-filters">
                         <div className="flex min-w-0 flex-col gap-2">
                             <label className="text-sm" htmlFor="boutique-filter-country">
@@ -130,23 +166,30 @@ export default function BoutiqueDirectory({
                     {visible.length === 0 ? (
                         <p className="mt-10 text-muted-foreground">{t('boutiquesPage.noFilterMatches')}</p>
                     ) : (
-                        <ul className="mt-6 grid grid-cols-1 gap-4 @md:grid-cols-2 @3xl:grid-cols-3">
+                        <ul className={listGridClass}>
                             {visible.map((store) => {
                                 const selected = store.id === focusedId;
                                 const country = regionName(store.countryCode, i18n.language);
                                 const place = [store.city, country].filter(Boolean).join(' · ');
+                                const storeAvailability = store.id ? availability?.[store.id] : undefined;
+                                const showAvailability = Boolean(availability);
+                                const isUnavailable = showAvailability && !storeAvailability?.inStock;
                                 return (
                                     <li key={store.id}>
                                         <button
                                             type="button"
                                             aria-pressed={selected}
+                                            disabled={isUnavailable}
+                                            data-testid={`boutique-option-${store.id}`}
                                             className={cn(
                                                 'flex w-full flex-col overflow-hidden border text-left transition-colors',
                                                 selected
                                                     ? 'border-foreground bg-muted/40'
-                                                    : 'border-border hover:border-foreground/40'
+                                                    : isUnavailable
+                                                      ? 'border-border cursor-not-allowed opacity-50'
+                                                      : 'border-border hover:border-foreground/40'
                                             )}
-                                            onClick={() => store.id && onSelect(store.id)}>
+                                            onClick={() => store.id && !isUnavailable && onSelect(store.id)}>
                                             {store.image ? (
                                                 <img
                                                     src={store.image}
@@ -159,6 +202,24 @@ export default function BoutiqueDirectory({
                                                 {place ? (
                                                     <span className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                                                         {place}
+                                                    </span>
+                                                ) : null}
+                                                {showAvailability ? (
+                                                    <span
+                                                        data-testid="boutique-availability"
+                                                        className={cn(
+                                                            'mt-2 text-[0.6875rem] font-medium uppercase tracking-[0.18em]',
+                                                            storeAvailability?.inStock
+                                                                ? 'text-foreground'
+                                                                : 'text-muted-foreground'
+                                                        )}>
+                                                        {storeAvailability?.inStock
+                                                            ? t('boutiquesPage.pickupInStock', {
+                                                                  defaultValue: 'In stock',
+                                                              })
+                                                            : t('boutiquesPage.pickupUnavailable', {
+                                                                  defaultValue: 'Unavailable',
+                                                              })}
                                                     </span>
                                                 ) : null}
                                                 <span className="mt-2 block font-serif text-xl">{store.name}</span>

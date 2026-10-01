@@ -51,7 +51,14 @@ export async function fetchBoutiques(
         const storesMap = new Map<string, ShopperStores.schemas['Store']>();
         storesData?.data?.forEach((store) => {
             if (store.id) {
-                storesMap.set(store.id, store);
+                // SCAPI getStores surfaces the boutique's inventory list on the custom attr `c_inventoryListId`
+                // rather than the standard `inventoryId` field. Read it as unknown and narrow to a string before
+                // use so a missing/non-string custom attr can't leak into inventory lookups. Normalise it so BOPIS
+                // pickup (per-boutique availability + the cart line-item submit, which both read `inventoryId`) works.
+                const customInventoryId = (store as Record<string, unknown>).c_inventoryListId;
+                const inventoryId =
+                    store.inventoryId ?? (typeof customInventoryId === 'string' ? customInventoryId : undefined);
+                storesMap.set(store.id, inventoryId ? { ...store, inventoryId } : store);
             }
         });
 

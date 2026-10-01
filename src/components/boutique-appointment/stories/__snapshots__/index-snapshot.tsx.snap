@@ -544,6 +544,7 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
             <button
               aria-pressed="true"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-foreground bg-muted/40"
+              data-testid="boutique-option-ln-boutique-geneva"
               type="button"
             >
               <img
@@ -587,6 +588,7 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-london"
               type="button"
             >
               <img
@@ -630,6 +632,7 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-paris"
               type="button"
             >
               <img
@@ -1273,6 +1276,7 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
             <button
               aria-pressed="true"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-foreground bg-muted/40"
+              data-testid="boutique-option-ln-boutique-geneva"
               type="button"
             >
               <img
@@ -1316,6 +1320,7 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-london"
               type="button"
             >
               <img
@@ -1359,6 +1364,7 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-paris"
               type="button"
             >
               <img

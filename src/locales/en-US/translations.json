@@ -2449,6 +2449,8 @@
             "filterPostal": "ZIP or postal code",
             "filterAllCountries": "All countries",
             "noFilterMatches": "No boutiques match those filters.",
+            "pickupInStock": "In stock",
+            "pickupUnavailable": "Unavailable",
             "changeBoutique": "Choose a different boutique",
             "continue": "Continue",
             "back": "Back",
@@ -2617,6 +2619,26 @@
                     "content": "For access, deletion, or boutique-appointment records, write to the manufacture. This demonstration storefront does not retain live client files.",
                     "cta": "Write to the manufacture"
                 }
+            }
+        }
+    },
+    "extBopis": {
+        "deliveryOptions": {
+            "pickupOrDelivery": {
+                "storePickup": "Collect at Boutique",
+                "storePickupLabel": "Collect"
+            }
+        }
+    },
+    "extStoreLocator": {
+        "storeLocator": {
+            "title": "Find a Boutique",
+            "description": "Search our boutiques by country and postal code, or use your current location.",
+            "sheet": {
+                "closeAriaLabel": "Close boutique locator"
+            },
+            "list": {
+                "noResults": "Sorry, there are no boutiques in this area."
             }
         }
     }
