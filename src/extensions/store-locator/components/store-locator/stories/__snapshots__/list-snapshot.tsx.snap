@@ -1,0 +1,64 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StoreLocatorList stories snapshot > Default story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="my-6 text-center"
+    role="status"
+  >
+    <div
+      class="text-sm font-semibold text-left"
+    >
+      Sorry, there are no locations in this area.
+    </div>
+    <div
+      class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px mt-4"
+      data-orientation="horizontal"
+      data-slot="separator"
+      role="none"
+    />
+  </div>
+</div>
+`;
+
+exports[`StoreLocatorList stories snapshot > DesktopLayout story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="my-6 text-center"
+    role="status"
+  >
+    <div
+      class="text-sm font-semibold text-left"
+    >
+      Sorry, there are no locations in this area.
+    </div>
+    <div
+      class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px mt-4"
+      data-orientation="horizontal"
+      data-slot="separator"
+      role="none"
+    />
+  </div>
+</div>
+`;
+
+exports[`StoreLocatorList stories snapshot > MobileLayout story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="my-6 text-center"
+    role="status"
+  >
+    <div
+      class="text-sm font-semibold text-left"
+    >
+      Sorry, there are no locations in this area.
+    </div>
+    <div
+      class="bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px mt-4"
+      data-orientation="horizontal"
+      data-slot="separator"
+      role="none"
+    />
+  </div>
+</div>
+`;

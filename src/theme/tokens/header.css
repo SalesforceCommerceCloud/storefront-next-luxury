@@ -1,0 +1,36 @@
+/*
+ * Storefront header/footer chrome — Luxury Next.
+ * Carbon bar, ivory type. Mega panel opens on paper so collection stories stay
+ * readable. Champagne is hover-only on the bar, never body text on paper.
+ * Wordmark fill is hardcoded in logo.svg; --header-logo-filter stays none.
+ * Footer sits on paper; flatten the ivory mark to black with brightness(0).
+ */
+:root {
+    --header-background: var(--primary);
+    --header-foreground: var(--primary-foreground);
+    --header-border: rgba(245, 239, 227, 0.14);
+    --header-divider: var(--header-border);
+
+    --header-menu-background: var(--background);
+    --header-menu-foreground: var(--foreground);
+    --header-menu-border: var(--border);
+    --header-menu-hover-background: transparent;
+    --header-menu-hover-foreground: var(--accent);
+    --header-menu-active-background: rgba(245, 239, 227, 0.08);
+    --header-icon: rgba(245, 239, 227, 0.82);
+
+    --header-logo-filter: none;
+
+    --footer-background: var(--background);
+    --footer-foreground: var(--foreground);
+
+    /* Newsletter band — existing storefront tokens, remapped to the luxury palette. */
+    --newsletter-background: var(--primary);
+    --newsletter-foreground: var(--primary-foreground);
+}
+
+/* Mega panel stays paper against the carbon bar. */
+header [data-slot='navigation-menu-viewport'] {
+    background-color: var(--background);
+    color: var(--foreground);
+}

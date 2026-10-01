@@ -1,0 +1,605 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WatchConfigurator stories snapshot > Default story renders and matches snapshot 1`] = `
+<div
+  class="flex flex-col gap-6"
+  data-slot="watch-configurator"
+  data-testid="watch-configurator"
+>
+  <section
+    class="border-b border-border-subtle pb-5"
+    data-kind="swatch"
+    data-slot="configurator-step"
+    data-step="case"
+  >
+    <div
+      class="mb-3 flex items-baseline justify-between gap-3"
+    >
+      <h3
+        class="font-serif text-base font-normal"
+      >
+        <span
+          class="sr-only"
+        >
+          Step 1
+        </span>
+        Case
+      </h3>
+      <span
+        class="text-xs text-muted-foreground"
+      >
+        Choose
+      </span>
+    </div>
+    <div
+      aria-label="Case"
+      class="flex flex-wrap gap-3"
+      role="radiogroup"
+    >
+      <button
+        aria-checked="false"
+        aria-label="Steel"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(197, 200, 203);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Steel
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="Gold"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(201, 162, 39);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Gold
+        </span>
+      </button>
+    </div>
+  </section>
+  <section
+    class="border-b border-border-subtle pb-5"
+    data-kind="swatch"
+    data-slot="configurator-step"
+    data-step="dial"
+  >
+    <div
+      class="mb-3 flex items-baseline justify-between gap-3"
+    >
+      <h3
+        class="font-serif text-base font-normal"
+      >
+        <span
+          class="sr-only"
+        >
+          Step 2
+        </span>
+        Dial
+      </h3>
+      <span
+        class="text-xs text-muted-foreground"
+      >
+        Choose
+      </span>
+    </div>
+    <div
+      aria-label="Dial"
+      class="flex flex-wrap gap-3"
+      role="radiogroup"
+    >
+      <button
+        aria-checked="false"
+        aria-label="Black"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(28, 28, 28);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Black
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="Blue"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(30, 58, 95);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Blue
+        </span>
+      </button>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`WatchConfigurator stories snapshot > SingleDimensionSkip story renders and matches snapshot 1`] = `
+<div
+  class="flex flex-col gap-6"
+  data-slot="watch-configurator"
+  data-testid="watch-configurator"
+>
+  <section
+    class="border-b border-border-subtle pb-5"
+    data-kind="swatch"
+    data-slot="configurator-step"
+    data-step="dial"
+  >
+    <div
+      class="mb-3 flex items-baseline justify-between gap-3"
+    >
+      <h3
+        class="font-serif text-base font-normal"
+      >
+        <span
+          class="sr-only"
+        >
+          Step 1
+        </span>
+        Dial
+      </h3>
+      <span
+        class="text-xs text-muted-foreground"
+      >
+        Choose
+      </span>
+    </div>
+    <div
+      aria-label="Dial"
+      class="flex flex-wrap gap-3"
+      role="radiogroup"
+    >
+      <button
+        aria-checked="false"
+        aria-label="Black"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(28, 28, 28);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Black
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="Blue"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(30, 58, 95);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Blue
+        </span>
+      </button>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`WatchConfigurator stories snapshot > StrapAndDial story renders and matches snapshot 1`] = `
+<div
+  class="flex flex-col gap-6"
+  data-slot="watch-configurator"
+  data-testid="watch-configurator"
+>
+  <section
+    class="border-b border-border-subtle pb-5"
+    data-kind="image"
+    data-slot="configurator-step"
+    data-step="bandType"
+  >
+    <div
+      class="mb-3 flex items-baseline justify-between gap-3"
+    >
+      <h3
+        class="font-serif text-base font-normal"
+      >
+        <span
+          class="sr-only"
+        >
+          Step 1
+        </span>
+        Strap
+      </h3>
+      <span
+        class="text-xs text-muted-foreground"
+      >
+        Choose
+      </span>
+    </div>
+    <div
+      aria-label="Strap"
+      class="grid grid-cols-3 gap-2"
+      role="radiogroup"
+    >
+      <button
+        aria-checked="false"
+        aria-label="Leather Black"
+        class="text-left transition-colors [&_*]:pointer-events-none flex flex-col gap-2 rounded-ui border p-1.5 border-border hover:border-foreground/50"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="aspect-square w-full overflow-hidden bg-muted"
+          data-slot="configurator-option-thumb"
+        >
+          <img
+            alt=""
+            class="size-full object-cover object-center"
+            src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-strap-alligator-black.webp"
+          />
+        </span>
+        <span
+          class="font-medium text-foreground px-0.5 pb-1 text-[0.6875rem] leading-tight"
+        >
+          Leather Black
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="NATO Navy"
+        class="text-left transition-colors [&_*]:pointer-events-none flex flex-col gap-2 rounded-ui border p-1.5 border-border hover:border-foreground/50"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="aspect-square w-full overflow-hidden bg-muted"
+          data-slot="configurator-option-thumb"
+        >
+          <img
+            alt=""
+            class="size-full object-cover object-center"
+            src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-strap-nato-navy.webp"
+          />
+        </span>
+        <span
+          class="font-medium text-foreground px-0.5 pb-1 text-[0.6875rem] leading-tight"
+        >
+          NATO Navy
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="Steel bracelet"
+        class="text-left transition-colors [&_*]:pointer-events-none flex flex-col gap-2 rounded-ui border p-1.5 border-border hover:border-foreground/50"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="aspect-square w-full overflow-hidden bg-muted"
+          data-slot="configurator-option-thumb"
+        >
+          <img
+            alt=""
+            class="size-full object-cover object-center"
+            src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-strap-bracelet-steel.webp"
+          />
+        </span>
+        <span
+          class="font-medium text-foreground px-0.5 pb-1 text-[0.6875rem] leading-tight"
+        >
+          Steel bracelet
+        </span>
+      </button>
+    </div>
+  </section>
+  <section
+    class="border-b border-border-subtle pb-5"
+    data-kind="swatch"
+    data-slot="configurator-step"
+    data-step="dialColor"
+  >
+    <div
+      class="mb-3 flex items-baseline justify-between gap-3"
+    >
+      <h3
+        class="font-serif text-base font-normal"
+      >
+        <span
+          class="sr-only"
+        >
+          Step 2
+        </span>
+        Dial
+      </h3>
+      <span
+        class="text-xs text-muted-foreground"
+      >
+        Choose
+      </span>
+    </div>
+    <div
+      aria-label="Dial"
+      class="flex flex-wrap gap-3"
+      role="radiogroup"
+    >
+      <button
+        aria-checked="false"
+        aria-label="Black"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(28, 28, 28);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Black
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="White"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(244, 241, 234);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          White
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="Blue"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(30, 58, 95);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Blue
+        </span>
+      </button>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`WatchConfigurator stories snapshot > UnavailableCombo story renders and matches snapshot 1`] = `
+<div
+  class="flex flex-col gap-6"
+  data-slot="watch-configurator"
+  data-testid="watch-configurator"
+>
+  <section
+    class="border-b border-border-subtle pb-5"
+    data-kind="swatch"
+    data-slot="configurator-step"
+    data-step="case"
+  >
+    <div
+      class="mb-3 flex items-baseline justify-between gap-3"
+    >
+      <h3
+        class="font-serif text-base font-normal"
+      >
+        <span
+          class="sr-only"
+        >
+          Step 1
+        </span>
+        Case
+      </h3>
+      <span
+        class="truncate text-xs text-muted-foreground"
+        data-slot="configurator-step-choice"
+      >
+        Steel
+      </span>
+    </div>
+    <div
+      aria-label="Case"
+      class="flex flex-wrap gap-3"
+      role="radiogroup"
+    >
+      <button
+        aria-checked="true"
+        aria-label="Steel"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-selected="true"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-foreground ring-1 ring-foreground ring-offset-2"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(197, 200, 203);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Steel
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="Gold"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(201, 162, 39);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Gold
+        </span>
+      </button>
+    </div>
+  </section>
+  <section
+    class="border-b border-border-subtle pb-5"
+    data-kind="swatch"
+    data-slot="configurator-step"
+    data-step="dial"
+  >
+    <div
+      class="mb-3 flex items-baseline justify-between gap-3"
+    >
+      <h3
+        class="font-serif text-base font-normal"
+      >
+        <span
+          class="sr-only"
+        >
+          Step 2
+        </span>
+        Dial
+      </h3>
+      <span
+        class="text-xs text-muted-foreground"
+      >
+        Choose
+      </span>
+    </div>
+    <div
+      aria-label="Dial"
+      class="flex flex-wrap gap-3"
+      role="radiogroup"
+    >
+      <button
+        aria-checked="false"
+        aria-label="Black"
+        class="text-left transition-colors [&_*]:pointer-events-none flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(28, 28, 28);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Black
+        </span>
+      </button>
+      <button
+        aria-checked="false"
+        aria-label="Blue"
+        class="text-left transition-colors [&_*]:pointer-events-none cursor-not-allowed opacity-40 flex w-16 flex-col items-center gap-1.5"
+        data-slot="configurator-option"
+        disabled=""
+        role="radio"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+          class="size-10 rounded-full border border-border"
+          data-slot="configurator-option-swatch"
+          style="background-color: rgb(30, 58, 95);"
+        />
+        <span
+          class="font-medium text-foreground text-center text-[0.625rem] leading-tight"
+        >
+          Blue
+        </span>
+        <span
+          aria-hidden="true"
+          class="text-[0.625rem] text-muted-foreground"
+        >
+          Not available with this selection
+        </span>
+      </button>
+    </div>
+  </section>
+</div>
+`;
