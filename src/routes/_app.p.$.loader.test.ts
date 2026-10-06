@@ -228,14 +228,14 @@ describe('Product Route Loaders', () => {
                 },
             };
             mockFetchProductById.mockResolvedValueOnce(mockProduct);
-            const request = new Request('https://example.com/p/modern/test-product-123');
+            const request = new Request('https://example.com/p/test-product-123');
 
             await loader({
                 request,
                 params: {
                     siteId: 'test-site',
                     localeId: 'en-US',
-                    '*': 'modern/test-product-123',
+                    '*': 'test-product-123',
                 } as Route.LoaderArgs['params'],
                 context: mockContext,
                 url: new URL(request.url),
