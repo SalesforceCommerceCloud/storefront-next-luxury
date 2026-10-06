@@ -1,0 +1,138 @@
+/* Header navigation uses header-specific colors */
+header [data-slot="navigation-menu-trigger"],
+header [data-slot="navigation-menu-link"] {
+    color: var(--header-foreground);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: transparent !important;
+}
+
+header button:not([data-slot]),
+header a:not([data-slot]) {
+    color: var(--header-foreground);
+}
+
+header svg {
+    color: var(--header-foreground);
+}
+
+/* Remove gap between header and navigation dropdowns for seamless look */
+header [data-slot="navigation-menu-viewport"] {
+    margin-top: -1px !important;
+    border-top-color: var(--header-border);
+}
+
+/* Navigation viewport positioned flush with header */
+header ~ * [data-slot="navigation-menu-viewport"],
+.absolute.top-full.left-0.isolate.z-50:has([data-slot="navigation-menu-viewport"]) {
+    margin-top: -1px !important;
+}
+
+[data-slot='luxury-catalog-nav'] [data-slot='navigation-menu-content'] {
+    padding-top: 1.25rem;
+}
+
+/* Champagne hover only on the carbon bar — not inside the paper mega panel. */
+header [data-slot="navigation-menu-list"] > [data-slot="navigation-menu-item"] > [data-slot="navigation-menu-trigger"]:hover,
+header [data-slot="navigation-menu-list"] > [data-slot="navigation-menu-item"] > [data-slot="navigation-menu-trigger"]:focus,
+header [data-slot="navigation-menu-list"] > [data-slot="navigation-menu-item"] > [data-slot="navigation-menu-trigger"][data-state="open"],
+header [data-slot="navigation-menu-list"] > [data-slot="navigation-menu-item"] > [data-slot="navigation-menu-link"]:hover,
+header [data-slot="navigation-menu-list"] > [data-slot="navigation-menu-item"] > [data-slot="navigation-menu-link"]:focus {
+    color: var(--header-menu-hover-foreground) !important;
+}
+
+/* Mega panel: paper surface, carbon type (collection stories stay readable). */
+header [data-slot="navigation-menu-content"],
+header [data-slot="navigation-menu-viewport"] {
+    background: var(--header-menu-background);
+    color: var(--header-menu-foreground);
+}
+
+header [data-slot="navigation-menu-content"] a,
+header [data-slot="navigation-menu-content"] h2,
+header [data-slot="navigation-menu-content"] h3,
+header [data-slot="navigation-menu-content"] p {
+    color: var(--header-menu-foreground);
+}
+
+/* Quiet underline search on the carbon bar. Desktop collapses to the icon until focus. */
+header [data-testid="header-search"] {
+    background: transparent;
+    border: 0;
+    border-bottom: var(--ui-border-width) solid color-mix(in oklch, var(--header-foreground) 32%, transparent);
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 9.5rem;
+    max-width: 13rem;
+    height: 1.75rem;
+    color: var(--header-foreground);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+}
+
+header [data-testid="header-search-desktop"] {
+    width: 2.25rem;
+    overflow: hidden;
+    transition: width 200ms ease;
+}
+
+header [data-testid="header-search-desktop"]:hover,
+header [data-testid="header-search-desktop"]:focus-within {
+    width: 14rem;
+}
+
+header [data-testid="header-search-desktop"] [data-testid="header-search"] {
+    min-width: 14rem;
+    max-width: 14rem;
+}
+
+header [data-testid="header-search"]::placeholder {
+    color: color-mix(in oklch, var(--header-foreground) 55%, transparent);
+}
+
+header [data-testid="header-search"]:focus-visible {
+    border-bottom-color: var(--header-foreground);
+    box-shadow: none;
+    outline: none;
+}
+
+/* Centered search sits in the leftover space between logo and utilities. */
+header [data-slot='luxury-header-search'] {
+    max-width: none;
+    overflow: visible;
+}
+
+header [data-slot='luxury-header-search'] [data-testid='header-search'],
+header [data-testid='header-search-mobile'] [data-testid='header-search'] {
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    height: 2.25rem;
+    font-size: 0.8125rem;
+}
+
+[data-slot='luxury-catalog-slot']:not(:empty) {
+    border-top: var(--ui-border-width) solid var(--header-border);
+    padding-block: 0.875rem;
+}
+
+/* Hug the logo column; do not stretch with space-between. */
+[data-slot='luxury-catalog-slot'] [data-slot='navigation-menu'] > div > [data-slot='navigation-menu-list'] {
+    justify-content: flex-start;
+    flex: none;
+    max-width: max-content;
+    gap: 2rem;
+}
+
+[data-slot='luxury-catalog-slot'] [data-slot='navigation-menu-trigger'],
+[data-slot='luxury-catalog-slot'] [data-slot='navigation-menu-link'] {
+    height: auto;
+    padding-block: 0;
+    padding-inline: 0;
+}
+
+[data-slot='luxury-catalog-slot'] [data-slot='navigation-menu-trigger'] svg {
+    display: none;
+}

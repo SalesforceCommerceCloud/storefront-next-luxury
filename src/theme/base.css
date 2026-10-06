@@ -1,0 +1,620 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('/fonts/playfair-display-latin-wght.woff2') format('woff2');
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/inter-latin-wght.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/fonts/jetbrains-mono-latin-wght.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@layer components {
+    /*
+     * Tight percentage gutters — content uses nearly the full viewport width.
+     * `--page-gutter` is the only L/R inset; stacked `px-*` on overlays is a bug.
+     * Full-bleed surfaces (hero, footer band) opt out by living outside this class.
+     */
+    .section-container {
+        @apply w-full mx-auto;
+        max-width: none;
+        padding-inline: var(--page-gutter);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family: var(--font-sans);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: var(--font-serif);
+    }
+
+    html {
+        scroll-padding-top: var(--header-height, 120px);
+        scrollbar-gutter: stable;
+    }
+
+    @media (min-width: 64rem) {
+        html {
+            scroll-padding-top: var(--header-height, 72px);
+        }
+    }
+
+    button:not(:disabled),
+    [role="button"]:not([aria-disabled="true"]):not([data-disabled]),
+    [role="tab"]:not([aria-disabled="true"]):not([data-disabled]),
+    a[href],
+    select:not(:disabled),
+    input[type="button"]:not(:disabled),
+    input[type="submit"]:not(:disabled),
+    input[type="reset"]:not(:disabled),
+    input[type="date"]:not(:disabled),
+    input[type="datetime-local"]:not(:disabled),
+    input[type="month"]:not(:disabled),
+    input[type="time"]:not(:disabled),
+    input[type="week"]:not(:disabled),
+    input[type="color"]:not(:disabled),
+    input[type="file"]:not(:disabled),
+    summary {
+        cursor: pointer;
+    }
+
+    button:disabled,
+    [role="button"][aria-disabled="true"],
+    [role="button"][data-disabled],
+    [role="tab"][aria-disabled="true"],
+    [role="tab"][data-disabled],
+    select:disabled,
+    input[type="button"]:disabled,
+    input[type="submit"]:disabled,
+    input[type="reset"]:disabled,
+    input[type="date"]:disabled,
+    input[type="datetime-local"]:disabled,
+    input[type="month"]:disabled,
+    input[type="time"]:disabled,
+    input[type="week"]:disabled,
+    input[type="color"]:disabled,
+    input[type="file"]:disabled {
+        cursor: not-allowed;
+    }
+}
+
+/* Wordmark + Geneva lockup — sized to read at header distance. */
+[data-testid="header-logo"] img {
+    height: 2rem;
+    max-height: 2rem;
+    width: auto;
+}
+
+@media (min-width: 1024px) {
+    [data-testid="header-logo"] img {
+        height: 2.5rem;
+        max-height: 2.5rem;
+    }
+}
+
+/* Tiles read as photography, not cards. */
+.product-card {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.product-card .product-image > div {
+    background: var(--muted);
+    border-radius: 0;
+}
+
+/* Ivory wordmark on carbon header; flatten to black on paper footer. */
+footer .footer-logo,
+footer img.h-4 {
+    filter: brightness(0);
+}
+
+/*
+ * Gallery stills are editorial (non-square). Canonical object-contain letterboxes them.
+ * Override must live in @layer utilities so it beats Tailwind !important utilities.
+ * Hero packshots are transparent PNGs — contain, never cover-crop.
+ */
+@layer utilities {
+    [data-slot='luxury-pdp-hero'] div[data-gallery-hero] picture,
+    [data-slot='luxury-pdp-hero'] div[data-gallery-hero] {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;
+        height: 100% !important;
+        background: transparent !important;
+    }
+    [data-slot='luxury-pdp-hero'] div[data-gallery-hero] img {
+        object-fit: contain !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: 100% !important;
+        max-height: min(78vh, 44rem) !important;
+        margin-inline: auto !important;
+        background: transparent !important;
+    }
+}
+
+/*
+ * Home hero — full viewport under the fixed header. Canonical carousel stays
+ * 400/500/600px; only the luxury home wrapper opts into cinema height.
+ * Slightly lighter scrim so campaign stills stay visible behind the overlay.
+ */
+@layer utilities {
+    [data-slot='luxury-home-hero'] {
+        --hero-scrim: color-mix(in oklch, var(--brand-black) 42%, transparent);
+        /*
+         * Main keeps padding-top: header-height so in-flow content clears the
+         * bar. Pull the home scene back into that padding so the still can
+         * sit under the carbon header. When conceal-on-scroll translates the
+         * bar away, the still is already there — no paper strip at the top.
+         */
+        margin-top: calc(-1 * var(--header-height, 72px));
+    }
+
+    /*
+     * Pin the still inside this scene only. Sticky is clipped by the scene,
+     * so the footer and the rest of the page stay clear. The still is 100dvh
+     * at top: 0 (under the header); the carousel is offset by header-height
+     * so copy stays in the visible slot. Negative margin-bottom collapses the
+     * still's in-flow height so the hero is not twice as tall.
+     */
+    [data-slot='luxury-home-scene'] {
+        --luxury-hero-height: calc(100dvh - var(--header-height, 72px));
+        position: relative;
+    }
+
+    [data-slot='luxury-home-parallax'] {
+        position: sticky;
+        top: 0;
+        z-index: 0;
+        height: 100dvh;
+        margin-bottom: calc(-1 * 100dvh);
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    [data-slot='luxury-home-parallax'] img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center right;
+        opacity: 0;
+        transition: opacity 0.7s ease;
+    }
+
+    [data-slot='luxury-home-parallax'] img[data-active='true'] {
+        opacity: 1;
+    }
+
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] {
+        position: relative;
+        z-index: 1;
+        margin-top: var(--header-height, 72px);
+        height: var(--luxury-hero-height) !important;
+        min-height: 32rem;
+        background: transparent;
+    }
+
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] [data-slot='carousel-item'],
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] [data-slot='carousel-content'] {
+        background: transparent;
+    }
+
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] [data-slot='carousel-item'] img,
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] [data-slot='carousel-item'] picture {
+        opacity: 0 !important;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-slot='luxury-home-parallax'] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 100dvh;
+            margin-bottom: 0;
+        }
+
+        [data-slot='luxury-home-parallax'] img {
+            transition: none;
+        }
+    }
+
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] h2 {
+        font-weight: 400 !important;
+        letter-spacing: 0.06em !important;
+        font-size: clamp(2.25rem, 4.5vw, 3.75rem) !important;
+    }
+
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] p {
+        font-size: 1rem !important;
+        letter-spacing: 0.02em;
+        max-width: 28rem;
+    }
+
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] a {
+        background: var(--primary-foreground) !important;
+        color: var(--primary) !important;
+        border: var(--ui-border-width) solid var(--primary-foreground);
+        border-radius: var(--ui-radius);
+    }
+
+    [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] a:hover {
+        background: transparent !important;
+        color: var(--primary-foreground) !important;
+    }
+
+    [data-slot='luxury-category-banner'] {
+        height: min(40vh, 28rem) !important;
+        min-height: 16rem;
+    }
+
+    /* Banner owns the category title. Keep the listing h1 for focus management. */
+    main:has([data-slot='luxury-category-banner']) h1.text-3xl.font-bold {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    @media (min-width: 768px) {
+        .grid.grid-cols-2.sm\:grid-cols-3.md\:grid-cols-4 {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+    }
+
+    [data-slot='luxury-featured-rail'] [data-slot='carousel-previous'],
+    [data-slot='luxury-featured-rail'] [data-slot='carousel-next'] {
+        opacity: 0.55;
+    }
+
+    [role='dialog'][aria-labelledby='tracking-consent-banner-title'] [data-slot='card'] {
+        background: var(--background);
+        color: var(--foreground);
+        border-color: var(--border);
+        box-shadow: var(--ui-shadow);
+        border-radius: var(--ui-radius);
+    }
+
+    /*
+     * Canonical pages luxury does not overlay still ship fashion gutters
+     * (`px-4` / `sm:px-6` / `lg:px-8`, `max-w-screen-2xl`). Remap those shells
+     * onto `--page-gutter` so About, Wishlist, and guest order lookup line up
+     * with header/footer. Nested `max-w-screen-2xl` without `px-4` only drops
+     * the width cap — the parent already applied the inset.
+     */
+    main .max-w-screen-2xl {
+        max-width: none;
+    }
+
+    main .max-w-screen-2xl.px-4,
+    main > .max-w-screen-2xl,
+    main .container.px-4,
+    .order-lookup-entry-page .container.px-4,
+    main .bg-secondary.px-4 {
+        padding-left: var(--page-gutter) !important;
+        padding-right: var(--page-gutter) !important;
+    }
+}
+
+/* Fixed header — reserve height so content is not hidden underneath. */
+main:not([data-layout='empty']):not([data-hero-bleed='true']) {
+    padding-top: calc(var(--header-height, 120px) + 2rem);
+}
+
+/* PDP gallery fills the viewport under the bar — no extra 2rem. */
+main:not([data-layout='empty']):has([data-slot='luxury-pdp']) {
+    padding-top: var(--header-height, 120px);
+}
+
+/* Home sits flush under the carbon bar — no extra 2rem. */
+main:not([data-layout='empty']):has([data-slot='luxury-home-hero']) {
+    padding-top: var(--header-height, 120px);
+}
+
+/* Boutique finder / booking fills the viewport under the bar. */
+main:not([data-layout='empty']):has([data-slot='luxury-boutique-locator']) {
+    padding-top: var(--header-height, 120px);
+}
+
+/* Watch Finder sits flush under the bar — no extra 2rem. */
+main:not([data-layout='empty']):has([data-slot='luxury-finder']) {
+    padding-top: var(--header-height, 120px);
+}
+
+@media (min-width: 64rem) {
+    main:not([data-layout='empty']):not([data-hero-bleed='true']) {
+        padding-top: calc(var(--header-height, 72px) + 2rem);
+    }
+
+    main:not([data-layout='empty']):has([data-slot='luxury-pdp']) {
+        padding-top: var(--header-height, 72px);
+    }
+
+    main:not([data-layout='empty']):has([data-slot='luxury-home-hero']) {
+        padding-top: var(--header-height, 72px);
+    }
+
+    /*
+     * Two-pane booking (map + list) must own the viewport. The stage used to
+     * be 100dvh - header while the footer still sat below — page scroll plus
+     * the list pane's overflow-y-auto. Lock the shell and hide the footer so
+     * only the list scrolls.
+     */
+    html:has([data-slot='luxury-boutique-locator']),
+    body:has([data-slot='luxury-boutique-locator']) {
+        overflow: hidden;
+        height: 100dvh;
+    }
+
+    body:has([data-slot='luxury-boutique-locator']) footer {
+        display: none;
+    }
+
+    main:not([data-layout='empty']):has([data-slot='luxury-boutique-locator']) {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh;
+        max-height: 100dvh;
+        overflow: hidden;
+        padding-top: var(--header-height, 72px);
+    }
+
+    main:not([data-layout='empty']):has([data-slot='luxury-finder']) {
+        padding-top: var(--header-height, 72px);
+    }
+}
+
+@media (max-height: 400px) {
+    html {
+        scroll-padding-top: 0;
+    }
+
+    main:not([data-layout='empty']) {
+        padding-top: 0;
+    }
+}
+
+/* Paper chrome above the home still — footer is outside the hero scene. */
+footer {
+    position: relative;
+    z-index: 1;
+    background-color: var(--background);
+}
+
+/*
+ * PDP collapsible section styling — serif summaries, subtle dividers, refined rhythm.
+ * Scoped via [data-slot="luxury-pdp"] so canonical collapsibles elsewhere stay unaffected.
+ */
+[data-slot="luxury-pdp"] details {
+    border-color: var(--border-subtle);
+}
+
+[data-slot="luxury-pdp"] details > summary {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.125rem;
+    padding-block: 1.15rem;
+}
+
+/*
+ * Dedicated Specifications section — side-by-side always-visible groups with no borders or chevrons.
+ * These use CollapsibleSection with forceOpen + hideToggle, which renders as a plain, non-interactive
+ * header + content (no <summary> disclosure) so AT doesn't announce an inert toggle.
+ */
+[data-testid="luxury-pdp-details"] [data-slot="collapsible-section"].border-0 {
+    border: 0 !important;
+}
+
+[data-testid="luxury-pdp-details"] [data-slot="collapsible-section"].border-0 > [data-slot="collapsible-heading"] {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.125rem;
+    padding-block: 0;
+    padding-bottom: 0.75rem;
+}
+
+[data-testid="luxury-pdp-details"] [data-slot="collapsible-section"].border-0 > [data-slot="collapsible-content"] {
+    padding-bottom: 0;
+}
+
+/*
+ * Spec-table serif group headings + refined spacing.
+ */
+[data-slot="luxury-pdp"] [data-slot="spec-table"] h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+[data-slot="luxury-pdp"] [data-slot="spec-table"] .space-y-4 > * + * {
+    margin-top: 2.5rem;
+}
+
+/*
+ * Spec-table row styling — subtle dividers, refined spacing, muted values.
+ */
+[data-slot="luxury-pdp"] [data-slot="spec-table"] dl {
+    border-top-color: var(--border-subtle);
+}
+
+[data-slot="luxury-pdp"] [data-slot="spec-table"] dl > div {
+    border-bottom-color: var(--border-subtle);
+    padding-block: 0.75rem;
+}
+
+[data-slot="luxury-pdp"] [data-slot="spec-table"] dt {
+    font-weight: 500;
+}
+
+[data-slot="luxury-pdp"] [data-slot="spec-table"] dd {
+    color: var(--muted-foreground);
+    text-transform: capitalize;
+    font-variant-numeric: normal;
+}
+
+/*
+ * Certification badge — a compact chronometer pill (the summary) that expands into a muted detail
+ * panel, matching the design. Restyles the canonical CollapsibleSection, scoped to this section only:
+ * the summary shrinks to a bordered secondary pill (not a full-width row) and the body becomes a muted,
+ * bordered panel.
+ */
+[data-slot="luxury-cert-section"] > details {
+    border: 0;
+}
+
+[data-slot="luxury-cert-section"] > details > summary {
+    display: inline-flex;
+    width: fit-content;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--ui-radius);
+    color: var(--foreground);
+}
+
+[data-slot="luxury-cert-section"] > details > summary:hover {
+    background-color: var(--secondary);
+}
+
+/* Shrink the canonical chevron to match the compact pill. */
+[data-slot="luxury-cert-section"] > details > summary > svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    translate: none;
+}
+
+/* Expanded detail panel: muted, bordered, spaced below the pill. */
+[data-slot="luxury-cert-section"] > details > div {
+    margin-top: 0.75rem;
+    padding: 1rem;
+    background-color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: var(--ui-radius);
+}
+
+/* Verify link footer — spaced below the rows, without a separator band (matches the design). */
+[data-slot="luxury-cert-section"] > details > div > div {
+    margin-top: 0.75rem;
+    padding-top: 0;
+    border-top: 0;
+}
+
+/*
+ * Highlights grid styling — serif values, eyebrow labels, refined spacing.
+ */
+[data-slot="luxury-pdp"] [data-slot="spec-table-grid"] dt {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted-foreground);
+}
+
+[data-slot="luxury-pdp"] [data-slot="spec-table-grid"] dd {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--foreground);
+    text-transform: none;
+}
+
+/*
+ * Brochure download CTA — pill button.
+ */
+[data-slot="luxury-pdp"] [data-slot="spec-table-cta"][download] {
+    border-radius: 9999px;
+    padding-inline: 1.5rem;
+}
+
+/*
+ * External verify link — quiet underlined link (not a button).
+ */
+[data-slot="luxury-pdp"] [data-slot="spec-table-cta"][target="_blank"] {
+    background: transparent;
+    color: var(--foreground);
+    padding: 0;
+    border-radius: 0;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+[data-slot="luxury-pdp"] [data-slot="spec-table-cta"][target="_blank"]:hover {
+    opacity: 1;
+    color: var(--muted-foreground);
+}
+
+[data-slot="luxury-pdp"] [data-slot="spec-table-cta"][target="_blank"]::after {
+    content: " →";
+}
+
+/*
+ * About/Shipping/Warranty body text — refined line-height and h3 styling.
+ */
+[data-slot="luxury-pdp"] [data-testid="html-fragment"] {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+[data-slot="luxury-pdp"] [data-testid="html-fragment"] h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+/*
+ * Collection tiles — refined aspect ratio, serif titles, brand scrim.
+ */
+[data-slot="luxury-collection-tiles"] [data-slot="category-media"] {
+    aspect-ratio: 4 / 5;
+    height: auto;
+}
+
+[data-slot="luxury-collection-tiles"] h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+[data-slot="luxury-collection-tiles"] [class*="bg-gradient-to-t"] {
+    background-image: linear-gradient(to top, color-mix(in oklch, var(--primary) 80%, transparent), transparent) !important;
+}

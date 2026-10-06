@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StoreLocatorBadge stories snapshot > Default story renders and matches snapshot 1`] = `<div />`;
+
+exports[`StoreLocatorBadge stories snapshot > DesktopLayout story renders and matches snapshot 1`] = `<div />`;
+
+exports[`StoreLocatorBadge stories snapshot > MobileLayout story renders and matches snapshot 1`] = `<div />`;

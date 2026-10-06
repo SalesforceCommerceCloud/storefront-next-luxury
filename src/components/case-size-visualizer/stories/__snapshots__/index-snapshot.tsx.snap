@@ -1,0 +1,68 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CaseSizeVisualizer stories snapshot > Default story renders and matches snapshot 1`] = `
+<div
+  data-testid="case-size-visualizer"
+>
+  <div
+    class="w-full border-y border-border"
+    data-orientation="vertical"
+    data-slot="accordion"
+  >
+    <div
+      class="last:border-b-0 border-0"
+      data-orientation="vertical"
+      data-slot="accordion-item"
+      data-state="closed"
+    >
+      <h3
+        class="flex"
+        data-orientation="vertical"
+        data-state="closed"
+      >
+        <button
+          aria-controls="radix-_r_2_"
+          aria-expanded="false"
+          class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 py-4 text-left font-serif text-base font-normal hover:no-underline"
+          data-orientation="vertical"
+          data-radix-collection-item=""
+          data-slot="accordion-trigger"
+          data-state="closed"
+          id="radix-_r_1_"
+          type="button"
+        >
+          How it wears
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m6 9 6 6 6-6"
+            />
+          </svg>
+        </button>
+      </h3>
+      <div
+        aria-labelledby="radix-_r_1_"
+        class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+        data-orientation="vertical"
+        data-slot="accordion-content"
+        data-state="closed"
+        hidden=""
+        id="radix-_r_2_"
+        role="region"
+        style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,100 @@
+/**
+ * Copyright 2026 Salesforce, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Luxury Next per-page UI overrides:
+ * - PDP hero is a single stacked packshot; extra frames live below the fold.
+ *
+ * Every other flag matches the canonical baseline.
+ */
+interface UIConfig {
+    checkout: {
+        allowZeroTotalOrders: boolean;
+    };
+    pages: {
+        cart: {
+            showRecommendations: boolean;
+            showLineItemVariantAttributes: boolean;
+            showLineItemListPrice: boolean;
+            showLineItemPromoBadge: boolean;
+            showLineItemBonusBadge: boolean;
+        };
+        swatches: {
+            maxDistinctSwatches: number;
+            maxQtyPerSwatch: number;
+        };
+        category: {
+            showCategoryLabel: boolean;
+            pagination: {
+                mode: 'load-more' | 'traditional';
+                batchSize: number;
+                mobileBatchSize: number;
+                maxProducts: number;
+            };
+            /** Opt-in: keep the `cgid` refinement in the sidebar as a single-select radio group. @default undefined */
+            sidebarCategoryRefinement?: {
+                enabled: boolean;
+            };
+            /** When true, product tiles link to the master product PDP instead of the represented variant. @default false */
+            tileLinksToMasterProduct?: boolean;
+        };
+        product: {
+            showRatingAverage: boolean;
+            /** Variation-attribute ids rendered as a grouped/tabbed swatch selector. @default undefined */
+            groupedSwatchAxes?: string[];
+            /** Variation-attribute ids whose image swatches render as larger option cards. @default undefined */
+            imageCardAxes?: string[];
+            /** When true, wrap each PDP swatch section in a collapsible with a selected-value summary. @default false */
+            collapsibleSwatchSections?: boolean;
+            /** PDP product-image gallery layout: 'stacked' (hero + thumbnails) or 'mosaic'. @default 'stacked' */
+            galleryLayout?: 'stacked' | 'mosaic';
+            /** PDP Add-to-Cart quantity UX. @default 'pre-select' */
+            addToCartQuantityMode?: 'inline' | 'pre-select';
+        };
+    };
+}
+
+export const uiConfig: UIConfig = {
+    checkout: {
+        allowZeroTotalOrders: false,
+    },
+    pages: {
+        cart: {
+            showRecommendations: true,
+            showLineItemVariantAttributes: true,
+            showLineItemListPrice: true,
+            showLineItemPromoBadge: true,
+            showLineItemBonusBadge: true,
+        },
+        swatches: {
+            maxDistinctSwatches: 0,
+            maxQtyPerSwatch: 1,
+        },
+        category: {
+            showCategoryLabel: false,
+            pagination: {
+                mode: 'load-more',
+                batchSize: 24,
+                mobileBatchSize: 12,
+                maxProducts: 200,
+            },
+        },
+        product: {
+            showRatingAverage: false,
+            galleryLayout: 'stacked',
+        },
+    },
+};

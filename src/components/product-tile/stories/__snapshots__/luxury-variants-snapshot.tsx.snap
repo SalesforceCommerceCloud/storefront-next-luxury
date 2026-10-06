@@ -1,0 +1,349 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductTile luxury variant stories snapshot > Limited story renders and matches snapshot 1`] = `
+<div
+  class="w-64"
+>
+  <div
+    class="text-card-foreground flex flex-col rounded-ui border-ui border-border shadow-ui product-card group w-full min-w-0 max-w-full cursor-pointer overflow-hidden gap-0 py-0 border-0 shadow-none bg-transparent rounded-none"
+    data-slot="card"
+  >
+    <div
+      class="product-image relative"
+    >
+      <div
+        class="relative w-full overflow-hidden"
+      >
+        <div
+          class="relative overflow-hidden bg-secondary/20 flex flex-col aspect-square w-full aspect-[4/5] bg-muted [&_img]:object-contain! [&_img]:h-full! [&_img]:max-w-full! [&_img]:mx-auto!"
+        >
+          <a
+            aria-hidden="true"
+            class="block w-full h-full flex-1"
+            data-discover="true"
+            href="/RefArchGlobal/en-GB/p/ln-limited-001"
+            tabindex="-1"
+          >
+            <div
+              class="w-full h-full object-cover transition-all duration-200 group-hover:scale-105"
+            >
+              <picture>
+                <source
+                  media="(min-width: 1280px)"
+                  sizes="15vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=230&q=70 230w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=461&q=70 461w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  sizes="15vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=192&q=70 192w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=384&q=70 384w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  sizes="15vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=154&q=70 154w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=307&q=70 307w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 640px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=384&q=70 384w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=768&q=70 768w"
+                  type="image/webp"
+                />
+                <source
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=320&q=70 320w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=640&q=70 640w"
+                  type="image/webp"
+                />
+                <img
+                  alt="Classic Automatic"
+                  class="object-cover"
+                  fetchpriority="auto"
+                  loading="lazy"
+                  src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.jpg?sfrm=webp"
+                />
+              </picture>
+            </div>
+          </a>
+        </div>
+        <a
+          aria-label="Founders Edition"
+          class="absolute inset-0 z-[1] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+          data-discover="true"
+          href="/RefArchGlobal/en-GB/p/ln-limited-001"
+        />
+        <div
+          class="absolute top-2 right-2 flex flex-col items-end gap-2 z-20"
+        >
+          <div
+            class="invisible opacity-0 transition-[opacity,visibility] duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+          >
+            <button
+              aria-label="Add to Wishlist"
+              class="w-9 h-9 p-2 flex items-center justify-center rounded-ui transition-all duration-200 ease-in-out cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed relative top-auto right-auto z-20 bg-muted hover:bg-background shadow-sm border-0"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-4 h-4 transition-all duration-200 ease-in-out text-muted-foreground scale-100"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-opacity duration-300 pointer-events-none"
+        />
+        <div
+          class="absolute bottom-4 left-0 right-0 px-4 invisible opacity-0 transition-[opacity,visibility] duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 z-20"
+        >
+          <a
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+            data-discover="true"
+            data-size="default"
+            data-slot="button"
+            data-variant="default"
+            href="/RefArchGlobal/en-GB/boutiques?product=ln-limited-001"
+          >
+            Book an appointment
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="relative px-0 pt-3 pb-2"
+    >
+      <p
+        class="mb-1 text-[0.625rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+      >
+        Limited Editions
+      </p>
+      <h3
+        aria-label="Founders Edition"
+        class="mb-1 font-serif text-base font-normal leading-snug text-card-foreground"
+      >
+        <a
+          aria-hidden="true"
+          class="hover:opacity-70"
+          data-discover="true"
+          href="/RefArchGlobal/en-GB/p/ln-limited-001"
+          tabindex="-1"
+        >
+          Founders Edition
+        </a>
+      </h3>
+      <p
+        class="mb-1 text-sm text-muted-foreground"
+      >
+        40mm
+      </p>
+      <div>
+        <div
+          class="items-center gap-2 text-sm"
+        >
+          <span
+            aria-hidden="true"
+            class="[&:not(:first-child)]:mt-6 text-left text-sm font-normal leading-none text-muted-foreground"
+          >
+            £6,200.00
+          </span>
+          <span
+            aria-atomic="true"
+            aria-live="polite"
+            class="sr-only"
+          >
+            Founders Edition
+             
+            Current price: £6,200.00
+          </span>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProductTile luxury variant stories snapshot > WithDiameter story renders and matches snapshot 1`] = `
+<div
+  class="w-64"
+>
+  <div
+    class="text-card-foreground flex flex-col rounded-ui border-ui border-border shadow-ui product-card group w-full min-w-0 max-w-full cursor-pointer overflow-hidden gap-0 py-0 border-0 shadow-none bg-transparent rounded-none"
+    data-slot="card"
+  >
+    <div
+      class="product-image relative"
+    >
+      <div
+        class="relative w-full overflow-hidden"
+      >
+        <div
+          class="relative overflow-hidden bg-secondary/20 flex flex-col aspect-square w-full aspect-[4/5] bg-muted [&_img]:object-contain! [&_img]:h-full! [&_img]:max-w-full! [&_img]:mx-auto!"
+        >
+          <a
+            aria-hidden="true"
+            class="block w-full h-full flex-1"
+            data-discover="true"
+            href="/RefArchGlobal/en-GB/p/ln-heritage-001"
+            tabindex="-1"
+          >
+            <div
+              class="w-full h-full object-cover transition-all duration-200 group-hover:scale-105"
+            >
+              <picture>
+                <source
+                  media="(min-width: 1280px)"
+                  sizes="15vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=230&q=70 230w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=461&q=70 461w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  sizes="15vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=192&q=70 192w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=384&q=70 384w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  sizes="15vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=154&q=70 154w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=307&q=70 307w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 640px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=384&q=70 384w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=768&q=70 768w"
+                  type="image/webp"
+                />
+                <source
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=320&q=70 320w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?sw=640&q=70 640w"
+                  type="image/webp"
+                />
+                <img
+                  alt="Classic Automatic"
+                  class="object-cover"
+                  fetchpriority="auto"
+                  loading="lazy"
+                  src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.jpg?sfrm=webp"
+                />
+              </picture>
+            </div>
+          </a>
+        </div>
+        <a
+          aria-label="Classic Automatic"
+          class="absolute inset-0 z-[1] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+          data-discover="true"
+          href="/RefArchGlobal/en-GB/p/ln-heritage-001"
+        />
+        <div
+          class="absolute top-2 right-2 flex flex-col items-end gap-2 z-20"
+        >
+          <div
+            class="invisible opacity-0 transition-[opacity,visibility] duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+          >
+            <button
+              aria-label="Add to Wishlist"
+              class="w-9 h-9 p-2 flex items-center justify-center rounded-ui transition-all duration-200 ease-in-out cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed relative top-auto right-auto z-20 bg-muted hover:bg-background shadow-sm border-0"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-4 h-4 transition-all duration-200 ease-in-out text-muted-foreground scale-100"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-opacity duration-300 pointer-events-none"
+        />
+        <div
+          class="absolute bottom-4 left-0 right-0 px-4 invisible opacity-0 transition-[opacity,visibility] duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 z-20"
+        >
+          <a
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+            data-discover="true"
+            data-size="default"
+            data-slot="button"
+            data-variant="default"
+            href="/RefArchGlobal/en-GB/boutiques?product=ln-heritage-001"
+          >
+            Book an appointment
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="relative px-0 pt-3 pb-2"
+    >
+      <p
+        class="mb-1 text-[0.625rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+      >
+        Heritage Collection
+      </p>
+      <h3
+        aria-label="Classic Automatic"
+        class="mb-1 font-serif text-base font-normal leading-snug text-card-foreground"
+      >
+        <a
+          aria-hidden="true"
+          class="hover:opacity-70"
+          data-discover="true"
+          href="/RefArchGlobal/en-GB/p/ln-heritage-001"
+          tabindex="-1"
+        >
+          Classic Automatic
+        </a>
+      </h3>
+      <p
+        class="mb-1 text-sm text-muted-foreground"
+      >
+        40mm
+      </p>
+      <div>
+        <div
+          class="items-center gap-2 text-sm"
+        >
+          <span
+            aria-hidden="true"
+            class="[&:not(:first-child)]:mt-6 text-left text-sm font-normal leading-none text-muted-foreground"
+          >
+            £6,200.00
+          </span>
+          <span
+            aria-atomic="true"
+            aria-live="polite"
+            class="sr-only"
+          >
+            Classic Automatic
+             
+            Current price: £6,200.00
+          </span>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
