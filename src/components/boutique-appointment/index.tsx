@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { type FormEvent, type ReactElement, type ReactNode, useEffect, useMemo, useState } from 'react';
+import { type FormEvent, type ReactElement, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, Pencil } from 'lucide-react';
 import type { ShopperStores } from '@/scapi';
@@ -466,6 +466,20 @@ function SummaryRow({ title, detail, onEdit }: { title: string; detail?: string;
     );
 }
 
+// Read-only summary row for the post-submit confirmation. Rendered inside a <dl> so screen
+// readers hear each value with its term (the term is visually hidden to keep the Review-step look).
+function ReviewDetail({ term, title, detail }: { term: string; title: string; detail?: string }): ReactElement {
+    return (
+        <div className="border-b border-border py-2.5">
+            <dt className="sr-only">{term}</dt>
+            <dd className="m-0">
+                <p className="font-serif text-base leading-snug">{title}</p>
+                {detail ? <p className="mt-0.5 text-xs text-muted-foreground">{detail}</p> : null}
+            </dd>
+        </div>
+    );
+}
+
 function StoreStill({ store }: { store: ShopperStores.schemas['Store'] }): ReactElement {
     const { i18n } = useTranslation('watch');
     const countryLabel = (() => {
@@ -588,11 +602,23 @@ export default function BoutiqueAppointment({
         setDone(true);
     };
 
+    const confirmationStatusRef = useRef<HTMLParagraphElement>(null);
+    // Submitting unmounts the Review form (and its submit button), which would otherwise drop focus
+    // to <body>. Move focus to the confirmation message so keyboard and screen-reader users land in
+    // the new view (the message is also an aria-live region).
+    useEffect(() => {
+        if (done) confirmationStatusRef.current?.focus();
+    }, [done]);
+
+    const heading = (
+        <h1 className="min-w-0 font-serif text-3xl font-normal tracking-tight sm:text-4xl">
+            {t('boutiquesPage.appointmentTitle')}
+        </h1>
+    );
+
     const chrome = (
         <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
-            <h1 className="min-w-0 font-serif text-3xl font-normal tracking-tight sm:text-4xl">
-                {t('boutiquesPage.appointmentTitle')}
-            </h1>
+            {heading}
             <WizardStepper step={step} maxReached={maxReached} onGoTo={goTo} />
         </header>
     );
@@ -610,8 +636,15 @@ export default function BoutiqueAppointment({
                         <StoreStill store={store} />
                     </div>
                     <div className={`${boutiqueStageRight} justify-center`}>
-                        {chrome}
-                        <p role="status" data-testid="appointment-success" className="mt-8 font-serif text-3xl">
+                        <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+                            {heading}
+                        </header>
+                        <p
+                            ref={confirmationStatusRef}
+                            tabIndex={-1}
+                            role="status"
+                            data-testid="appointment-success"
+                            className="mt-8 font-serif text-3xl outline-none">
                             {t('boutiquesPage.success', { salon: store.name })}
                             {selected ? (
                                 <span className="mt-4 block font-sans text-base text-muted-foreground">
@@ -619,6 +652,41 @@ export default function BoutiqueAppointment({
                                 </span>
                             ) : null}
                         </p>
+                        <section
+                            aria-labelledby="appointment-summary-heading"
+                            className="mt-8"
+                            data-testid="appointment-summary">
+                            <h2 id="appointment-summary-heading" className="sr-only">
+                                {t('boutiquesPage.stepReview')}
+                            </h2>
+                            <dl>
+                                <ReviewDetail
+                                    term={t('boutiquesPage.stepNavLocation')}
+                                    title={store.name ?? store.id ?? ''}
+                                    detail={addressLine(store)}
+                                />
+                                <ReviewDetail
+                                    term={t('boutiquesPage.stepNavService')}
+                                    title={
+                                        selectedService
+                                            ? t(selectedService.titleKey)
+                                            : t('boutiquesPage.stepNavService')
+                                    }
+                                    detail={
+                                        selectedService
+                                            ? t('boutiquesPage.durationLine', { minutes: selectedService.minutes })
+                                            : undefined
+                                    }
+                                />
+                                <ReviewDetail
+                                    term={t('boutiquesPage.stepNavWhen')}
+                                    title={
+                                        date ? formatReviewDate(date, i18n.language) : t('boutiquesPage.stepNavWhen')
+                                    }
+                                    detail={time || undefined}
+                                />
+                            </dl>
+                        </section>
                     </div>
                 </div>
             </div>

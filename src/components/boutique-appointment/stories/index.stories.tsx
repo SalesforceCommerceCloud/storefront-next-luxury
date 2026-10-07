@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect, within } from 'storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 import { waitForStorybookReady } from '@storybook/test-utils';
 import type { ShopperStores } from '@/scapi';
 import type { AppointmentPiece } from '@/lib/appointment';
@@ -123,5 +123,48 @@ export const Browse: Story = {
         await expect(
             within(canvas.getByTestId('boutique-directory')).getByRole('heading', { name: /book an appointment/i })
         ).toBeVisible();
+    },
+};
+
+// Drives the full wizard to the confirmation screen to cover the post-submit state:
+// the booked boutique / service / date-time are echoed back read-only and the 1-4 step
+// controls are gone. `snapshot: false` keeps this out of the snapshot suite — composeStories
+// renders the initial (location) step, so a snapshot here would add no value; the booking
+// flow is instead exercised by the interaction + a11y runs.
+export const Confirmed: Story = {
+    parameters: { snapshot: false },
+    args: {
+        stores: mockStores,
+        piece: mockPiece,
+        productId: mockPiece.id,
+        productName: mockPiece.name,
+        catalog: [],
+    },
+    play: async ({ canvasElement }) => {
+        await waitForStorybookReady(canvasElement);
+        const canvas = within(canvasElement);
+
+        // 1. Location -> 2. Service -> 3. Time -> 4. Review -> submit.
+        await userEvent.click(await canvas.findByRole('button', { name: /geneva boutique/i }));
+        await userEvent.click(await canvas.findByRole('button', { name: /see a timepiece/i }));
+        if (canvas.queryAllByTestId('appointment-day').length === 0) {
+            await userEvent.click(canvas.getByRole('button', { name: /next month/i }));
+        }
+        await userEvent.click((await canvas.findAllByTestId('appointment-day'))[0]);
+        await userEvent.click(await canvas.findByRole('button', { name: '10:00' }));
+        await userEvent.type(canvas.getByLabelText(/^name$/i), 'Ada Lovelace');
+        await userEvent.type(canvas.getByLabelText(/^email$/i), 'ada@example.com');
+        await userEvent.click(canvas.getByRole('button', { name: /request appointment/i }));
+
+        // Confirmation echoes the booked details read-only, with no step controls.
+        await expect(await canvas.findByTestId('appointment-success')).toBeVisible();
+        const summary = await canvas.findByTestId('appointment-summary');
+        await expect(within(summary).getByText(/geneva boutique/i)).toBeVisible();
+        await expect(within(summary).getByText(/12 Quai des Bergues/i)).toBeVisible();
+        await expect(within(summary).getByText(/see a timepiece/i)).toBeVisible();
+        await expect(within(summary).getByText(/duration · 30 min/i)).toBeVisible();
+        await expect(within(summary).getByText('10:00')).toBeVisible();
+        await expect(canvas.queryByTestId('appointment-stepper')).toBeNull();
+        await expect(within(summary).queryByRole('button', { name: /edit/i })).toBeNull();
     },
 };

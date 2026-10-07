@@ -36,6 +36,10 @@ afterEach(() => {
 
 describe('BoutiqueAppointment stories snapshot', () => {
     for (const [storyName, Story] of Object.entries(composed)) {
+        // Skip interaction-only stories (e.g. the full booking flow) from snapshots:
+        // composeStories renders the initial step, so their snapshot adds no value.
+        if (Story?.parameters?.snapshot === false) continue;
+
         test(`${storyName} story renders and matches snapshot`, () => {
             const { container } = render(<Story />);
             expect(container.firstChild).toMatchSnapshot();

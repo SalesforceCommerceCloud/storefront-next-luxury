@@ -234,4 +234,30 @@ describe('BoutiqueAppointment', () => {
         expect(screen.getByRole('button', { name: /request appointment/i })).toBeDisabled();
         expect(screen.getByText(/select a date and time to confirm/i)).toBeInTheDocument();
     });
+
+    test('confirmation echoes the booked details read-only and hides the step controls', async () => {
+        const user = userEvent.setup();
+        renderAppointment('ln-heritage-001');
+        await advanceToReview(user);
+        await user.type(screen.getByLabelText(/^name$/i), 'Ada Lovelace');
+        await user.type(screen.getByLabelText(/^email$/i), 'ada@example.com');
+        await user.click(screen.getByRole('button', { name: /request appointment/i }));
+
+        // The confirmation screen is shown.
+        expect(screen.getByTestId('appointment-success')).toBeInTheDocument();
+
+        // The booked boutique, service, and time are echoed back from the Review step.
+        const summary = screen.getByTestId('appointment-summary');
+        expect(within(summary).getByText(/geneva boutique/i)).toBeInTheDocument();
+        expect(within(summary).getByText(/12 Quai des Bergues/i)).toBeInTheDocument();
+        expect(within(summary).getByText(/see a timepiece/i)).toBeInTheDocument();
+        expect(within(summary).getByText(/duration · 30 min/i)).toBeInTheDocument();
+        // The date row shows the formatted date (a full year), not the fallback i18n key.
+        expect(within(summary).getByText(/\b20\d{2}\b/)).toBeInTheDocument();
+        expect(within(summary).getByText('10:00')).toBeInTheDocument();
+
+        // The 1-4 step controls are gone and the details are read-only (no Edit).
+        expect(screen.queryByTestId('appointment-stepper')).not.toBeInTheDocument();
+        expect(within(summary).queryByRole('button', { name: /edit/i })).not.toBeInTheDocument();
+    });
 });
