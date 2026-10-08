@@ -38,7 +38,7 @@ const renderWithRouter = (component: React.ReactElement) => {
                         <SiteProvider
                             site={defaultMockSite}
                             locale={defaultMockLocale}
-                            language={mockAltSiteObject.defaultLocale}
+                            language={mockSiteObject.defaultLocale}
                             currency={mockAltSiteObject.defaultCurrency}>
                             <StoreLocatorProvider>{component}</StoreLocatorProvider>
                         </SiteProvider>
@@ -56,7 +56,7 @@ describe('StoreLocatorFooter', () => {
         renderWithRouter(<StoreLocatorFooter />);
         const link = screen.getByRole('link', { name: /boutiques/i });
         expect(link).toBeInTheDocument();
-        expect(link).toHaveAttribute('href', `/${mockAltSiteObject.id}/${mockSiteObject.defaultLocale}/boutiques`);
+        expect(link).toHaveAttribute('href', `/${mockAltSiteObject.id}/${defaultMockLocale.id}/boutiques`);
     });
 
     it('has proper styling classes matching footer links', () => {
