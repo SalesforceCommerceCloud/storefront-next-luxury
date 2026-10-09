@@ -215,7 +215,7 @@ vi.mock('@/lib/decorators/page-type', () => ({
 
 vi.mock('@/lib/decorators/region-definition', () => ({
     RegionDefinition: () => (target: any) => target,
-    getRegionDefinition: vi.fn(() => ({ id: 'headerbanner' })),
+    getRegionDefinition: vi.fn(() => ({ id: 'top' })),
 }));
 
 vi.mock('@/lib/page-designer/page-loader.server', () => ({
