@@ -88,9 +88,11 @@ const createMockPage = (regions: any[] = []): ShopperExperience.schemas['Page'] 
         regions,
     }) as ShopperExperience.schemas['Page'];
 
-// Mock the Region component to render the `errorElement` as fallback
+// Luxury home now follows the Foundations model: the sections are static JSX and the <Region> slots
+// are empty (no errorElement). Mock Region as an empty slot (renders nothing) so these tests prove the
+// sections render as STATIC content, independent of any Page Designer page.
 vi.mock('@/components/region', () => ({
-    Region: ({ errorElement }: any) => <>{errorElement}</>,
+    Region: () => null,
 }));
 
 vi.mock('@/components/home/popular-category', () => ({
@@ -288,32 +290,9 @@ describe('HomePage', () => {
             expect(screen.getByText('Geneva, 1964')).toBeInTheDocument();
         });
 
-        test('renders without header banner region when no regions available', async () => {
+        test('renders the hero scene (carousel + featured) and collections as static content', async () => {
             renderComponent();
-            expect(screen.queryByTestId('region')).not.toBeInTheDocument();
-            await waitFor(() => {
-                expect(screen.getByTestId('collection-grid')).toBeInTheDocument();
-            });
-        });
-
-        test('renders header banner region when headerbanner region is provided', async () => {
-            const headerBannerRegion = {
-                id: 'headerbanner',
-                components: [
-                    { id: 'hero-1', typeId: 'hero' },
-                    { id: 'banner-1', typeId: 'banner' },
-                ],
-            };
-
-            const page = {
-                ...createMockPage([headerBannerRegion]),
-                componentData: {},
-            };
-
-            renderComponent({
-                page,
-            });
-
+            // The hero carousel is static JSX — not gated on a Page Designer region.
             expect(screen.getByTestId('hero-carousel')).toBeInTheDocument();
             await waitFor(() => {
                 expect(screen.getByTestId('product-carousel')).toBeInTheDocument();
@@ -340,11 +319,17 @@ describe('HomePage', () => {
             });
         });
 
-        test('handles a missing Page Designer page', async () => {
+        test('renders the full static home even when the Page Designer page is missing', async () => {
+            // Regression guard for the Foundations-model refactor: with no PD page the sections must
+            // still render (they are static JSX, not an empty-region errorElement fallback).
             renderComponent({ page: null });
+            expect(screen.getByTestId('hero-carousel')).toBeInTheDocument();
             await waitFor(() => {
                 expect(screen.getByTestId('collection-grid')).toBeInTheDocument();
             });
+            expect(screen.getByText('Find Your Watch')).toBeInTheDocument();
+            expect(screen.getByText('Geneva, 1964')).toBeInTheDocument();
+            expect(screen.getByText('Visit a boutique')).toBeInTheDocument();
         });
     });
 

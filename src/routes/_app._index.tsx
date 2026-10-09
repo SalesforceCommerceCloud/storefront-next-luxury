@@ -58,16 +58,34 @@ export { shouldRevalidate } from '@/lib/revalidation/routes/home';
 })
 @RegionDefinition([
     {
-        id: 'headerbanner',
-        name: 'Header Banner Region',
-        description: 'Region for promotional banners and hero content',
+        id: 'top',
+        name: 'Top Slot',
+        description: 'Empty slot above the hero carousel',
         maxComponents: 3,
     },
     {
-        id: 'main',
-        name: 'Main Content Region',
-        description: 'Region for main content',
-        maxComponents: 10,
+        id: 'afterHero',
+        name: 'After Hero Slot',
+        description: 'Empty slot between the hero scene and the collection grid',
+        maxComponents: 3,
+    },
+    {
+        id: 'afterCollections',
+        name: 'After Collections Slot',
+        description: 'Empty slot between the collection grid and the editorial section',
+        maxComponents: 3,
+    },
+    {
+        id: 'afterEditorial',
+        name: 'After Editorial Slot',
+        description: 'Empty slot between the editorial/finder sections and the boutiques section',
+        maxComponents: 3,
+    },
+    {
+        id: 'bottom',
+        name: 'Bottom Slot',
+        description: 'Empty slot below the boutiques and appointment sections',
+        maxComponents: 3,
     },
 ])
 export class HomePageMetadata {}
@@ -185,8 +203,16 @@ export async function loader(args: Route.LoaderArgs): Promise<HomePageData> {
 }
 
 /**
- * Home page component that displays the home page content with granular Suspense boundaries.
- * Components within the page handle their own Suspense boundaries for progressive loading.
+ * Home page component.
+ *
+ * Follows the Foundations model (see `src/verticals/foundations/routes/_app._index.tsx`): the
+ * marketing sections (hero scene, featured products, collection grid, editorial, watch-finder band,
+ * boutique/care cards, appointment CTA) are ALWAYS rendered as static content — never as the
+ * `errorElement` fallback of an empty Page Designer region. Empty `<Region>` slots (`top`,
+ * `afterHero`, `afterCollections`, `afterEditorial`, `bottom`) are interspersed between the sections;
+ * with no components and no `errorElement` an empty slot renders nothing until a merchant drops a
+ * component into it. A Page Designer component therefore renders IN ADDITION to the static content,
+ * and the home no longer depends on the get-page returning empty to show its content.
  * @returns JSX element representing the home page layout
  */
 export default function HomePage({ loaderData }: { loaderData: HomePageData }) {
@@ -234,163 +260,150 @@ export default function HomePage({ loaderData }: { loaderData: HomePageData }) {
     ];
 
     return (
-        <>
-            <div data-slot="luxury-home-hero" className="relative bg-background pb-16">
-                <h1 className="sr-only">{t('meta.title', { defaultValue: 'NextGen PWA Kit Store' })}</h1>
-                <SeoMeta
-                    rawTitle
-                    title={t('meta.title', { defaultValue: 'NextGen PWA Kit Store' })}
-                    description={t('meta.description', {
-                        defaultValue: 'Welcome to our web store for high performers!',
-                    })}
-                    openGraph={{
-                        type: 'website',
-                        url: loaderData.pageUrl,
-                        image: loaderData.ogImageUrl,
-                    }}
+        <div data-slot="luxury-home-hero" className="relative bg-background pb-16">
+            <h1 className="sr-only">{t('meta.title', { defaultValue: 'NextGen PWA Kit Store' })}</h1>
+            <SeoMeta
+                rawTitle
+                title={t('meta.title', { defaultValue: 'NextGen PWA Kit Store' })}
+                description={t('meta.description', {
+                    defaultValue: 'Welcome to our web store for high performers!',
+                })}
+                openGraph={{
+                    type: 'website',
+                    url: loaderData.pageUrl,
+                    image: loaderData.ogImageUrl,
+                }}
+            />
+
+            {/* Empty PD slot above the hero (critical: shares the page boundary). */}
+            <Region page={loaderData.page} regionId="top" critical={true} />
+
+            {/* Hero scene — static. HomeParallax is position:sticky within this scene and must wrap the
+                hero carousel + featured rail together (it tracks the carousel's aria-hidden items). */}
+            <div data-slot="luxury-home-scene">
+                <HomeParallax slides={heroSlides.map((slide) => ({ id: slide.id, src: slide.imageUrl }))} />
+                <HeroCarousel
+                    slides={heroSlides}
+                    autoPlay={true}
+                    autoPlayInterval={6000}
+                    showNavigation={true}
+                    showDots={true}
                 />
-                {/* Header Banner Region - critical content suspends at the page boundary */}
-                <div>
-                    <Region
-                        page={loaderData.page}
-                        regionId="headerbanner"
-                        critical={true}
-                        errorElement={
-                            <>
-                                <div data-slot="luxury-home-scene">
-                                    <HomeParallax
-                                        slides={heroSlides.map((slide) => ({ id: slide.id, src: slide.imageUrl }))}
-                                    />
-                                    <HeroCarousel
-                                        slides={heroSlides}
-                                        autoPlay={true}
-                                        autoPlayInterval={6000}
-                                        showNavigation={true}
-                                        showDots={true}
-                                    />
 
-                                    {/* Featured Products */}
-                                    <div className="relative z-[1] bg-background">
-                                        <Suspense
-                                            fallback={<ProductCarouselSkeleton title={t('featuredProducts.title')} />}>
-                                            <Await
-                                                resolve={loaderData.searchResult}
-                                                errorElement={<FeaturedProductsError />}>
-                                                {(searchResult) => (
-                                                    <div data-slot="luxury-featured-rail">
-                                                        <ProductCarouselWithData
-                                                            data={searchResult}
-                                                            title={t('featuredProducts.title')}
-                                                            shopAllUrl="/collections"
-                                                            shopAllText={t('featuredProducts.shopAll')}
-                                                        />
-                                                    </div>
-                                                )}
-                                            </Await>
-                                        </Suspense>
-                                    </div>
-                                </div>
-                            </>
-                        }
-                    />
-                </div>
-
-                {/* Main Region - Region component handles its own Suspense internally */}
-                {/* Note: This region doesn't provide fallback skeletons right now as it's located below the fold */}
+                {/* Featured Products — static (z-[1] bg keeps it above the sticky parallax) */}
                 <div className="relative z-[1] bg-background">
-                    <Region
-                        page={loaderData.page}
-                        regionId="main"
-                        errorElement={
-                            <>
-                                <Suspense fallback={null}>
-                                    <Await resolve={loaderData.categories}>
-                                        {(categories) => <CollectionGrid categories={categories} />}
-                                    </Await>
-                                </Suspense>
-
-                                <div className="section-container py-16" data-slot="luxury-home-editorial">
-                                    <ContentCard
-                                        className="w-full"
-                                        title={t('editorial.title')}
-                                        description={t('editorial.body')}
-                                        imageUrl="/images/salons/geneva.webp"
-                                        imageAlt={t('editorial.imageAlt')}
-                                        buttonText={t('editorial.cta')}
-                                        buttonAriaLabel={t('editorial.cta')}
-                                        buttonLink="/about-us"
-                                        showBackground={false}
-                                        showBorder={false}
-                                        loading="lazy"
+                    <Suspense fallback={<ProductCarouselSkeleton title={t('featuredProducts.title')} />}>
+                        <Await resolve={loaderData.searchResult} errorElement={<FeaturedProductsError />}>
+                            {(searchResult) => (
+                                <div data-slot="luxury-featured-rail">
+                                    <ProductCarouselWithData
+                                        data={searchResult}
+                                        title={t('featuredProducts.title')}
+                                        shopAllUrl="/collections"
+                                        shopAllText={t('featuredProducts.shopAll')}
                                     />
                                 </div>
-
-                                <section
-                                    data-slot="luxury-finder-band"
-                                    className="relative overflow-hidden bg-primary text-primary-foreground">
-                                    <img
-                                        src="/images/finder-band.webp"
-                                        alt=""
-                                        className="absolute inset-0 h-full w-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-primary/75" />
-                                    <div className="section-container relative py-16 md:py-20 text-center">
-                                        <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-primary-foreground/70">
-                                            {t('finderBand.title')}
-                                        </p>
-                                        <h2 className="mt-4 font-serif text-3xl md:text-4xl font-normal">
-                                            {t('finderBand.subtitle')}
-                                        </h2>
-                                        <WatchFinderCta
-                                            variant="secondary"
-                                            className="mt-8 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                                            {t('finderBand.cta')}
-                                        </WatchFinderCta>
-                                    </div>
-                                </section>
-
-                                <div className="section-container py-16">
-                                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                                        <ContentCard
-                                            title={t('pair.boutiques.title')}
-                                            description={t('pair.boutiques.description')}
-                                            imageUrl="/images/salons/salon-interior.webp"
-                                            imageAlt={t('pair.boutiques.imageAlt')}
-                                            buttonText={t('pair.boutiques.cta')}
-                                            buttonAriaLabel={t('pair.boutiques.cta')}
-                                            buttonLink="/boutiques"
-                                            showBackground={false}
-                                            showBorder={false}
-                                            loading="lazy"
-                                        />
-                                        <ContentCard
-                                            title={t('pair.care.title')}
-                                            description={t('pair.care.description')}
-                                            imageUrl="/images/salons/paris.webp"
-                                            imageAlt={t('pair.care.imageAlt')}
-                                            buttonText={t('pair.care.cta')}
-                                            buttonAriaLabel={t('pair.care.cta')}
-                                            buttonLink="/care"
-                                            showBackground={false}
-                                            showBorder={false}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                    <div className="mt-16 text-center">
-                                        <h2 className="font-serif text-3xl">{t('appointment.title')}</h2>
-                                        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-                                            {t('appointment.body')}
-                                        </p>
-                                        <Button asChild className="mt-8">
-                                            <Link to={boutiqueAppointmentHref()}>{t('appointment.cta')}</Link>
-                                        </Button>
-                                    </div>
-                                </div>
-                            </>
-                        }
-                    />
+                            )}
+                        </Await>
+                    </Suspense>
                 </div>
             </div>
-        </>
+
+            {/* Empty PD slot after the hero scene. */}
+            <Region page={loaderData.page} regionId="afterHero" />
+
+            {/* Post-hero sections — static. z-[1] bg keeps them above any sticky hero layer. */}
+            <div className="relative z-[1] bg-background">
+                {/* Collections */}
+                <Suspense fallback={null}>
+                    <Await resolve={loaderData.categories}>
+                        {(categories) => <CollectionGrid categories={categories} />}
+                    </Await>
+                </Suspense>
+
+                {/* Empty PD slot after the collection grid. */}
+                <Region page={loaderData.page} regionId="afterCollections" />
+
+                <div className="section-container py-16" data-slot="luxury-home-editorial">
+                    <ContentCard
+                        className="w-full"
+                        title={t('editorial.title')}
+                        description={t('editorial.body')}
+                        imageUrl="/images/salons/geneva.webp"
+                        imageAlt={t('editorial.imageAlt')}
+                        buttonText={t('editorial.cta')}
+                        buttonAriaLabel={t('editorial.cta')}
+                        buttonLink="/about-us"
+                        showBackground={false}
+                        showBorder={false}
+                        loading="lazy"
+                    />
+                </div>
+
+                <section
+                    data-slot="luxury-finder-band"
+                    className="relative overflow-hidden bg-primary text-primary-foreground">
+                    <img
+                        src="/images/finder-band.webp"
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-primary/75" />
+                    <div className="section-container relative py-16 md:py-20 text-center">
+                        <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-primary-foreground/70">
+                            {t('finderBand.title')}
+                        </p>
+                        <h2 className="mt-4 font-serif text-3xl md:text-4xl font-normal">{t('finderBand.subtitle')}</h2>
+                        <WatchFinderCta
+                            variant="secondary"
+                            className="mt-8 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
+                            {t('finderBand.cta')}
+                        </WatchFinderCta>
+                    </div>
+                </section>
+
+                {/* Empty PD slot after the editorial / finder sections. */}
+                <Region page={loaderData.page} regionId="afterEditorial" />
+
+                <div className="section-container py-16">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                        <ContentCard
+                            title={t('pair.boutiques.title')}
+                            description={t('pair.boutiques.description')}
+                            imageUrl="/images/salons/salon-interior.webp"
+                            imageAlt={t('pair.boutiques.imageAlt')}
+                            buttonText={t('pair.boutiques.cta')}
+                            buttonAriaLabel={t('pair.boutiques.cta')}
+                            buttonLink="/boutiques"
+                            showBackground={false}
+                            showBorder={false}
+                            loading="lazy"
+                        />
+                        <ContentCard
+                            title={t('pair.care.title')}
+                            description={t('pair.care.description')}
+                            imageUrl="/images/salons/paris.webp"
+                            imageAlt={t('pair.care.imageAlt')}
+                            buttonText={t('pair.care.cta')}
+                            buttonAriaLabel={t('pair.care.cta')}
+                            buttonLink="/care"
+                            showBackground={false}
+                            showBorder={false}
+                            loading="lazy"
+                        />
+                    </div>
+                    <div className="mt-16 text-center">
+                        <h2 className="font-serif text-3xl">{t('appointment.title')}</h2>
+                        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">{t('appointment.body')}</p>
+                        <Button asChild className="mt-8">
+                            <Link to={boutiqueAppointmentHref()}>{t('appointment.cta')}</Link>
+                        </Button>
+                    </div>
+                </div>
+
+                {/* Empty PD slot at the bottom of the page. */}
+                <Region page={loaderData.page} regionId="bottom" />
+            </div>
+        </div>
     );
 }

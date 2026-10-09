@@ -4,16 +4,34 @@
     "arch_type": "headless",
     "region_definitions": [
         {
-            "id": "headerbanner",
-            "name": "Header Banner Region",
-            "description": "Region for promotional banners and hero content",
+            "id": "top",
+            "name": "Top Slot",
+            "description": "Empty slot above the hero carousel",
             "max_components": 3
         },
         {
-            "id": "main",
-            "name": "Main Content Region",
-            "description": "Region for main content",
-            "max_components": 10
+            "id": "afterHero",
+            "name": "After Hero Slot",
+            "description": "Empty slot between the hero scene and the collection grid",
+            "max_components": 3
+        },
+        {
+            "id": "afterCollections",
+            "name": "After Collections Slot",
+            "description": "Empty slot between the collection grid and the editorial section",
+            "max_components": 3
+        },
+        {
+            "id": "afterEditorial",
+            "name": "After Editorial Slot",
+            "description": "Empty slot between the editorial/finder sections and the boutiques section",
+            "max_components": 3
+        },
+        {
+            "id": "bottom",
+            "name": "Bottom Slot",
+            "description": "Empty slot below the boutiques and appointment sections",
+            "max_components": 3
         }
     ],
     "supported_aspect_types": [],
