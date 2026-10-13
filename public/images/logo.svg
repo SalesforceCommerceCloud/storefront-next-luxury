@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="75 34 400 66" role="img" aria-label="Luxury Next">
+    <g fill="#F5EFE3">
+        <text x="280" y="68" text-anchor="middle"
+            font-family="'Playfair Display', Georgia, serif"
+            font-weight="500" font-size="42" letter-spacing="10">LUXURY NEXT</text>
+    </g>
+    <g fill="#F5EFE3" opacity="0.78">
+        <text x="280" y="100" text-anchor="middle"
+            font-family="'Inter', sans-serif"
+            font-weight="400" font-size="11" letter-spacing="8">GENEVA</text>
+    </g>
+</svg>

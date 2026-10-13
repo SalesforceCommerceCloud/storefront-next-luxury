@@ -1,0 +1,98 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StrapSelector stories snapshot > Default story renders and matches snapshot 1`] = `
+<section
+  class="mt-10"
+  data-testid="strap-selector"
+>
+  <h2
+    class="font-serif text-2xl"
+  >
+    Straps
+  </h2>
+  <p
+    class="mt-1 text-sm text-muted-foreground"
+  >
+    Made for this case. Same lug width — buy the strap on its own.
+  </p>
+  <ul
+    class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3"
+  >
+    <li>
+      <a
+        href="/p/ln-strap-001"
+      >
+        <div
+          class="aspect-[4/5] overflow-hidden bg-muted"
+        >
+          <img
+            alt="Black Alligator Strap"
+            class="size-full object-cover object-center transition-transform group-hover:scale-[1.04]"
+            src="/images/straps/alligator-black.webp"
+          />
+        </div>
+        <p
+          class="mt-3 font-serif text-sm leading-snug"
+        >
+          Black Alligator Strap
+        </p>
+        <p
+          class="mt-1 text-xs text-muted-foreground"
+        >
+          $450.00
+        </p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="/p/ln-strap-002"
+      >
+        <div
+          class="aspect-[4/5] overflow-hidden bg-muted"
+        >
+          <img
+            alt="Brown Leather Strap"
+            class="size-full object-cover object-center transition-transform group-hover:scale-[1.04]"
+            src="/images/straps/leather-brown.webp"
+          />
+        </div>
+        <p
+          class="mt-3 font-serif text-sm leading-snug"
+        >
+          Brown Leather Strap
+        </p>
+        <p
+          class="mt-1 text-xs text-muted-foreground"
+        >
+          $350.00
+        </p>
+      </a>
+    </li>
+    <li>
+      <a
+        href="/p/ln-strap-003"
+      >
+        <div
+          class="aspect-[4/5] overflow-hidden bg-muted"
+        >
+          <img
+            alt="Navy Canvas Strap"
+            class="size-full object-cover object-center transition-transform group-hover:scale-[1.04]"
+            src="/images/straps/canvas-navy.webp"
+          />
+        </div>
+        <p
+          class="mt-3 font-serif text-sm leading-snug"
+        >
+          Navy Canvas Strap
+        </p>
+        <p
+          class="mt-1 text-xs text-muted-foreground"
+        >
+          $250.00
+        </p>
+      </a>
+    </li>
+  </ul>
+</section>
+`;

@@ -1,0 +1,99 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`QuietLuxuryHeroCarousel stories snapshot > QuietLuxury story renders and matches snapshot 1`] = `
+<div
+  aria-label="Hero carousel with 1 slides"
+  class="relative w-full overflow-hidden h-[400px] md:h-[500px] lg:h-[600px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+  data-slot="hero-carousel"
+  role="region"
+  tabindex="0"
+>
+  <div
+    aria-roledescription="carousel"
+    class="relative w-full h-full [&_[data-slot=carousel-content]]:h-full [&_[data-slot=carousel-item]]:h-full"
+    data-slot="carousel"
+    role="region"
+  >
+    <div
+      class="overflow-hidden"
+      data-slot="carousel-content"
+    >
+      <div
+        class="flex -ml-4 h-full"
+        role="list"
+        style="transform: translate3d(0px,0px,0px);"
+      >
+        <div
+          aria-hidden="false"
+          aria-roledescription="slide"
+          class="min-w-0 shrink-0 grow-0 basis-full pl-4 h-full"
+          data-slot="carousel-item"
+          role="listitem"
+        >
+          <div
+            class="relative w-full h-full overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 w-full h-full"
+            >
+              <img
+                alt="Cinematic campaign still of a steel dress watch in a dark studio."
+                class="w-full h-full object-cover"
+                fetchpriority="high"
+                loading="eager"
+                src="/images/hero-01.webp"
+              />
+            </div>
+            <div
+              class="absolute inset-0 bg-[var(--hero-scrim)]"
+            />
+            <div
+              class="relative h-full flex z-20 overflow-hidden items-center"
+            >
+              <div
+                class="section-container w-full"
+              >
+                <div
+                  class="max-w-xl mx-auto text-center"
+                >
+                  <h2
+                    class="text-6xl font-bold leading-none [letter-spacing:-1.5px] text-primary-foreground mb-4"
+                  >
+                    Time, Perfected.
+                  </h2>
+                  <p
+                    class="text-lg font-normal leading-[120%] text-primary-foreground mb-8"
+                  >
+                    A Geneva manufacture since 1964.
+                  </p>
+                  <div
+                    class="flex justify-center"
+                  >
+                    <a
+                      href="/collections"
+                    >
+                      Explore Collections
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    class="sr-only"
+  >
+    Slide 
+    1
+     of 
+    1
+    : 
+    Time, Perfected.
+  </div>
+</div>
+`;

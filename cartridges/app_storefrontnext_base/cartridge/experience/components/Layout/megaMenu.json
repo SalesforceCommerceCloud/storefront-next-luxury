@@ -1,0 +1,50 @@
+{
+    "name": "Mega Menu",
+    "description": "Site-wide mega menu with per-category dropdown panel content slots",
+    "group": "Layout",
+    "arch_type": "headless",
+    "embedded": true,
+    "component_id": "mega-menu",
+    "region_definitions": [
+        {
+            "id": "region_heritage",
+            "name": "Heritage"
+        },
+        {
+            "id": "region_sport",
+            "name": "Sport"
+        },
+        {
+            "id": "region_dive",
+            "name": "Dive"
+        },
+        {
+            "id": "region_aviation",
+            "name": "Aviation"
+        },
+        {
+            "id": "region_complications",
+            "name": "Complications"
+        },
+        {
+            "id": "region_limited_editions",
+            "name": "Limited Editions"
+        },
+        {
+            "id": "region_ladies",
+            "name": "Ladies"
+        },
+        {
+            "id": "region_shop_by_price",
+            "name": "Shop By Price"
+        }
+    ],
+    "attribute_definition_groups": [
+        {
+            "id": "megaMenu",
+            "name": "Mega Menu",
+            "description": "Site-wide mega menu with per-category dropdown panel content slots",
+            "attribute_definitions": []
+        }
+    ]
+}

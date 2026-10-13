@@ -1,0 +1,1412 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches snapshot 1`] = `
+<div
+  class="flex h-full min-h-0 flex-1 flex-col scroll-mt-[calc(var(--header-height,72px)+1.5rem)]"
+  data-step="location"
+  data-testid="boutique-appointment"
+  id="appointment"
+>
+  <section
+    class="flex h-full min-h-0 flex-col"
+    data-slot="luxury-boutique-finder"
+    data-testid="boutique-directory"
+  >
+    <div
+      class="grid h-full min-h-0 lg:grid-cols-[minmax(18rem,32rem)_minmax(0,1fr)] lg:items-stretch"
+    >
+      <div
+        class="relative min-h-[18rem] overflow-hidden lg:h-full lg:min-h-0"
+      >
+        <div
+          class="absolute inset-0 overflow-hidden bg-muted"
+          data-latitude="46.207"
+          data-longitude="6.148"
+          data-testid="boutique-map"
+        >
+          <img
+            alt=""
+            aria-hidden="true"
+            class="absolute inset-0 size-full object-cover grayscale contrast-[1.08]"
+            data-testid="boutique-map-fallback"
+            draggable="false"
+            src="/images/salons/geneva.webp"
+          />
+          <div
+            class="pointer-events-none absolute"
+            style="width: 1280px; height: 1280px; left: calc(50% - 666.7832888886333px); top: calc(50% - 621.4182017948478px);"
+          >
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11628.png"
+              style="left: 0px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11628.png"
+              style="left: 256px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11628.png"
+              style="left: 512px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11628.png"
+              style="left: 768px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11628.png"
+              style="left: 1024px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11629.png"
+              style="left: 0px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11629.png"
+              style="left: 256px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11629.png"
+              style="left: 512px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11629.png"
+              style="left: 768px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11629.png"
+              style="left: 1024px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11630.png"
+              style="left: 0px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11630.png"
+              style="left: 256px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11630.png"
+              style="left: 512px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11630.png"
+              style="left: 768px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11630.png"
+              style="left: 1024px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11631.png"
+              style="left: 0px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11631.png"
+              style="left: 256px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11631.png"
+              style="left: 512px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11631.png"
+              style="left: 768px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11631.png"
+              style="left: 1024px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11632.png"
+              style="left: 0px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11632.png"
+              style="left: 256px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11632.png"
+              style="left: 512px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11632.png"
+              style="left: 768px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11632.png"
+              style="left: 1024px; top: 1024px;"
+              width="256"
+            />
+          </div>
+          <div
+            class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-11 w-9 drop-shadow-md"
+              data-testid="boutique-map-pin"
+              viewBox="0 0 32 42"
+            >
+              <path
+                class="fill-accent"
+                d="M16 0C8.3 0 2 6.3 2 14.1 2 24.8 16 42 16 42s14-17.2 14-27.9C30 6.3 23.7 0 16 0z"
+              />
+              <circle
+                class="fill-primary"
+                cx="16"
+                cy="14"
+                r="5.5"
+              />
+            </svg>
+            <p
+              class="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
+            >
+              Geneva Boutique
+            </p>
+          </div>
+          <p
+            class="pointer-events-none absolute bottom-2 left-2 text-[0.625rem] text-muted-foreground"
+          >
+            Map © OpenStreetMap
+          </p>
+          <span
+            class="sr-only"
+          >
+            Map of the selected boutique
+          </span>
+        </div>
+      </div>
+      <div
+        class="@container flex min-h-0 flex-col border-border px-[var(--page-gutter)] pt-16 pb-8 lg:h-full lg:overflow-y-auto lg:overscroll-y-contain lg:border-l lg:py-8"
+      >
+        <div
+          class="mb-8"
+        >
+          <header
+            class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4"
+          >
+            <h1
+              class="min-w-0 font-serif text-3xl font-normal tracking-tight sm:text-4xl"
+            >
+              Book an appointment
+            </h1>
+            <nav
+              aria-label="Book an appointment"
+              class="w-fit max-w-full shrink-0"
+            >
+              <ol
+                class="flex items-start"
+                data-testid="appointment-stepper"
+              >
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    aria-current="step"
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-foreground bg-foreground text-primary-foreground"
+                    >
+                      1
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-foreground"
+                    >
+                      Location
+                    </span>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="mb-6 h-px w-6 bg-border"
+                  />
+                </li>
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-border text-muted-foreground"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+                    >
+                      Service
+                    </span>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="mb-6 h-px w-6 bg-border"
+                  />
+                </li>
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-border text-muted-foreground"
+                    >
+                      3
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+                    >
+                      Time
+                    </span>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="mb-6 h-px w-6 bg-border"
+                  />
+                </li>
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-border text-muted-foreground"
+                    >
+                      4
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+                    >
+                      Review
+                    </span>
+                  </div>
+                </li>
+              </ol>
+            </nav>
+          </header>
+        </div>
+        <p
+          class="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-muted-foreground"
+        >
+          Our boutiques
+        </p>
+        <p
+          class="mt-2 font-serif text-2xl"
+        >
+          Select a boutique
+        </p>
+        <div
+          class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2"
+          data-testid="boutique-filters"
+        >
+          <div
+            class="flex min-w-0 flex-col gap-2"
+          >
+            <label
+              class="text-sm"
+              for="boutique-filter-country"
+            >
+              Country
+            </label>
+            <div
+              class="w-full [&>[data-slot=native-select-wrapper]]:w-full"
+            >
+              <div
+                class="group/native-select relative w-fit has-[select:disabled]:opacity-50"
+                data-slot="native-select-wrapper"
+              >
+                <select
+                  aria-label="Country"
+                  class="border-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 dark:hover:bg-input/50 h-9 min-w-0 appearance-none rounded-ui border bg-transparent px-3 py-2 pr-9 text-sm shadow-ui transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive w-full"
+                  data-size="default"
+                  data-slot="native-select"
+                  id="boutique-filter-country"
+                >
+                  <option
+                    data-slot="native-select-option"
+                    value=""
+                  >
+                    All countries
+                  </option>
+                  <option
+                    data-slot="native-select-option"
+                    value="CH"
+                  >
+                    Switzerland
+                  </option>
+                  <option
+                    data-slot="native-select-option"
+                    value="GB"
+                  >
+                    United Kingdom
+                  </option>
+                  <option
+                    data-slot="native-select-option"
+                    value="FR"
+                  >
+                    France
+                  </option>
+                </select>
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-down text-muted-foreground pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 opacity-50 select-none"
+                  data-slot="native-select-icon"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m6 9 6 6 6-6"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex min-w-0 flex-col gap-2"
+          >
+            <label
+              class="text-sm"
+              for="boutique-filter-postal"
+            >
+              ZIP or postal code
+            </label>
+            <input
+              autocomplete="postal-code"
+              class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-ui border bg-transparent px-3 py-1 text-base shadow-ui transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
+              data-slot="input"
+              id="boutique-filter-postal"
+              value=""
+            />
+          </div>
+        </div>
+        <ul
+          class="mt-6 grid grid-cols-1 gap-4 @md:grid-cols-2 @3xl:grid-cols-3"
+        >
+          <li>
+            <button
+              aria-pressed="true"
+              class="flex w-full flex-col overflow-hidden border text-left transition-colors border-foreground bg-muted/40"
+              data-testid="boutique-option-ln-boutique-geneva"
+              type="button"
+            >
+              <img
+                alt=""
+                class="aspect-[4/3] w-full object-cover"
+                data-testid="boutique-facade"
+                src="/images/salons/geneva.webp"
+              />
+              <span
+                class="flex min-w-0 flex-col p-4"
+              >
+                <span
+                  class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                >
+                  Geneva · Switzerland
+                </span>
+                <span
+                  class="mt-2 block font-serif text-xl"
+                >
+                  Geneva Boutique
+                </span>
+                <span
+                  class="mt-2 block text-sm text-muted-foreground"
+                >
+                  12 Quai des Bergues, 1201, Geneva
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–18:00
+                </span>
+                <span
+                  class="mt-1 block text-sm text-muted-foreground"
+                >
+                  +41 22 000 00 00
+                </span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button
+              aria-pressed="false"
+              class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-london"
+              type="button"
+            >
+              <img
+                alt=""
+                class="aspect-[4/3] w-full object-cover"
+                data-testid="boutique-facade"
+                src="/images/salons/london.webp"
+              />
+              <span
+                class="flex min-w-0 flex-col p-4"
+              >
+                <span
+                  class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                >
+                  London · United Kingdom
+                </span>
+                <span
+                  class="mt-2 block font-serif text-xl"
+                >
+                  London Boutique
+                </span>
+                <span
+                  class="mt-2 block text-sm text-muted-foreground"
+                >
+                  18 Mount Street, W1K 2RH, London
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Mon–Sat 10:00–18:00
+                </span>
+                <span
+                  class="mt-1 block text-sm text-muted-foreground"
+                >
+                  +44 20 0000 0000
+                </span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button
+              aria-pressed="false"
+              class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-paris"
+              type="button"
+            >
+              <img
+                alt=""
+                class="aspect-[4/3] w-full object-cover"
+                data-testid="boutique-facade"
+                src="/images/salons/paris.webp"
+              />
+              <span
+                class="flex min-w-0 flex-col p-4"
+              >
+                <span
+                  class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                >
+                  Paris · France
+                </span>
+                <span
+                  class="mt-2 block font-serif text-xl"
+                >
+                  Paris Boutique
+                </span>
+                <span
+                  class="mt-2 block text-sm text-muted-foreground"
+                >
+                  8 Rue de la Paix, 75002, Paris
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–19:00
+                </span>
+                <span
+                  class="mt-1 block text-sm text-muted-foreground"
+                >
+                  +33 1 00 00 00 00
+                </span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matches snapshot 1`] = `
+<div
+  class="flex h-full min-h-0 flex-1 flex-col scroll-mt-[calc(var(--header-height,72px)+1.5rem)]"
+  data-step="location"
+  data-testid="boutique-appointment"
+  id="appointment"
+>
+  <section
+    class="flex h-full min-h-0 flex-col"
+    data-slot="luxury-boutique-finder"
+    data-testid="boutique-directory"
+  >
+    <div
+      class="grid h-full min-h-0 lg:grid-cols-[minmax(18rem,32rem)_minmax(0,1fr)] lg:items-stretch"
+    >
+      <div
+        class="relative min-h-[18rem] overflow-hidden lg:h-full lg:min-h-0"
+      >
+        <div
+          class="absolute inset-0 overflow-hidden bg-muted"
+          data-latitude="46.207"
+          data-longitude="6.148"
+          data-testid="boutique-map"
+        >
+          <img
+            alt=""
+            aria-hidden="true"
+            class="absolute inset-0 size-full object-cover grayscale contrast-[1.08]"
+            data-testid="boutique-map-fallback"
+            draggable="false"
+            src="/images/salons/geneva.webp"
+          />
+          <div
+            class="pointer-events-none absolute"
+            style="width: 1280px; height: 1280px; left: calc(50% - 666.7832888886333px); top: calc(50% - 621.4182017948478px);"
+          >
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11628.png"
+              style="left: 0px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11628.png"
+              style="left: 256px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11628.png"
+              style="left: 512px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11628.png"
+              style="left: 768px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11628.png"
+              style="left: 1024px; top: 0px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11629.png"
+              style="left: 0px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11629.png"
+              style="left: 256px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11629.png"
+              style="left: 512px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11629.png"
+              style="left: 768px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11629.png"
+              style="left: 1024px; top: 256px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11630.png"
+              style="left: 0px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11630.png"
+              style="left: 256px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11630.png"
+              style="left: 512px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11630.png"
+              style="left: 768px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11630.png"
+              style="left: 1024px; top: 512px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11631.png"
+              style="left: 0px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11631.png"
+              style="left: 256px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11631.png"
+              style="left: 512px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11631.png"
+              style="left: 768px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11631.png"
+              style="left: 1024px; top: 768px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16941/11632.png"
+              style="left: 0px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16942/11632.png"
+              style="left: 256px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16943/11632.png"
+              style="left: 512px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16944/11632.png"
+              style="left: 768px; top: 1024px;"
+              width="256"
+            />
+            <img
+              alt=""
+              class="absolute max-w-none grayscale contrast-[1.08]"
+              draggable="false"
+              height="256"
+              loading="lazy"
+              src="https://tile.openstreetmap.org/15/16945/11632.png"
+              style="left: 1024px; top: 1024px;"
+              width="256"
+            />
+          </div>
+          <div
+            class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-11 w-9 drop-shadow-md"
+              data-testid="boutique-map-pin"
+              viewBox="0 0 32 42"
+            >
+              <path
+                class="fill-accent"
+                d="M16 0C8.3 0 2 6.3 2 14.1 2 24.8 16 42 16 42s14-17.2 14-27.9C30 6.3 23.7 0 16 0z"
+              />
+              <circle
+                class="fill-primary"
+                cx="16"
+                cy="14"
+                r="5.5"
+              />
+            </svg>
+            <p
+              class="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
+            >
+              Geneva Boutique
+            </p>
+          </div>
+          <p
+            class="pointer-events-none absolute bottom-2 left-2 text-[0.625rem] text-muted-foreground"
+          >
+            Map © OpenStreetMap
+          </p>
+          <span
+            class="sr-only"
+          >
+            Map of the selected boutique
+          </span>
+        </div>
+      </div>
+      <div
+        class="@container flex min-h-0 flex-col border-border px-[var(--page-gutter)] pt-16 pb-8 lg:h-full lg:overflow-y-auto lg:overscroll-y-contain lg:border-l lg:py-8"
+      >
+        <div
+          class="mb-8"
+        >
+          <header
+            class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4"
+          >
+            <h1
+              class="min-w-0 font-serif text-3xl font-normal tracking-tight sm:text-4xl"
+            >
+              Book an appointment
+            </h1>
+            <nav
+              aria-label="Book an appointment"
+              class="w-fit max-w-full shrink-0"
+            >
+              <ol
+                class="flex items-start"
+                data-testid="appointment-stepper"
+              >
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    aria-current="step"
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-foreground bg-foreground text-primary-foreground"
+                    >
+                      1
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-foreground"
+                    >
+                      Location
+                    </span>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="mb-6 h-px w-6 bg-border"
+                  />
+                </li>
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-border text-muted-foreground"
+                    >
+                      2
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+                    >
+                      Service
+                    </span>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="mb-6 h-px w-6 bg-border"
+                  />
+                </li>
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-border text-muted-foreground"
+                    >
+                      3
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+                    >
+                      Time
+                    </span>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="mb-6 h-px w-6 bg-border"
+                  />
+                </li>
+                <li
+                  class="flex shrink-0 items-center"
+                >
+                  <div
+                    class="flex w-14 flex-col items-center"
+                  >
+                    <span
+                      class="flex size-9 items-center justify-center border text-sm border-border text-muted-foreground"
+                    >
+                      4
+                    </span>
+                    <span
+                      class="mt-2 text-center text-[0.6875rem] uppercase tracking-[0.12em] text-muted-foreground"
+                    >
+                      Review
+                    </span>
+                  </div>
+                </li>
+              </ol>
+            </nav>
+          </header>
+        </div>
+        <div
+          class="mb-6"
+        >
+          <div
+            class="flex gap-4 bg-muted/40 p-4 md:items-center md:gap-5"
+            data-testid="appointment-product"
+          >
+            <img
+              alt="The Classic Automatic"
+              class="size-20 shrink-0 bg-background object-contain"
+              src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp"
+            />
+            <div
+              class="min-w-0"
+            >
+              <p
+                class="text-[0.6875rem] uppercase tracking-[0.18em] text-muted-foreground"
+              >
+                Heritage
+              </p>
+              <p
+                class="mt-1 font-serif text-base leading-snug md:text-lg"
+              >
+                The Classic Automatic
+              </p>
+              <p
+                class="mt-1 font-mono text-xs text-muted-foreground"
+              >
+                Ref. REF-001
+              </p>
+              <p
+                class="mt-2 text-xs text-muted-foreground"
+              >
+                This is the piece we will set aside in boutique.
+              </p>
+            </div>
+            <input
+              name="productId"
+              type="hidden"
+              value="ln-heritage-001"
+            />
+            <input
+              name="productName"
+              type="hidden"
+              value="The Classic Automatic"
+            />
+            <input
+              name="productReference"
+              type="hidden"
+              value="REF-001"
+            />
+          </div>
+        </div>
+        <p
+          class="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-muted-foreground"
+        >
+          Our boutiques
+        </p>
+        <p
+          class="mt-2 font-serif text-2xl"
+        >
+          Select a boutique
+        </p>
+        <div
+          class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2"
+          data-testid="boutique-filters"
+        >
+          <div
+            class="flex min-w-0 flex-col gap-2"
+          >
+            <label
+              class="text-sm"
+              for="boutique-filter-country"
+            >
+              Country
+            </label>
+            <div
+              class="w-full [&>[data-slot=native-select-wrapper]]:w-full"
+            >
+              <div
+                class="group/native-select relative w-fit has-[select:disabled]:opacity-50"
+                data-slot="native-select-wrapper"
+              >
+                <select
+                  aria-label="Country"
+                  class="border-input placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 dark:hover:bg-input/50 h-9 min-w-0 appearance-none rounded-ui border bg-transparent px-3 py-2 pr-9 text-sm shadow-ui transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed data-[size=sm]:h-8 data-[size=sm]:py-1 focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive w-full"
+                  data-size="default"
+                  data-slot="native-select"
+                  id="boutique-filter-country"
+                >
+                  <option
+                    data-slot="native-select-option"
+                    value=""
+                  >
+                    All countries
+                  </option>
+                  <option
+                    data-slot="native-select-option"
+                    value="CH"
+                  >
+                    Switzerland
+                  </option>
+                  <option
+                    data-slot="native-select-option"
+                    value="GB"
+                  >
+                    United Kingdom
+                  </option>
+                  <option
+                    data-slot="native-select-option"
+                    value="FR"
+                  >
+                    France
+                  </option>
+                </select>
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-chevron-down text-muted-foreground pointer-events-none absolute top-1/2 right-3.5 size-4 -translate-y-1/2 opacity-50 select-none"
+                  data-slot="native-select-icon"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m6 9 6 6 6-6"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex min-w-0 flex-col gap-2"
+          >
+            <label
+              class="text-sm"
+              for="boutique-filter-postal"
+            >
+              ZIP or postal code
+            </label>
+            <input
+              autocomplete="postal-code"
+              class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-ui border bg-transparent px-3 py-1 text-base shadow-ui transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
+              data-slot="input"
+              id="boutique-filter-postal"
+              value=""
+            />
+          </div>
+        </div>
+        <ul
+          class="mt-6 grid grid-cols-1 gap-4 @md:grid-cols-2 @3xl:grid-cols-3"
+        >
+          <li>
+            <button
+              aria-pressed="true"
+              class="flex w-full flex-col overflow-hidden border text-left transition-colors border-foreground bg-muted/40"
+              data-testid="boutique-option-ln-boutique-geneva"
+              type="button"
+            >
+              <img
+                alt=""
+                class="aspect-[4/3] w-full object-cover"
+                data-testid="boutique-facade"
+                src="/images/salons/geneva.webp"
+              />
+              <span
+                class="flex min-w-0 flex-col p-4"
+              >
+                <span
+                  class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                >
+                  Geneva · Switzerland
+                </span>
+                <span
+                  class="mt-2 block font-serif text-xl"
+                >
+                  Geneva Boutique
+                </span>
+                <span
+                  class="mt-2 block text-sm text-muted-foreground"
+                >
+                  12 Quai des Bergues, 1201, Geneva
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–18:00
+                </span>
+                <span
+                  class="mt-1 block text-sm text-muted-foreground"
+                >
+                  +41 22 000 00 00
+                </span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button
+              aria-pressed="false"
+              class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-london"
+              type="button"
+            >
+              <img
+                alt=""
+                class="aspect-[4/3] w-full object-cover"
+                data-testid="boutique-facade"
+                src="/images/salons/london.webp"
+              />
+              <span
+                class="flex min-w-0 flex-col p-4"
+              >
+                <span
+                  class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                >
+                  London · United Kingdom
+                </span>
+                <span
+                  class="mt-2 block font-serif text-xl"
+                >
+                  London Boutique
+                </span>
+                <span
+                  class="mt-2 block text-sm text-muted-foreground"
+                >
+                  18 Mount Street, W1K 2RH, London
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Mon–Sat 10:00–18:00
+                </span>
+                <span
+                  class="mt-1 block text-sm text-muted-foreground"
+                >
+                  +44 20 0000 0000
+                </span>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button
+              aria-pressed="false"
+              class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
+              data-testid="boutique-option-ln-boutique-paris"
+              type="button"
+            >
+              <img
+                alt=""
+                class="aspect-[4/3] w-full object-cover"
+                data-testid="boutique-facade"
+                src="/images/salons/paris.webp"
+              />
+              <span
+                class="flex min-w-0 flex-col p-4"
+              >
+                <span
+                  class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground"
+                >
+                  Paris · France
+                </span>
+                <span
+                  class="mt-2 block font-serif text-xl"
+                >
+                  Paris Boutique
+                </span>
+                <span
+                  class="mt-2 block text-sm text-muted-foreground"
+                >
+                  8 Rue de la Paix, 75002, Paris
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–19:00
+                </span>
+                <span
+                  class="mt-1 block text-sm text-muted-foreground"
+                >
+                  +33 1 00 00 00 00
+                </span>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+`;

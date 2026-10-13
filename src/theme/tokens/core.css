@@ -1,0 +1,94 @@
+:root {
+    /*
+     * Luxury Next — cool stone paper, carbon graphite, champagne metal.
+     * Gold/champagne is never body text on paper. Status pairs copy fashion
+     * WCAG-AA values; do not invent a burgundy error that fails AA.
+     */
+
+    /* core */
+    --background: #F7F5F0; /* cool stone paper */
+    --foreground: #1C1C1C; /* carbon — ~15.6:1 on paper AAA */
+
+    --card: #FFFFFF;
+    --card-foreground: #1C1C1C; /* 17:1 on white AAA */
+
+    --popover: #FFFFFF;
+    --popover-foreground: #1C1C1C;
+
+    --primary: #1C1C1C; /* carbon graphite */
+    --primary-foreground: #F5EFE3; /* ivory on carbon AAA */
+
+    --secondary: #EFEBE3;
+    --secondary-foreground: #1C1C1C; /* ~14:1 on secondary AAA */
+
+    --tertiary: #1C1C1C;
+    --tertiary-foreground: #F5EFE3;
+
+    --muted: #EFEBE3;
+    --muted-foreground: #5C5C5C; /* AA on paper and on muted */
+    --muted-hover: #E5E0D6;
+
+    --accent: #C9A96E; /* champagne metal — hairlines and chips on carbon only, never body text on paper */
+    --accent-foreground: #1C1C1C; /* ~7.6:1 on champagne AAA */
+
+    /* WCAG AA: 6.47:1 on white; 5.30:1 on --destructive-foreground; 5.45:1 on bg-destructive/10 */
+    --destructive: #B91C1C;
+    --destructive-foreground: #FEE2E2;
+
+    /* WCAG AA: 7.13:1 on white; 5.53:1 on --success-foreground */
+    --success: #166534;
+    --success-foreground: #CBEAD7;
+
+    /* WCAG AA: 5.02:1 on white; 4.68:1 on --warning-foreground */
+    --warning: #B45309;
+    --warning-foreground: #FEF9C3;
+
+    /* WCAG AA: 5.93:1 on white; 4.86:1 on --info-foreground */
+    --info: #0369A1;
+    --info-foreground: #DBEAFE;
+
+    /* Decorative hairlines — quieter than carbon/champagne chrome. Inputs stay a step darker so fields remain findable. */
+    --border: #E2DED6;
+    --border-subtle: #EDEAE4;
+    --input: #D4D0C8;
+    --ring: #1C1C1C;
+
+    --separator: #E2DED6;
+    --separator-foreground: #5C5C5C;
+
+    --rating: #C9A96E;
+    --rating-foreground: #1C1C1C;
+
+    --review-verified-bg: var(--success-foreground);
+    --review-verified-text: var(--success);
+
+    --filter-selected: var(--info-foreground);
+    --filter-selected-border: var(--info);
+
+    --opacity-90: 10%;
+    --opacity-80: 20%;
+    --opacity-50: 50%;
+    --opacity-30: 70%;
+
+    /* shape — sharp maison corners, hairline border, almost no shadow */
+    --ui-radius: 0.0625rem;
+    --ui-shadow: 0 1px 2px rgb(28 28 28 / 0.04);
+    --ui-border-width: 1px;
+
+    /*
+     * Single page inset. Header, footer, listing grids, and leftover fashion
+     * shells all read this. Use vw (not %) so nested columns (PDP hero / buy
+     * box) keep the same inset as the viewport-wide header. Floor at 1rem so
+     * phones keep a 16px touch gutter; 1.5vw is ~22px at 1440.
+     */
+    --page-gutter: max(1rem, 1.5vw);
+
+    [role="radio"]:not([data-labeled]) {
+        min-width: var(--swatch-pill-size);
+        min-height: var(--swatch-pill-size);
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}

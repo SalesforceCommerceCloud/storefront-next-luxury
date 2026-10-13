@@ -1,0 +1,353 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WatchSpecSheet stories snapshot > Default story renders and matches snapshot 1`] = `
+<div
+  data-testid="watch-spec-sheet"
+>
+  <div
+    class="grid gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3"
+  >
+    <section>
+      <h3
+        class="mb-4 font-serif text-lg"
+      >
+        Movement
+      </h3>
+      <dl>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Movement
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            automatic
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Calibre
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            LN-2824
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Power reserve
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            38 hours
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Frequency
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            28800 Hz
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Jewels
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            25
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Bracelet & strap
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            leather black
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Lug width
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            20mm
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Caseback
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            solid
+          </dd>
+        </div>
+      </dl>
+    </section>
+    <section>
+      <h3
+        class="mb-4 font-serif text-lg"
+      >
+        Case
+      </h3>
+      <dl>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Reference
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground"
+          >
+            LN-HER-001
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Diameter
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            40mm
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Thickness
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            11.5mm
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Material
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            stainless steel
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Crystal
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            sapphire
+          </dd>
+        </div>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Water resistance
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            50m
+          </dd>
+        </div>
+      </dl>
+    </section>
+    <section>
+      <h3
+        class="mb-4 font-serif text-lg"
+      >
+        Dial
+      </h3>
+      <dl>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Dial
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            black
+          </dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+  <div
+    class="mt-10"
+  >
+    <a
+      class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-9 py-2 has-[>svg]:px-3 rounded-full px-6"
+      data-size="default"
+      data-slot="button"
+      data-testid="watch-spec-brochure"
+      data-variant="default"
+      download="luxury-next-collection-brochure.pdf"
+      href="/docs/luxury-next-collection-brochure.pdf"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-arrow-down"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 5v14"
+        />
+        <path
+          d="m19 12-7 7-7-7"
+        />
+      </svg>
+      Download Brochure
+    </a>
+  </div>
+</div>
+`;
+
+exports[`WatchSpecSheet stories snapshot > MissingOptionalRows story renders and matches snapshot 1`] = `
+<div
+  data-testid="watch-spec-sheet"
+>
+  <div
+    class="grid gap-x-12 gap-y-10 grid-cols-1"
+  >
+    <section>
+      <h3
+        class="mb-4 font-serif text-lg"
+      >
+        Movement
+      </h3>
+      <dl>
+        <div
+          class="border-b border-border-subtle py-3 last:border-b-0"
+        >
+          <dt
+            class="text-sm font-medium"
+          >
+            Movement
+          </dt>
+          <dd
+            class="mt-1 text-sm text-muted-foreground capitalize"
+          >
+            automatic
+          </dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+  <div
+    class="mt-10"
+  >
+    <a
+      class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-9 py-2 has-[>svg]:px-3 rounded-full px-6"
+      data-size="default"
+      data-slot="button"
+      data-testid="watch-spec-brochure"
+      data-variant="default"
+      download="luxury-next-collection-brochure.pdf"
+      href="/docs/luxury-next-collection-brochure.pdf"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-arrow-down"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 5v14"
+        />
+        <path
+          d="m19 12-7 7-7-7"
+        />
+      </svg>
+      Download Brochure
+    </a>
+  </div>
+</div>
+`;

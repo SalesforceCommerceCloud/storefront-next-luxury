@@ -1,0 +1,3903 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductView stories snapshot > FourDimensions story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="section-container py-4"
+  >
+    <div
+      data-slot="luxury-pdp"
+    >
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch"
+      >
+        <div
+          class="flex min-h-[70vh] items-center justify-center bg-muted/80 px-[var(--page-gutter)] lg:min-h-[calc(100vh-var(--header-height,72px))]"
+          data-slot="luxury-pdp-hero"
+          data-testid="luxury-pdp-hero"
+        >
+          <div
+            class="relative overflow-hidden aspect-square w-full max-w-2xl"
+            data-slot="fade-through-image"
+          >
+            <div
+              class="absolute inset-0 h-full w-full"
+            >
+              <picture>
+                <source
+                  media="(min-width: 1536px)"
+                  sizes="680px"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=680 680w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=1360 1360w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1280px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=1024 1024w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=2048 2048w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 640px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.webp?q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <img
+                  alt="Classic Automatic"
+                  class="object-contain h-full w-full transition-opacity duration-300 ease-out opacity-100"
+                  decoding="async"
+                  fetchpriority="high"
+                  loading="eager"
+                  src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-heritage-001.jpg?q=70&sfrm=webp"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-card px-[var(--page-gutter)] py-8 lg:py-10"
+        >
+          <div
+            class="flex flex-col gap-6"
+          >
+            <h1
+              class="font-serif text-4xl md:text-5xl font-normal tracking-tight leading-[1.15]"
+            >
+              Classic Automatic
+            </h1>
+            <div
+              class="items-center gap-2"
+            >
+              <span
+                aria-hidden="true"
+                class="[&:not(:first-child)]:mt-6 text-left font-serif text-lg font-normal"
+              >
+                £2,500.00
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="polite"
+                class="sr-only"
+              >
+                Classic Automatic
+                 
+                Current price: £2,500.00
+              </span>
+               
+            </div>
+            <div
+              aria-atomic="true"
+              class="flex items-center gap-2"
+              data-slot="inventory-message"
+              role="status"
+            >
+              <span
+                aria-hidden="true"
+                class="h-2 w-2 shrink-0 rounded-full bg-current text-status-positive"
+              />
+              <p
+                class="text-sm font-medium text-status-positive"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Available: 
+                </span>
+                In stock
+              </p>
+            </div>
+            <div
+              class="flex flex-col gap-3"
+            >
+              <div
+                class="mt-6"
+              >
+                <div
+                  aria-atomic="true"
+                  role="status"
+                />
+                <div
+                  class="flex flex-col gap-3"
+                >
+                  <button
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-10 rounded-ui px-6 has-[>svg]:px-4 w-full text-base font-semibold leading-6"
+                    data-size="lg"
+                    data-slot="add-to-cart-button"
+                    data-testid="add-to-cart"
+                    data-variant="default"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div
+                class="flex flex-col gap-3"
+                data-testid="boutique-booking"
+              >
+                <p
+                  class="text-sm text-muted-foreground"
+                >
+                  Prefer to see it on the wrist? Book time in boutique — or find a boutique near you.
+                </p>
+                <a
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-ui hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+                  data-size="default"
+                  data-slot="button"
+                  data-variant="outline"
+                  href="/RefArchGlobal/en-GB/boutiques?product=ln-heritage-001"
+                >
+                  Book an appointment
+                </a>
+                <a
+                  class="text-center text-sm text-foreground underline underline-offset-4"
+                  href="/RefArchGlobal/en-GB/boutiques?product=ln-heritage-001"
+                >
+                  Find a boutique
+                </a>
+              </div>
+            </div>
+            <button
+              aria-controls="radix-__react-id__"
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              class="text-sm underline underline-offset-4"
+              data-slot="dialog-trigger"
+              data-state="closed"
+              data-testid="movement-education"
+              type="button"
+            >
+              Learn about movements
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="section-container pb-16"
+      >
+        <div
+          class="mt-16 lg:mt-24 flex flex-col gap-16 lg:gap-24"
+          data-testid="luxury-pdp-details"
+        >
+          <section
+            class="text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mx-auto mb-8 block size-8 rotate-45 border border-accent"
+            />
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight mb-8"
+            >
+              Model availability
+            </h2>
+            <div
+              class="flex flex-col gap-5 text-sm leading-relaxed text-muted-foreground md:text-base"
+            >
+              <p>
+                Every Luxury Next timepiece is assembled by hand in Geneva, with finishing held to a standard that naturally limits how many pieces leave the atelier each year. Demand often exceeds what we can make.
+              </p>
+              <p>
+                Availability of some references may be limited. New watches are shown in our boutiques, which receive regular deliveries and manage allocation for viewing by appointment.
+              </p>
+              <p>
+                A concierge in boutique can advise on current availability for this reference, and set time aside to see the piece on the wrist.
+              </p>
+            </div>
+          </section>
+          <section
+            class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            data-testid="luxury-manufacture-guarantee"
+          >
+            <div
+              class="flex min-h-[20rem] items-center justify-center bg-muted px-8 py-12 lg:min-h-[28rem]"
+            >
+              <img
+                alt="Luxury Next international guarantee card"
+                class="w-[min(100%,22rem)] -rotate-6 shadow-ui"
+                src="/images/guarantee-card.svg"
+              />
+            </div>
+            <div
+              class="w-full"
+              data-orientation="vertical"
+              data-slot="accordion"
+            >
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="open"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="open"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="true"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="open"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      International guarantee
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="open"
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
+                >
+                  <div
+                    class="pt-0 pb-4"
+                  >
+                    <p
+                      class="max-w-prose pb-2 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      Each watch is tested in our Geneva ateliers after assembly. A new Luxury Next purchased in boutique or online is covered by a two-year international guarantee. The advisor dates the guarantee card, which certifies authenticity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      The atelier seal
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      Presentation box
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+            </div>
+          </section>
+          <section
+            class="border-t border-border-subtle pt-10 lg:pt-14"
+            data-testid="luxury-pdp-specs"
+          >
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight"
+            >
+              Specifications
+            </h2>
+            <div
+              class="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-b border-border-subtle"
+            >
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-foreground text-foreground"
+                type="button"
+              >
+                Watch
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Movement
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Shipping & warranty
+              </button>
+            </div>
+            <div
+              class="mt-8"
+            >
+              <div
+                class="grid gap-4 grid-cols-1"
+              />
+              <div
+                class="mt-8"
+              >
+                <a
+                  class="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  download=""
+                  href="/docs/luxury-next-collection-brochure.pdf"
+                >
+                  Download Brochure
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProductView stories snapshot > MissingImages story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="section-container py-4"
+  >
+    <div
+      data-slot="luxury-pdp"
+    >
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch"
+      >
+        <div
+          class="flex min-h-[70vh] items-center justify-center bg-muted/80 px-[var(--page-gutter)] lg:min-h-[calc(100vh-var(--header-height,72px))]"
+          data-slot="luxury-pdp-hero"
+          data-testid="luxury-pdp-hero"
+        >
+          <div
+            class="relative overflow-hidden aspect-square w-full max-w-2xl"
+            data-slot="fade-through-image"
+          >
+            <div
+              class="absolute inset-0 h-full w-full"
+            >
+              <img
+                alt="Men's Classic Deer Gloves"
+                class="object-contain h-full w-full transition-opacity duration-300 ease-out opacity-100"
+                decoding="async"
+                fetchpriority="high"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-card px-[var(--page-gutter)] py-8 lg:py-10"
+        >
+          <div
+            class="flex flex-col gap-6"
+          >
+            <h1
+              class="font-serif text-4xl md:text-5xl font-normal tracking-tight leading-[1.15]"
+            >
+              Men's Classic Deer Gloves
+            </h1>
+            <div
+              class="items-center gap-2"
+            >
+              <span
+                aria-hidden="true"
+                class="[&:not(:first-child)]:mt-6 text-left font-serif text-lg font-normal"
+              >
+                £99.99
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="polite"
+                class="sr-only"
+              >
+                Men's Classic Deer Gloves
+                 
+                Current price: £99.99
+              </span>
+               
+            </div>
+            <div
+              class="flex flex-col gap-6"
+              data-slot="watch-configurator"
+              data-testid="watch-configurator"
+            >
+              <section
+                class="border-b border-border-subtle pb-5"
+                data-kind="label"
+                data-slot="configurator-step"
+                data-step="accessorySize"
+              >
+                <div
+                  class="mb-3 flex items-baseline justify-between gap-3"
+                >
+                  <h3
+                    class="font-serif text-base font-normal"
+                  >
+                    <span
+                      class="sr-only"
+                    >
+                      Step 1
+                    </span>
+                    Size
+                  </h3>
+                  <span
+                    class="truncate text-xs text-muted-foreground"
+                    data-slot="configurator-step-choice"
+                  >
+                    L
+                  </span>
+                </div>
+                <div
+                  aria-label="Size"
+                  class="flex flex-col gap-1"
+                  role="radiogroup"
+                >
+                  <button
+                    aria-checked="false"
+                    aria-label="M"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-muted-foreground hover:text-foreground"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      M
+                    </span>
+                  </button>
+                  <button
+                    aria-checked="true"
+                    aria-label="L"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-foreground"
+                    data-selected="true"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      L
+                    </span>
+                  </button>
+                  <button
+                    aria-checked="false"
+                    aria-label="XL"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-muted-foreground hover:text-foreground"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      XL
+                    </span>
+                  </button>
+                </div>
+              </section>
+            </div>
+            <div
+              aria-atomic="true"
+              class="flex items-center gap-2"
+              data-slot="inventory-message"
+              role="status"
+            >
+              <span
+                aria-hidden="true"
+                class="h-2 w-2 shrink-0 rounded-full bg-current text-status-positive"
+              />
+              <p
+                class="text-sm font-medium text-status-positive"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Available: 
+                </span>
+                In stock
+              </p>
+            </div>
+            <div
+              class="flex flex-col gap-3"
+            >
+              <div
+                class="mt-6"
+              >
+                <div
+                  aria-atomic="true"
+                  role="status"
+                />
+                <div
+                  class="flex flex-col gap-3"
+                >
+                  <button
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-10 rounded-ui px-6 has-[>svg]:px-4 w-full text-base font-semibold leading-6"
+                    data-size="lg"
+                    data-slot="add-to-cart-button"
+                    data-testid="add-to-cart"
+                    data-variant="default"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div
+                class="flex flex-col gap-3"
+                data-testid="boutique-booking"
+              >
+                <p
+                  class="text-sm text-muted-foreground"
+                >
+                  Prefer to see it on the wrist? Book time in boutique — or find a boutique near you.
+                </p>
+                <a
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-ui hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+                  data-size="default"
+                  data-slot="button"
+                  data-variant="outline"
+                  href="/RefArchGlobal/en-GB/boutiques?product=061492183589M"
+                >
+                  Book an appointment
+                </a>
+                <a
+                  class="text-center text-sm text-foreground underline underline-offset-4"
+                  href="/RefArchGlobal/en-GB/boutiques?product=061492183589M"
+                >
+                  Find a boutique
+                </a>
+              </div>
+            </div>
+            <button
+              aria-controls="radix-__react-id__"
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              class="text-sm underline underline-offset-4"
+              data-slot="dialog-trigger"
+              data-state="closed"
+              data-testid="movement-education"
+              type="button"
+            >
+              Learn about movements
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="section-container pb-16"
+      >
+        <div
+          class="mt-16 lg:mt-24 flex flex-col gap-16 lg:gap-24"
+          data-testid="luxury-pdp-details"
+        >
+          <section
+            class="grid gap-8 lg:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] lg:gap-16"
+          >
+            <div>
+              <p
+                class="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-muted-foreground"
+              >
+                About this timepiece
+              </p>
+              <h2
+                class="mt-3 font-serif text-3xl md:text-4xl font-normal tracking-tight"
+              >
+                Men's Classic Deer Gloves
+              </h2>
+            </div>
+            <div
+              class="flex flex-col gap-4 text-base leading-relaxed text-foreground/90"
+            >
+              <p>
+                &lt;ul&gt;&lt;li&gt;Grain deerskin leather&lt;/li&gt;&lt;li&gt;Water resistant and durable&lt;/li&gt;&lt;li&gt;Outseam machine sewn&lt;/li&gt;&lt;/ul&gt;
+              </p>
+            </div>
+          </section>
+          <section
+            class="text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mx-auto mb-8 block size-8 rotate-45 border border-accent"
+            />
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight mb-8"
+            >
+              Model availability
+            </h2>
+            <div
+              class="flex flex-col gap-5 text-sm leading-relaxed text-muted-foreground md:text-base"
+            >
+              <p>
+                Every Luxury Next timepiece is assembled by hand in Geneva, with finishing held to a standard that naturally limits how many pieces leave the atelier each year. Demand often exceeds what we can make.
+              </p>
+              <p>
+                Availability of some references may be limited. New watches are shown in our boutiques, which receive regular deliveries and manage allocation for viewing by appointment.
+              </p>
+              <p>
+                A concierge in boutique can advise on current availability for this reference, and set time aside to see the piece on the wrist.
+              </p>
+            </div>
+          </section>
+          <section
+            class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            data-testid="luxury-manufacture-guarantee"
+          >
+            <div
+              class="flex min-h-[20rem] items-center justify-center bg-muted px-8 py-12 lg:min-h-[28rem]"
+            >
+              <img
+                alt="Luxury Next international guarantee card"
+                class="w-[min(100%,22rem)] -rotate-6 shadow-ui"
+                src="/images/guarantee-card.svg"
+              />
+            </div>
+            <div
+              class="w-full"
+              data-orientation="vertical"
+              data-slot="accordion"
+            >
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="open"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="open"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="true"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="open"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      International guarantee
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="open"
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
+                >
+                  <div
+                    class="pt-0 pb-4"
+                  >
+                    <p
+                      class="max-w-prose pb-2 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      Each watch is tested in our Geneva ateliers after assembly. A new Luxury Next purchased in boutique or online is covered by a two-year international guarantee. The advisor dates the guarantee card, which certifies authenticity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      The atelier seal
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      Presentation box
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+            </div>
+          </section>
+          <section
+            class="border-t border-border-subtle pt-10 lg:pt-14"
+            data-testid="luxury-pdp-specs"
+          >
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight"
+            >
+              Specifications
+            </h2>
+            <div
+              class="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-b border-border-subtle"
+            >
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-foreground text-foreground"
+                type="button"
+              >
+                Watch
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Movement
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Shipping & warranty
+              </button>
+            </div>
+            <div
+              class="mt-8"
+            >
+              <div
+                class="grid gap-4 grid-cols-1"
+              />
+              <div
+                class="mt-8"
+              >
+                <a
+                  class="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  download=""
+                  href="/docs/luxury-next-collection-brochure.pdf"
+                >
+                  Download Brochure
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProductView stories snapshot > OutOfStock story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="section-container py-4"
+  >
+    <div
+      data-slot="luxury-pdp"
+    >
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch"
+      >
+        <div
+          class="flex min-h-[70vh] items-center justify-center bg-muted/80 px-[var(--page-gutter)] lg:min-h-[calc(100vh-var(--header-height,72px))]"
+          data-slot="luxury-pdp-hero"
+          data-testid="luxury-pdp-hero"
+        >
+          <div
+            class="relative overflow-hidden aspect-square w-full max-w-2xl"
+            data-slot="fade-through-image"
+          >
+            <div
+              class="absolute inset-0 h-full w-full"
+            >
+              <picture>
+                <source
+                  media="(min-width: 1536px)"
+                  sizes="680px"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=680 680w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1360 1360w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1280px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1024 1024w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=2048 2048w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 640px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <img
+                  alt="Men's Classic Deer Gloves, , large"
+                  class="object-contain h-full w-full transition-opacity duration-300 ease-out opacity-100"
+                  decoding="async"
+                  fetchpriority="high"
+                  loading="eager"
+                  src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-card px-[var(--page-gutter)] py-8 lg:py-10"
+        >
+          <div
+            class="flex flex-col gap-6"
+          >
+            <h1
+              class="font-serif text-4xl md:text-5xl font-normal tracking-tight leading-[1.15]"
+            >
+              Men's Classic Deer Gloves
+            </h1>
+            <div
+              class="items-center gap-2"
+            >
+              <span
+                aria-hidden="true"
+                class="[&:not(:first-child)]:mt-6 text-left font-serif text-lg font-normal"
+              >
+                £99.99
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="polite"
+                class="sr-only"
+              >
+                Men's Classic Deer Gloves
+                 
+                Current price: £99.99
+              </span>
+               
+            </div>
+            <div
+              class="flex flex-col gap-6"
+              data-slot="watch-configurator"
+              data-testid="watch-configurator"
+            >
+              <section
+                class="border-b border-border-subtle pb-5"
+                data-kind="label"
+                data-slot="configurator-step"
+                data-step="accessorySize"
+              >
+                <div
+                  class="mb-3 flex items-baseline justify-between gap-3"
+                >
+                  <h3
+                    class="font-serif text-base font-normal"
+                  >
+                    <span
+                      class="sr-only"
+                    >
+                      Step 1
+                    </span>
+                    Size
+                  </h3>
+                  <span
+                    class="truncate text-xs text-muted-foreground"
+                    data-slot="configurator-step-choice"
+                  >
+                    L
+                  </span>
+                </div>
+                <div
+                  aria-label="Size"
+                  class="flex flex-col gap-1"
+                  role="radiogroup"
+                >
+                  <button
+                    aria-checked="false"
+                    aria-label="M"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-muted-foreground hover:text-foreground"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      M
+                    </span>
+                  </button>
+                  <button
+                    aria-checked="true"
+                    aria-label="L"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-foreground"
+                    data-selected="true"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      L
+                    </span>
+                  </button>
+                  <button
+                    aria-checked="false"
+                    aria-label="XL"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-muted-foreground hover:text-foreground"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      XL
+                    </span>
+                  </button>
+                </div>
+              </section>
+            </div>
+            <div
+              aria-atomic="true"
+              class="flex items-center gap-2"
+              data-slot="inventory-message"
+              role="status"
+            />
+            <div
+              class="flex flex-col gap-3"
+            >
+              <div
+                class="mt-6"
+              >
+                <div
+                  aria-atomic="true"
+                  role="status"
+                />
+                <div
+                  class="flex flex-col gap-3"
+                >
+                  <button
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-10 rounded-ui px-6 has-[>svg]:px-4 w-full text-base font-semibold leading-6"
+                    data-size="lg"
+                    data-slot="add-to-cart-button"
+                    data-testid="add-to-cart"
+                    data-variant="default"
+                    disabled=""
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div
+                class="flex flex-col gap-3"
+                data-testid="boutique-booking"
+              >
+                <p
+                  class="text-sm text-muted-foreground"
+                >
+                  Prefer to see it on the wrist? Book time in boutique — or find a boutique near you.
+                </p>
+                <a
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-ui hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+                  data-size="default"
+                  data-slot="button"
+                  data-variant="outline"
+                  href="/RefArchGlobal/en-GB/boutiques?product=061492183589M"
+                >
+                  Book an appointment
+                </a>
+                <a
+                  class="text-center text-sm text-foreground underline underline-offset-4"
+                  href="/RefArchGlobal/en-GB/boutiques?product=061492183589M"
+                >
+                  Find a boutique
+                </a>
+              </div>
+            </div>
+            <button
+              aria-controls="radix-__react-id__"
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              class="text-sm underline underline-offset-4"
+              data-slot="dialog-trigger"
+              data-state="closed"
+              data-testid="movement-education"
+              type="button"
+            >
+              Learn about movements
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="section-container pb-16"
+      >
+        <div
+          class="mt-16 lg:mt-24 flex flex-col gap-16 lg:gap-24"
+          data-testid="luxury-pdp-details"
+        >
+          <section
+            class="grid gap-8 lg:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] lg:gap-16"
+          >
+            <div>
+              <p
+                class="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-muted-foreground"
+              >
+                About this timepiece
+              </p>
+              <h2
+                class="mt-3 font-serif text-3xl md:text-4xl font-normal tracking-tight"
+              >
+                Men's Classic Deer Gloves
+              </h2>
+            </div>
+            <div
+              class="flex flex-col gap-4 text-base leading-relaxed text-foreground/90"
+            >
+              <p>
+                &lt;ul&gt;&lt;li&gt;Grain deerskin leather&lt;/li&gt;&lt;li&gt;Water resistant and durable&lt;/li&gt;&lt;li&gt;Outseam machine sewn&lt;/li&gt;&lt;/ul&gt;
+              </p>
+            </div>
+          </section>
+          <section
+            class="text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mx-auto mb-8 block size-8 rotate-45 border border-accent"
+            />
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight mb-8"
+            >
+              Model availability
+            </h2>
+            <div
+              class="flex flex-col gap-5 text-sm leading-relaxed text-muted-foreground md:text-base"
+            >
+              <p>
+                Every Luxury Next timepiece is assembled by hand in Geneva, with finishing held to a standard that naturally limits how many pieces leave the atelier each year. Demand often exceeds what we can make.
+              </p>
+              <p>
+                Availability of some references may be limited. New watches are shown in our boutiques, which receive regular deliveries and manage allocation for viewing by appointment.
+              </p>
+              <p>
+                A concierge in boutique can advise on current availability for this reference, and set time aside to see the piece on the wrist.
+              </p>
+            </div>
+          </section>
+          <section
+            class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            data-testid="luxury-manufacture-guarantee"
+          >
+            <div
+              class="flex min-h-[20rem] items-center justify-center bg-muted px-8 py-12 lg:min-h-[28rem]"
+            >
+              <img
+                alt="Luxury Next international guarantee card"
+                class="w-[min(100%,22rem)] -rotate-6 shadow-ui"
+                src="/images/guarantee-card.svg"
+              />
+            </div>
+            <div
+              class="w-full"
+              data-orientation="vertical"
+              data-slot="accordion"
+            >
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="open"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="open"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="true"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="open"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      International guarantee
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="open"
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
+                >
+                  <div
+                    class="pt-0 pb-4"
+                  >
+                    <p
+                      class="max-w-prose pb-2 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      Each watch is tested in our Geneva ateliers after assembly. A new Luxury Next purchased in boutique or online is covered by a two-year international guarantee. The advisor dates the guarantee card, which certifies authenticity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      The atelier seal
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      Presentation box
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+            </div>
+          </section>
+          <section
+            class="border-t border-border-subtle pt-10 lg:pt-14"
+            data-testid="luxury-pdp-specs"
+          >
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight"
+            >
+              Specifications
+            </h2>
+            <div
+              class="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-b border-border-subtle"
+            >
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-foreground text-foreground"
+                type="button"
+              >
+                Watch
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Movement
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Shipping & warranty
+              </button>
+            </div>
+            <div
+              class="mt-8"
+            >
+              <div
+                class="grid gap-4 grid-cols-1"
+              />
+              <div
+                class="mt-8"
+              >
+                <a
+                  class="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  download=""
+                  href="/docs/luxury-next-collection-brochure.pdf"
+                >
+                  Download Brochure
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProductView stories snapshot > Playground story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="section-container py-4"
+  >
+    <div
+      data-slot="luxury-pdp"
+    >
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch"
+      >
+        <div
+          class="flex min-h-[70vh] items-center justify-center bg-muted/80 px-[var(--page-gutter)] lg:min-h-[calc(100vh-var(--header-height,72px))]"
+          data-slot="luxury-pdp-hero"
+          data-testid="luxury-pdp-hero"
+        >
+          <div
+            class="relative overflow-hidden aspect-square w-full max-w-2xl"
+            data-slot="fade-through-image"
+          >
+            <div
+              class="absolute inset-0 h-full w-full"
+            >
+              <picture>
+                <source
+                  media="(min-width: 1536px)"
+                  sizes="680px"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=680 680w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1360 1360w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1280px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1024 1024w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=2048 2048w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 640px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <img
+                  alt="Men's Classic Deer Gloves, , large"
+                  class="object-contain h-full w-full transition-opacity duration-300 ease-out opacity-100"
+                  decoding="async"
+                  fetchpriority="high"
+                  loading="eager"
+                  src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-apparel-m-catalog/default/dw5f194ed3/images/large/TG508_206.webp?sfrm=jpg&q=70"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-card px-[var(--page-gutter)] py-8 lg:py-10"
+        >
+          <div
+            class="flex flex-col gap-6"
+          >
+            <h1
+              class="font-serif text-4xl md:text-5xl font-normal tracking-tight leading-[1.15]"
+            >
+              Men's Classic Deer Gloves
+            </h1>
+            <div
+              class="items-center gap-2"
+            >
+              <span
+                aria-hidden="true"
+                class="[&:not(:first-child)]:mt-6 text-left font-serif text-lg font-normal"
+              >
+                £99.99
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="polite"
+                class="sr-only"
+              >
+                Men's Classic Deer Gloves
+                 
+                Current price: £99.99
+              </span>
+               
+            </div>
+            <div
+              class="flex flex-col gap-6"
+              data-slot="watch-configurator"
+              data-testid="watch-configurator"
+            >
+              <section
+                class="border-b border-border-subtle pb-5"
+                data-kind="label"
+                data-slot="configurator-step"
+                data-step="accessorySize"
+              >
+                <div
+                  class="mb-3 flex items-baseline justify-between gap-3"
+                >
+                  <h3
+                    class="font-serif text-base font-normal"
+                  >
+                    <span
+                      class="sr-only"
+                    >
+                      Step 1
+                    </span>
+                    Size
+                  </h3>
+                  <span
+                    class="truncate text-xs text-muted-foreground"
+                    data-slot="configurator-step-choice"
+                  >
+                    L
+                  </span>
+                </div>
+                <div
+                  aria-label="Size"
+                  class="flex flex-col gap-1"
+                  role="radiogroup"
+                >
+                  <button
+                    aria-checked="false"
+                    aria-label="M"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-muted-foreground hover:text-foreground"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      M
+                    </span>
+                  </button>
+                  <button
+                    aria-checked="true"
+                    aria-label="L"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-foreground"
+                    data-selected="true"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      L
+                    </span>
+                  </button>
+                  <button
+                    aria-checked="false"
+                    aria-label="XL"
+                    class="text-left transition-colors [&_*]:pointer-events-none flex w-full items-center justify-between border-b border-border-subtle py-2 text-sm text-muted-foreground hover:text-foreground"
+                    data-slot="configurator-option"
+                    role="radio"
+                    type="button"
+                  >
+                    <span
+                      class="font-medium text-foreground text-sm"
+                    >
+                      XL
+                    </span>
+                  </button>
+                </div>
+              </section>
+            </div>
+            <div
+              aria-atomic="true"
+              class="flex items-center gap-2"
+              data-slot="inventory-message"
+              role="status"
+            >
+              <span
+                aria-hidden="true"
+                class="h-2 w-2 shrink-0 rounded-full bg-current text-status-positive"
+              />
+              <p
+                class="text-sm font-medium text-status-positive"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Available: 
+                </span>
+                In stock
+              </p>
+            </div>
+            <div
+              class="flex flex-col gap-3"
+            >
+              <div
+                class="mt-6"
+              >
+                <div
+                  aria-atomic="true"
+                  role="status"
+                />
+                <div
+                  class="flex flex-col gap-3"
+                >
+                  <button
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-10 rounded-ui px-6 has-[>svg]:px-4 w-full text-base font-semibold leading-6"
+                    data-size="lg"
+                    data-slot="add-to-cart-button"
+                    data-testid="add-to-cart"
+                    data-variant="default"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div
+                class="flex flex-col gap-3"
+                data-testid="boutique-booking"
+              >
+                <p
+                  class="text-sm text-muted-foreground"
+                >
+                  Prefer to see it on the wrist? Book time in boutique — or find a boutique near you.
+                </p>
+                <a
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-ui hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+                  data-size="default"
+                  data-slot="button"
+                  data-variant="outline"
+                  href="/RefArchGlobal/en-GB/boutiques?product=061492183589M"
+                >
+                  Book an appointment
+                </a>
+                <a
+                  class="text-center text-sm text-foreground underline underline-offset-4"
+                  href="/RefArchGlobal/en-GB/boutiques?product=061492183589M"
+                >
+                  Find a boutique
+                </a>
+              </div>
+            </div>
+            <button
+              aria-controls="radix-__react-id__"
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              class="text-sm underline underline-offset-4"
+              data-slot="dialog-trigger"
+              data-state="closed"
+              data-testid="movement-education"
+              type="button"
+            >
+              Learn about movements
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="section-container pb-16"
+      >
+        <div
+          class="mt-16 lg:mt-24 flex flex-col gap-16 lg:gap-24"
+          data-testid="luxury-pdp-details"
+        >
+          <section
+            class="grid gap-8 lg:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] lg:gap-16"
+          >
+            <div>
+              <p
+                class="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-muted-foreground"
+              >
+                About this timepiece
+              </p>
+              <h2
+                class="mt-3 font-serif text-3xl md:text-4xl font-normal tracking-tight"
+              >
+                Men's Classic Deer Gloves
+              </h2>
+            </div>
+            <div
+              class="flex flex-col gap-4 text-base leading-relaxed text-foreground/90"
+            >
+              <p>
+                &lt;ul&gt;&lt;li&gt;Grain deerskin leather&lt;/li&gt;&lt;li&gt;Water resistant and durable&lt;/li&gt;&lt;li&gt;Outseam machine sewn&lt;/li&gt;&lt;/ul&gt;
+              </p>
+            </div>
+          </section>
+          <section
+            class="text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mx-auto mb-8 block size-8 rotate-45 border border-accent"
+            />
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight mb-8"
+            >
+              Model availability
+            </h2>
+            <div
+              class="flex flex-col gap-5 text-sm leading-relaxed text-muted-foreground md:text-base"
+            >
+              <p>
+                Every Luxury Next timepiece is assembled by hand in Geneva, with finishing held to a standard that naturally limits how many pieces leave the atelier each year. Demand often exceeds what we can make.
+              </p>
+              <p>
+                Availability of some references may be limited. New watches are shown in our boutiques, which receive regular deliveries and manage allocation for viewing by appointment.
+              </p>
+              <p>
+                A concierge in boutique can advise on current availability for this reference, and set time aside to see the piece on the wrist.
+              </p>
+            </div>
+          </section>
+          <section
+            class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            data-testid="luxury-manufacture-guarantee"
+          >
+            <div
+              class="flex min-h-[20rem] items-center justify-center bg-muted px-8 py-12 lg:min-h-[28rem]"
+            >
+              <img
+                alt="Luxury Next international guarantee card"
+                class="w-[min(100%,22rem)] -rotate-6 shadow-ui"
+                src="/images/guarantee-card.svg"
+              />
+            </div>
+            <div
+              class="w-full"
+              data-orientation="vertical"
+              data-slot="accordion"
+            >
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="open"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="open"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="true"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="open"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      International guarantee
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="open"
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
+                >
+                  <div
+                    class="pt-0 pb-4"
+                  >
+                    <p
+                      class="max-w-prose pb-2 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      Each watch is tested in our Geneva ateliers after assembly. A new Luxury Next purchased in boutique or online is covered by a two-year international guarantee. The advisor dates the guarantee card, which certifies authenticity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      The atelier seal
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      Presentation box
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+            </div>
+          </section>
+          <section
+            class="border-t border-border-subtle pt-10 lg:pt-14"
+            data-testid="luxury-pdp-specs"
+          >
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight"
+            >
+              Specifications
+            </h2>
+            <div
+              class="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-b border-border-subtle"
+            >
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-foreground text-foreground"
+                type="button"
+              >
+                Watch
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Movement
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Shipping & warranty
+              </button>
+            </div>
+            <div
+              class="mt-8"
+            >
+              <div
+                class="grid gap-4 grid-cols-1"
+              />
+              <div
+                class="mt-8"
+              >
+                <a
+                  class="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  download=""
+                  href="/docs/luxury-next-collection-brochure.pdf"
+                >
+                  Download Brochure
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProductView stories snapshot > PriceOnRequest story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="section-container py-4"
+  >
+    <div
+      data-slot="luxury-pdp"
+    >
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch"
+      >
+        <div
+          class="flex min-h-[70vh] items-center justify-center bg-muted/80 px-[var(--page-gutter)] lg:min-h-[calc(100vh-var(--header-height,72px))]"
+          data-slot="luxury-pdp-hero"
+          data-testid="luxury-pdp-hero"
+        >
+          <div
+            class="relative overflow-hidden aspect-square w-full max-w-2xl"
+            data-slot="fade-through-image"
+          >
+            <div
+              class="absolute inset-0 h-full w-full"
+            >
+              <picture>
+                <source
+                  media="(min-width: 1536px)"
+                  sizes="680px"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=680 680w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=1360 1360w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1280px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=1024 1024w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=2048 2048w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 640px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.webp?q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <img
+                  alt="Limited Edition Tourbillon"
+                  class="object-contain h-full w-full transition-opacity duration-300 ease-out opacity-100"
+                  decoding="async"
+                  fetchpriority="high"
+                  loading="eager"
+                  src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-005.jpg?q=70&sfrm=webp"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-card px-[var(--page-gutter)] py-8 lg:py-10"
+        >
+          <div
+            class="flex flex-col gap-6"
+          >
+            <h1
+              class="font-serif text-4xl md:text-5xl font-normal tracking-tight leading-[1.15]"
+            >
+              Limited Edition Tourbillon
+            </h1>
+            <div
+              class="items-center gap-2"
+            >
+              <span
+                aria-hidden="true"
+                class="[&:not(:first-child)]:mt-6 text-left font-serif text-lg font-normal"
+              >
+                £0.00
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="polite"
+                class="sr-only"
+              >
+                Limited Edition Tourbillon
+                 
+                Current price: £0.00
+              </span>
+               
+            </div>
+            <div
+              aria-atomic="true"
+              class="flex items-center gap-2"
+              data-slot="inventory-message"
+              role="status"
+            >
+              <span
+                aria-hidden="true"
+                class="h-2 w-2 shrink-0 rounded-full bg-current text-status-positive"
+              />
+              <p
+                class="text-sm font-medium text-status-positive"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Available: 
+                </span>
+                In stock
+              </p>
+            </div>
+            <div
+              class="flex flex-col gap-3"
+            >
+              <div
+                class="mt-6"
+              >
+                <div
+                  aria-atomic="true"
+                  role="status"
+                />
+                <div
+                  class="flex flex-col gap-3"
+                >
+                  <button
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-10 rounded-ui px-6 has-[>svg]:px-4 w-full text-base font-semibold leading-6"
+                    data-size="lg"
+                    data-slot="add-to-cart-button"
+                    data-testid="add-to-cart"
+                    data-variant="default"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div
+                class="flex flex-col gap-3"
+                data-testid="boutique-booking"
+              >
+                <p
+                  class="text-sm text-muted-foreground"
+                >
+                  Prefer to see it on the wrist? Book time in boutique — or find a boutique near you.
+                </p>
+                <a
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-ui hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+                  data-size="default"
+                  data-slot="button"
+                  data-variant="outline"
+                  href="/RefArchGlobal/en-GB/boutiques?product=ln-limited-005"
+                >
+                  Book an appointment
+                </a>
+                <a
+                  class="text-center text-sm text-foreground underline underline-offset-4"
+                  href="/RefArchGlobal/en-GB/boutiques?product=ln-limited-005"
+                >
+                  Find a boutique
+                </a>
+              </div>
+            </div>
+            <button
+              aria-controls="radix-__react-id__"
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              class="text-sm underline underline-offset-4"
+              data-slot="dialog-trigger"
+              data-state="closed"
+              data-testid="movement-education"
+              type="button"
+            >
+              Learn about movements
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="section-container pb-16"
+      >
+        <div
+          class="mt-16 lg:mt-24 flex flex-col gap-16 lg:gap-24"
+          data-testid="luxury-pdp-details"
+        >
+          <section
+            class="text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mx-auto mb-8 block size-8 rotate-45 border border-accent"
+            />
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight mb-8"
+            >
+              Model availability
+            </h2>
+            <div
+              class="flex flex-col gap-5 text-sm leading-relaxed text-muted-foreground md:text-base"
+            >
+              <p>
+                Every Luxury Next timepiece is assembled by hand in Geneva, with finishing held to a standard that naturally limits how many pieces leave the atelier each year. Demand often exceeds what we can make.
+              </p>
+              <p>
+                Availability of some references may be limited. New watches are shown in our boutiques, which receive regular deliveries and manage allocation for viewing by appointment.
+              </p>
+              <p>
+                A concierge in boutique can advise on current availability for this reference, and set time aside to see the piece on the wrist.
+              </p>
+            </div>
+          </section>
+          <section
+            class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            data-testid="luxury-manufacture-guarantee"
+          >
+            <div
+              class="flex min-h-[20rem] items-center justify-center bg-muted px-8 py-12 lg:min-h-[28rem]"
+            >
+              <img
+                alt="Luxury Next international guarantee card"
+                class="w-[min(100%,22rem)] -rotate-6 shadow-ui"
+                src="/images/guarantee-card.svg"
+              />
+            </div>
+            <div
+              class="w-full"
+              data-orientation="vertical"
+              data-slot="accordion"
+            >
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="open"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="open"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="true"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="open"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      International guarantee
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="open"
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
+                >
+                  <div
+                    class="pt-0 pb-4"
+                  >
+                    <p
+                      class="max-w-prose pb-2 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      Each watch is tested in our Geneva ateliers after assembly. A new Luxury Next purchased in boutique or online is covered by a two-year international guarantee. The advisor dates the guarantee card, which certifies authenticity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      The atelier seal
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      Presentation box
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+            </div>
+          </section>
+          <section
+            class="border-t border-border-subtle pt-10 lg:pt-14"
+            data-testid="luxury-pdp-specs"
+          >
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight"
+            >
+              Specifications
+            </h2>
+            <div
+              class="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-b border-border-subtle"
+            >
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-foreground text-foreground"
+                type="button"
+              >
+                Watch
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Movement
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Shipping & warranty
+              </button>
+            </div>
+            <div
+              class="mt-8"
+            >
+              <div
+                class="grid gap-4 grid-cols-1"
+              />
+              <div
+                class="mt-8"
+              >
+                <a
+                  class="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  download=""
+                  href="/docs/luxury-next-collection-brochure.pdf"
+                >
+                  Download Brochure
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProductView stories snapshot > Waitlist story renders and matches snapshot 1`] = `
+<div>
+  <div
+    class="section-container py-4"
+  >
+    <div
+      data-slot="luxury-pdp"
+    >
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-stretch"
+      >
+        <div
+          class="flex min-h-[70vh] items-center justify-center bg-muted/80 px-[var(--page-gutter)] lg:min-h-[calc(100vh-var(--header-height,72px))]"
+          data-slot="luxury-pdp-hero"
+          data-testid="luxury-pdp-hero"
+        >
+          <div
+            class="relative overflow-hidden aspect-square w-full max-w-2xl"
+            data-slot="fade-through-image"
+          >
+            <div
+              class="absolute inset-0 h-full w-full"
+            >
+              <picture>
+                <source
+                  media="(min-width: 1536px)"
+                  sizes="680px"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=680 680w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=1360 1360w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1280px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 1024px)"
+                  sizes="50vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=1024 1024w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=2048 2048w"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 640px)"
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=768 768w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=1536 1536w"
+                  type="image/webp"
+                />
+                <source
+                  sizes="100vw"
+                  srcset="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=640 640w, https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.webp?q=70&sw=1280 1280w"
+                  type="image/webp"
+                />
+                <img
+                  alt="Limited Edition Chrono"
+                  class="object-contain h-full w-full transition-opacity duration-300 ease-out opacity-100"
+                  decoding="async"
+                  fetchpriority="high"
+                  loading="eager"
+                  src="https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/ZZRF_001/on/demandware.static/-/Sites-luxury-product/default/dw6f8a2b1c/images/products/ln-limited-001.jpg?q=70&sfrm=webp"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-card px-[var(--page-gutter)] py-8 lg:py-10"
+        >
+          <div
+            class="flex flex-col gap-6"
+          >
+            <h1
+              class="font-serif text-4xl md:text-5xl font-normal tracking-tight leading-[1.15]"
+            >
+              Limited Edition Chrono
+            </h1>
+            <div
+              class="items-center gap-2"
+            >
+              <span
+                aria-hidden="true"
+                class="[&:not(:first-child)]:mt-6 text-left font-serif text-lg font-normal"
+              >
+                £5,000.00
+              </span>
+              <span
+                aria-atomic="true"
+                aria-live="polite"
+                class="sr-only"
+              >
+                Limited Edition Chrono
+                 
+                Current price: £5,000.00
+              </span>
+               
+            </div>
+            <div
+              aria-atomic="true"
+              class="flex items-center gap-2"
+              data-slot="inventory-message"
+              role="status"
+            >
+              <span
+                aria-hidden="true"
+                class="h-2 w-2 shrink-0 rounded-full bg-current text-status-critical"
+              />
+              <p
+                class="text-sm font-medium text-status-critical"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Not available: 
+                </span>
+                Out of stock
+              </p>
+            </div>
+            <div
+              class="flex flex-col gap-3"
+            >
+              <div
+                class="flex flex-col gap-3"
+                data-testid="boutique-booking"
+              >
+                <p
+                  class="text-sm text-muted-foreground"
+                >
+                  Timepieces from $3,000 are reserved in boutique. Book a time and we will set the piece aside.
+                </p>
+                <a
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-ui text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 w-full"
+                  data-size="default"
+                  data-slot="button"
+                  data-variant="default"
+                  href="/RefArchGlobal/en-GB/boutiques?product=ln-limited-001"
+                >
+                  Book an appointment
+                </a>
+                <a
+                  class="text-center text-sm text-foreground underline underline-offset-4"
+                  href="/RefArchGlobal/en-GB/boutiques?product=ln-limited-001"
+                >
+                  Find a boutique
+                </a>
+              </div>
+            </div>
+            <button
+              aria-controls="radix-__react-id__"
+              aria-expanded="false"
+              aria-haspopup="dialog"
+              class="text-sm underline underline-offset-4"
+              data-slot="dialog-trigger"
+              data-state="closed"
+              data-testid="movement-education"
+              type="button"
+            >
+              Learn about movements
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="section-container pb-16"
+      >
+        <div
+          class="mt-16 lg:mt-24 flex flex-col gap-16 lg:gap-24"
+          data-testid="luxury-pdp-details"
+        >
+          <section
+            class="text-center"
+          >
+            <span
+              aria-hidden="true"
+              class="mx-auto mb-8 block size-8 rotate-45 border border-accent"
+            />
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight mb-8"
+            >
+              Model availability
+            </h2>
+            <div
+              class="flex flex-col gap-5 text-sm leading-relaxed text-muted-foreground md:text-base"
+            >
+              <p>
+                Every Luxury Next timepiece is assembled by hand in Geneva, with finishing held to a standard that naturally limits how many pieces leave the atelier each year. Demand often exceeds what we can make.
+              </p>
+              <p>
+                Availability of some references may be limited. New watches are shown in our boutiques, which receive regular deliveries and manage allocation for viewing by appointment.
+              </p>
+              <p>
+                A concierge in boutique can advise on current availability for this reference, and set time aside to see the piece on the wrist.
+              </p>
+            </div>
+          </section>
+          <section
+            class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            data-testid="luxury-manufacture-guarantee"
+          >
+            <div
+              class="flex min-h-[20rem] items-center justify-center bg-muted px-8 py-12 lg:min-h-[28rem]"
+            >
+              <img
+                alt="Luxury Next international guarantee card"
+                class="w-[min(100%,22rem)] -rotate-6 shadow-ui"
+                src="/images/guarantee-card.svg"
+              />
+            </div>
+            <div
+              class="w-full"
+              data-orientation="vertical"
+              data-slot="accordion"
+            >
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="open"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="open"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="true"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="open"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      International guarantee
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="open"
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width); transition-duration: 0s; animation-name: none;"
+                >
+                  <div
+                    class="pt-0 pb-4"
+                  >
+                    <p
+                      class="max-w-prose pb-2 text-sm leading-relaxed text-muted-foreground"
+                    >
+                      Each watch is tested in our Geneva ateliers after assembly. A new Luxury Next purchased in boutique or online is covered by a two-year international guarantee. The advisor dates the guarantee card, which certifies authenticity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      The atelier seal
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+              <div
+                class="border-b last:border-b-0 border-border-subtle"
+                data-orientation="vertical"
+                data-slot="accordion-item"
+                data-state="closed"
+              >
+                <h3
+                  aria-level="2"
+                  class="flex"
+                  data-orientation="vertical"
+                  data-state="closed"
+                >
+                  <button
+                    aria-controls="radix-__react-id__"
+                    aria-expanded="false"
+                    class="focus-visible:border-ring focus-visible:ring-ring flex flex-1 items-start justify-between gap-4 rounded-ui text-left transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 group py-5 font-serif text-lg font-medium hover:no-underline [&>svg]:hidden"
+                    data-orientation="vertical"
+                    data-radix-collection-item=""
+                    data-slot="accordion-trigger"
+                    data-state="closed"
+                    id="radix-__react-id__"
+                    type="button"
+                  >
+                    <span
+                      class="flex flex-1 items-center justify-between gap-4 pr-1"
+                    >
+                      Presentation box
+                      <span
+                        aria-hidden="true"
+                        class="relative size-5 shrink-0"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-plus size-5 group-data-[state=open]:hidden"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                          <path
+                            d="M12 5v14"
+                          />
+                        </svg>
+                        <svg
+                          aria-hidden="true"
+                          class="lucide lucide-minus hidden size-5 group-data-[state=open]:block"
+                          fill="none"
+                          height="24"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M5 12h14"
+                          />
+                        </svg>
+                      </span>
+                    </span>
+                    <svg
+                      aria-hidden="true"
+                      class="lucide lucide-chevron-down text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200"
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m6 9 6 6 6-6"
+                      />
+                    </svg>
+                  </button>
+                </h3>
+                <div
+                  aria-labelledby="radix-__react-id__"
+                  class="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm"
+                  data-orientation="vertical"
+                  data-slot="accordion-content"
+                  data-state="closed"
+                  hidden=""
+                  id="radix-__react-id__"
+                  role="region"
+                  style="--radix-accordion-content-height: var(--radix-collapsible-content-height); --radix-accordion-content-width: var(--radix-collapsible-content-width);"
+                />
+              </div>
+            </div>
+          </section>
+          <section
+            class="border-t border-border-subtle pt-10 lg:pt-14"
+            data-testid="luxury-pdp-specs"
+          >
+            <h2
+              class="font-serif text-3xl md:text-4xl font-normal tracking-tight"
+            >
+              Specifications
+            </h2>
+            <div
+              class="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-b border-border-subtle"
+            >
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-foreground text-foreground"
+                type="button"
+              >
+                Watch
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Movement
+              </button>
+              <button
+                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
+                type="button"
+              >
+                Shipping & warranty
+              </button>
+            </div>
+            <div
+              class="mt-8"
+            >
+              <div
+                class="grid gap-4 grid-cols-1"
+              />
+              <div
+                class="mt-8"
+              >
+                <a
+                  class="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                  download=""
+                  href="/docs/luxury-next-collection-brochure.pdf"
+                >
+                  Download Brochure
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

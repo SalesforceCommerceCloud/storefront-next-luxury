@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InventoryMessage allocated stories snapshot > Allocated story renders and matches snapshot 1`] = `
+<p
+  class="text-status-warning text-sm"
+  data-testid="inventory-allocated"
+>
+  Allocated — join the waitlist
+</p>
+`;

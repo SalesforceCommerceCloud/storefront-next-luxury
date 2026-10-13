@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MovementEducation stories snapshot > Default story renders and matches snapshot 1`] = `
+<button
+  aria-controls="radix-_r_0_"
+  aria-expanded="false"
+  aria-haspopup="dialog"
+  class="text-sm underline underline-offset-4"
+  data-slot="dialog-trigger"
+  data-state="closed"
+  data-testid="movement-education"
+  type="button"
+>
+  Learn about movements
+</button>
+`;

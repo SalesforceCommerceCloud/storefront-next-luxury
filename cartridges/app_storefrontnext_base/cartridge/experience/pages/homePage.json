@@ -1,0 +1,39 @@
+{
+    "name": "Home Page",
+    "description": "Main landing page with hero carousel, featured products, and help sections",
+    "arch_type": "headless",
+    "region_definitions": [
+        {
+            "id": "top",
+            "name": "Top Slot",
+            "description": "Empty slot above the hero carousel",
+            "max_components": 3
+        },
+        {
+            "id": "afterHero",
+            "name": "After Hero Slot",
+            "description": "Empty slot between the hero scene and the collection grid",
+            "max_components": 3
+        },
+        {
+            "id": "afterCollections",
+            "name": "After Collections Slot",
+            "description": "Empty slot between the collection grid and the editorial section",
+            "max_components": 3
+        },
+        {
+            "id": "afterEditorial",
+            "name": "After Editorial Slot",
+            "description": "Empty slot between the editorial/finder sections and the boutiques section",
+            "max_components": 3
+        },
+        {
+            "id": "bottom",
+            "name": "Bottom Slot",
+            "description": "Empty slot below the boutiques and appointment sections",
+            "max_components": 3
+        }
+    ],
+    "supported_aspect_types": [],
+    "route": "/:siteId/:localeId"
+}
