@@ -37,6 +37,7 @@ export default defineConfig(
                         supportedCurrencies: ['USD', 'GBP'],
                     },
                 ],
+                perCurrencyShippingMethodIds: true,
             },
             defaultSiteId: 'Luxury',
             siteAliasMap: { Luxury: 'Luxury' },
