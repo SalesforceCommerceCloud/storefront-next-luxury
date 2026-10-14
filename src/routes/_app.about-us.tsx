@@ -147,36 +147,17 @@ function PostContactStaticContent({ t }: { t: TFunction<'aboutUs'> }) {
     );
 }
 
-function AboutUsRegionContent({
-    page,
-    regionId,
-    fallback,
-}: {
-    page: PageWithComponentData | null;
-    regionId: 'headline' | 'additionalinformation';
-    fallback: ReactElement;
-}) {
-    if (!page) {
-        return fallback;
-    }
-
-    return <Region page={page} regionId={regionId} errorElement={fallback} />;
-}
-
-function PreContactRegionContent({ page, t }: { page: PageWithComponentData | null; t: TFunction<'aboutUs'> }) {
-    return <AboutUsRegionContent page={page} regionId="headline" fallback={<PreContactStaticContent t={t} />} />;
-}
-
-function PostContactRegionContent({ page, t }: { page: PageWithComponentData | null; t: TFunction<'aboutUs'> }) {
-    return (
-        <AboutUsRegionContent
-            page={page}
-            regionId="additionalinformation"
-            fallback={<PostContactStaticContent t={t} />}
-        />
-    );
-}
-
+/**
+ * About Us page.
+ *
+ * Follows the Foundations model (see `src/verticals/luxury/routes/_app._index.tsx`): the manufacture
+ * story (pre-contact editorial, Contact form, post-contact editorial) is ALWAYS rendered as static
+ * content — never as the `errorElement` fallback of an empty Page Designer region. Empty `<Region>`
+ * slots (`headline` above the contact form, `additionalinformation` below it) are interspersed; with
+ * no components and no `errorElement` an empty slot renders nothing until a merchant drops a component
+ * into it, which then renders IN ADDITION to the static content.
+ * @returns JSX element representing the About Us page
+ */
 export default function AboutUs({ loaderData }: { loaderData: AboutUsPageData }): ReactElement {
     const { t } = useTranslation('aboutUs');
 
@@ -211,19 +192,28 @@ export default function AboutUs({ loaderData }: { loaderData: AboutUsPageData })
                 </Typography>
             </div>
 
+            {/* Empty PD slot above the pre-contact content (critical: shares the page boundary). */}
+            <Region page={loaderData.page} regionId="headline" critical={true} />
+
+            {/* Pre-contact editorial — static */}
             <div className="section-container py-6 space-y-6">
-                <PreContactRegionContent page={loaderData.page} t={t} />
+                <PreContactStaticContent t={t} />
             </div>
 
+            {/* Contact form — static */}
             <div className="py-12 bg-secondary">
                 <div className="section-container">
                     <Contact />
                 </div>
             </div>
 
+            {/* Post-contact editorial — static */}
             <div className="section-container py-6 space-y-6">
-                <PostContactRegionContent page={loaderData.page} t={t} />
+                <PostContactStaticContent t={t} />
             </div>
+
+            {/* Empty PD slot below the post-contact content. */}
+            <Region page={loaderData.page} regionId="additionalinformation" />
         </div>
     );
 }

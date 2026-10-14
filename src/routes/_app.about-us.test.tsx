@@ -33,46 +33,12 @@ const createMockPage = (regions: any[] = []): ShopperExperience.schemas['Page'] 
         regions,
     }) as ShopperExperience.schemas['Page'];
 
-// Mock the Region component - simulates PD/MRT behavior
-vi.mock('@/components/region', async () => {
-    const React = await vi.importActual<typeof import('react')>('react');
-
-    function RegionMock({ regionId, page, errorElement }: any) {
-        const [resolvedPage, setResolvedPage] = React.useState<any>(null);
-        const [isLoading, setIsLoading] = React.useState(true);
-
-        React.useEffect(() => {
-            if (page) {
-                void Promise.resolve(page).then((p) => {
-                    setResolvedPage(p);
-                    setIsLoading(false);
-                });
-            } else {
-                setIsLoading(false);
-            }
-        }, [page]);
-
-        if (isLoading) {
-            return null;
-        }
-
-        // Simulate the actual Region behavior: check if region has components
-        const region = resolvedPage?.regions?.find((r: any) => r.id === regionId);
-        const hasComponents = (region?.components?.length ?? 0) > 0;
-
-        // If no region or no components, show errorElement (MRT behavior)
-        if (!region || !hasComponents) {
-            return errorElement ?? null;
-        }
-
-        // Otherwise show Page Designer region placeholder
-        return <div data-testid={`region-${regionId}`}>Page Designer Region: {regionId}</div>;
-    }
-
-    return {
-        Region: RegionMock,
-    };
-});
+// Luxury About Us now follows the Foundations model: the sections are static JSX and the <Region>
+// slots are empty (no errorElement). Mock Region as an empty slot (renders nothing) so these tests
+// prove the sections render as STATIC content, independent of any Page Designer page.
+vi.mock('@/components/region', () => ({
+    Region: () => null,
+}));
 
 // Mock the Link component
 vi.mock('@/components/link', () => ({
@@ -235,163 +201,29 @@ describe('AboutUs', () => {
         });
     });
 
-    describe('Region Rendering', () => {
-        test('renders static content when headline region does not exist', async () => {
+    describe('Static content is independent of the Page Designer page', () => {
+        // Foundations model: the sections are static JSX; the <Region> slots are empty (no
+        // errorElement), so the editorial renders regardless of whether a region has authored
+        // components — a merchant component would render IN ADDITION, never replacing the static page.
+        test('renders the full static page even when regions have components', async () => {
             const page = {
-                ...createMockPage([]),
+                ...createMockPage([
+                    { id: 'headline', components: [{ id: 'c1', typeId: 'hero' }] },
+                    { id: 'additionalinformation', components: [{ id: 'c2', typeId: 'contentcard' }] },
+                ]),
                 componentData: {},
             };
 
-            renderComponent({
-                page,
-            });
+            renderComponent({ page });
 
             await waitFor(() => {
-                // Contact should still render
-                expect(screen.getByTestId('contact')).toBeInTheDocument();
-                // Static fallback content should render
+                // Static editorial still renders — not replaced by the regions.
                 expect(screen.getByText(t('aboutUs:section.ourGoal.title'))).toBeInTheDocument();
                 expect(screen.getByText(t('aboutUs:section.ourMission.title'))).toBeInTheDocument();
             });
-        });
-
-        test('renders Page Designer region when headline region has components', async () => {
-            const headlineRegion = {
-                id: 'headline',
-                components: [
-                    { id: 'component-1', typeId: 'hero' },
-                    { id: 'component-2', typeId: 'banner' },
-                ],
-            };
-
-            const page = {
-                ...createMockPage([headlineRegion]),
-                componentData: {},
-            };
-
-            renderComponent({
-                page,
-            });
-
-            await waitFor(() => {
-                // Contact should still render
-                expect(screen.getByTestId('contact')).toBeInTheDocument();
-                // Page Designer region should render
-                expect(screen.getByTestId('region-headline')).toBeInTheDocument();
-                expect(screen.getByText('Page Designer Region: headline')).toBeInTheDocument();
-                // Static content should NOT render when region has components
-                expect(screen.queryByText(t('aboutUs:section.ourGoal.title'))).not.toBeInTheDocument();
-            });
-        });
-
-        test('renders static content when headline region has no components', async () => {
-            const headlineRegion = {
-                id: 'headline',
-                components: [],
-            };
-
-            const page = {
-                ...createMockPage([headlineRegion]),
-                componentData: {},
-            };
-
-            renderComponent({
-                page,
-            });
-
-            await waitFor(() => {
-                // Contact should still render
-                expect(screen.getByTestId('contact')).toBeInTheDocument();
-                // Static fallback content should render
-                expect(screen.getByText(t('aboutUs:section.ourGoal.title'))).toBeInTheDocument();
-                // Page Designer region should NOT render
-                expect(screen.queryByTestId('region-headline')).not.toBeInTheDocument();
-            });
-        });
-
-        test('renders Page Designer region when additionalinformation region has components', async () => {
-            const additionalinformationRegion = {
-                id: 'additionalinformation',
-                components: [
-                    { id: 'component-1', typeId: 'contentcard' },
-                    { id: 'component-2', typeId: 'grid' },
-                ],
-            };
-
-            const page = {
-                ...createMockPage([additionalinformationRegion]),
-                componentData: {},
-            };
-
-            renderComponent({
-                page,
-            });
-
-            await waitFor(() => {
-                // Contact should still render
-                expect(screen.getByTestId('contact')).toBeInTheDocument();
-                // Page Designer region should render
-                expect(screen.getByTestId('region-additionalinformation')).toBeInTheDocument();
-                expect(screen.getByText('Page Designer Region: additionalinformation')).toBeInTheDocument();
-                // Static content should NOT render when region has components
-                expect(screen.queryByText(t('aboutUs:section.ourMission.title'))).not.toBeInTheDocument();
-            });
-        });
-
-        test('renders static content when additionalinformation region has no components', async () => {
-            const additionalinformationRegion = {
-                id: 'additionalinformation',
-                components: [],
-            };
-
-            const page = {
-                ...createMockPage([additionalinformationRegion]),
-                componentData: {},
-            };
-
-            renderComponent({
-                page,
-            });
-
-            await waitFor(() => {
-                // Contact should still render
-                expect(screen.getByTestId('contact')).toBeInTheDocument();
-                // Static fallback content should render
-                expect(screen.getByText(t('aboutUs:section.ourMission.title'))).toBeInTheDocument();
-                // Page Designer region should NOT render
-                expect(screen.queryByTestId('region-additionalinformation')).not.toBeInTheDocument();
-            });
-        });
-
-        test('renders both Page Designer regions when both have components', async () => {
-            const headlineRegion = {
-                id: 'headline',
-                components: [{ id: 'component-1', typeId: 'hero' }],
-            };
-            const additionalinformationRegion = {
-                id: 'additionalinformation',
-                components: [{ id: 'component-2', typeId: 'contentcard' }],
-            };
-
-            const page = {
-                ...createMockPage([headlineRegion, additionalinformationRegion]),
-                componentData: {},
-            };
-
-            renderComponent({
-                page,
-            });
-
-            await waitFor(() => {
-                // Contact should always render
-                expect(screen.getByTestId('contact')).toBeInTheDocument();
-                // Both Page Designer regions should render
-                expect(screen.getByTestId('region-headline')).toBeInTheDocument();
-                expect(screen.getByTestId('region-additionalinformation')).toBeInTheDocument();
-                // Static content should NOT render when regions have components
-                expect(screen.queryByText(t('aboutUs:section.ourGoal.title'))).not.toBeInTheDocument();
-                expect(screen.queryByText(t('aboutUs:section.ourMission.title'))).not.toBeInTheDocument();
-            });
+            // Contact always renders; all five static cards present regardless of PD content.
+            expect(screen.getByTestId('contact')).toBeInTheDocument();
+            expect(screen.getAllByTestId('content-card')).toHaveLength(5);
         });
     });
 
