@@ -2171,6 +2171,9 @@
         "cooldownActive": "Please wait {{seconds}} seconds before requesting a new code.",
         "codeResentHint": "Didn't receive the email? Check your spam folder or wait 15 minutes before requesting a new code."
     },
+    "shopperAgent": {
+        "sessionError": "We couldn't start your assistant session. Please try again."
+    },
     "watch": {
         "collection": "Collection",
         "diameter": "{{mm}}mm",
