@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 import { useCallback, useEffect, useMemo, type ReactElement } from 'react';
-import { useSearchParams } from 'react-router';
+import { useRouteLoaderData, useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import EmbeddedAgentWidget, { isEmbeddedAgentConfigured, parsePdpQuestions } from '@/components/embedded-agent';
+import type { loader as rootLoader } from '@/root';
 import type { ShopperProducts } from '@/scapi';
 import { FadeThroughImage } from '@/components/fade-through-image';
 import ProductCartActions from '@/components/product-cart-actions';
@@ -216,6 +218,9 @@ function LuxuryPdp({ product, straps, mode = 'add' }: ProductViewProps): ReactEl
     const isProductABundle = isProductBundle(product);
     const collection = collectionDisplayName(getCollection(product));
     const reference = getReferenceNumber(product);
+    const rootData = useRouteLoaderData<typeof rootLoader>('root');
+    const embeddedAgent = rootData?.appConfig?.commerce?.embeddedAgent;
+    const pdpQuestions = parsePdpQuestions((product as unknown as { c_pdpQuestions?: unknown }).c_pdpQuestions);
 
     return (
         <div data-slot="luxury-pdp">
@@ -282,6 +287,15 @@ function LuxuryPdp({ product, straps, mode = 'add' }: ProductViewProps): ReactEl
                                 intent={appointmentOnly ? 'appointment' : 'browse'}
                             />
                         </div>
+                        {isEmbeddedAgentConfigured(embeddedAgent) && !isProductASet && !isProductABundle && (
+                            <div className="mt-2">
+                                <EmbeddedAgentWidget
+                                    config={embeddedAgent}
+                                    pdpQuestions={pdpQuestions}
+                                    productName={product.name}
+                                />
+                            </div>
+                        )}
                         <CaseSizeVisualizer product={product} />
                         <MovementEducation product={product} />
                         {straps && straps.length > 0 && <StrapSelector straps={straps} />}
