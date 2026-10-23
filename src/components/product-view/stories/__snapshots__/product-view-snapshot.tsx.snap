@@ -575,12 +575,6 @@ exports[`ProductView stories snapshot > FourDimensions story renders and matches
                 class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
                 type="button"
               >
-                Movement
-              </button>
-              <button
-                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
-                type="button"
-              >
                 Shipping & warranty
               </button>
             </div>
@@ -1247,12 +1241,6 @@ exports[`ProductView stories snapshot > MissingImages story renders and matches 
                 type="button"
               >
                 Watch
-              </button>
-              <button
-                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
-                type="button"
-              >
-                Movement
               </button>
               <button
                 class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
@@ -1948,12 +1936,6 @@ exports[`ProductView stories snapshot > OutOfStock story renders and matches sna
                 type="button"
               >
                 Watch
-              </button>
-              <button
-                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
-                type="button"
-              >
-                Movement
               </button>
               <button
                 class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
@@ -2668,12 +2650,6 @@ exports[`ProductView stories snapshot > Playground story renders and matches sna
                 class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
                 type="button"
               >
-                Movement
-              </button>
-              <button
-                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
-                type="button"
-              >
                 Shipping & warranty
               </button>
             </div>
@@ -3278,12 +3254,6 @@ exports[`ProductView stories snapshot > PriceOnRequest story renders and matches
                 class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
                 type="button"
               >
-                Movement
-              </button>
-              <button
-                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
-                type="button"
-              >
                 Shipping & warranty
               </button>
             </div>
@@ -3862,12 +3832,6 @@ exports[`ProductView stories snapshot > Waitlist story renders and matches snaps
                 type="button"
               >
                 Watch
-              </button>
-              <button
-                class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"
-                type="button"
-              >
-                Movement
               </button>
               <button
                 class="pb-3 text-sm tracking-wide border-b-2 -mb-px border-transparent text-muted-foreground hover:text-foreground"

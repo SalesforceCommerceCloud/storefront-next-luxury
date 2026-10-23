@@ -91,7 +91,7 @@ describe('Luxury PDP details', () => {
         expect(screen.getByTestId('luxury-pdp-gallery').className).not.toMatch(/lg:grid-cols-4/);
     });
 
-    test('Watch tab shows the full spec sheet; Movement tab narrows to the Movement group only', () => {
+    test('Watch tab shows the full spec sheet and there is no standalone Movement tab', () => {
         render(
             <MemoryRouter>
                 <AllProvidersWrapper>
@@ -104,14 +104,15 @@ describe('Luxury PDP details', () => {
         const groupHeadings = (): (string | null)[] =>
             Array.from(specs.querySelectorAll('[data-slot="collapsible-heading"]')).map((el) => el.textContent);
 
-        // Watch tab (default) renders the full spec sheet — at least Movement and Case.
+        // Watch tab (default) renders the full spec sheet — Movement and Case aggregated together.
         expect(groupHeadings()).toContain('Movement');
         expect(groupHeadings()).toContain('Case');
 
-        // Switching to the Movement tab narrows the sheet to the Movement group only — the panel is
-        // no longer identical to the Watch tab (the reviewer's blocking bug).
-        fireEvent.click(screen.getByRole('button', { name: 'Movement' }));
-        expect(groupHeadings()).toEqual(['Movement']);
+        // The duplicated standalone "Movement" tab has been removed: Movement appears only under the
+        // aggregating Watch tab, and the tab bar is just Watch + Shipping.
+        expect(screen.queryByRole('button', { name: 'Movement' })).not.toBeInTheDocument();
+        expect(screen.getByRole('button', { name: 'Watch' })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /shipping & warranty/i })).toBeInTheDocument();
     });
 
     test('spec-sheet group headings are static text, not focusable disclosure controls', () => {

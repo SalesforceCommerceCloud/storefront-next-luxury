@@ -95,7 +95,7 @@ export default function PdpDetails({
     const collection = collectionDisplayName(getCollection(product));
     const name = product.name ?? '';
     const longDescription = product.longDescription ?? '';
-    const [tab, setTab] = useState<'watch' | 'movement' | 'shipping'>('watch');
+    const [tab, setTab] = useState<'watch' | 'shipping'>('watch');
 
     const diameter = getCaseDiameter(product);
     const movement = getMovementType(product);
@@ -196,14 +196,11 @@ export default function PdpDetails({
 
     const tabs = [
         { id: 'watch' as const, label: t('pdp.tab.watch') },
-        { id: 'movement' as const, label: t('pdp.tab.movement') },
         { id: 'shipping' as const, label: t('pdp.tab.shipping') },
     ];
 
-    // The Watch tab shows the full spec sheet (Movement / Case / Dial); the Movement tab narrows to
-    // the Movement group only (matching the design reference). Shipping renders its own copy below.
-    const visibleSpecGroups =
-        tab === 'movement' ? specGroups.filter((group) => group.heading === t('spec.movement')) : specGroups;
+    // The Watch tab shows the full spec sheet (Movement / Case / Dial); Shipping renders its own copy below.
+    const visibleSpecGroups = specGroups;
 
     // The spec sheet: the visible groups as side-by-side collapsible sections, held permanently open
     // with the chevron hidden (canonical CollapsibleSection `forceOpen` + `hideToggle`) so they read
