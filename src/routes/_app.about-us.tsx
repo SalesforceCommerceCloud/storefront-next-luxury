@@ -85,11 +85,7 @@ export async function loader(args: Route.LoaderArgs): Promise<AboutUsPageData> {
 function PreContactStaticContent({ t }: { t: TFunction<'aboutUs'> }) {
     return (
         <>
-            <ContentCard
-                title={t('section.ourGoal.title')}
-                description={t('section.ourGoal.content')}
-                className="full-width"
-            />
+            <ContentCard title={t('section.ourGoal.title')} description={t('section.ourGoal.content')} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <ContentCard
                     title={t('section.ourVision.title')}
@@ -98,6 +94,7 @@ function PreContactStaticContent({ t }: { t: TFunction<'aboutUs'> }) {
                     imageAlt={t('section.ourVision.imageAlt', {
                         defaultValue: 'Empty Geneva ateliers in north light, wooden benches and brass lamps.',
                     })}
+                    className="py-0"
                 />
                 <ContentCard
                     title={t('section.ourValue.title')}
@@ -106,6 +103,7 @@ function PreContactStaticContent({ t }: { t: TFunction<'aboutUs'> }) {
                     imageAlt={t('section.ourValue.imageAlt', {
                         defaultValue: 'A round steel case on a finishing bench with suede pads.',
                     })}
+                    className="py-0"
                 />
             </div>
         </>
@@ -124,10 +122,7 @@ function PostContactStaticContent({ t }: { t: TFunction<'aboutUs'> }) {
                 })}
                 buttonText={t('section.ourMission.cta', { defaultValue: 'Care & servicing' })}
                 buttonLink={'/care' as '/'}
-                className="full-width md:flex-row"
-                cardFooterClassName="justify-center flex-auto"
-                cardDescriptionClassName="flex-none"
-                buttonClassName="w-fit"
+                className="py-0"
             />
             <ContentCard
                 title={t('section.ourTeam.title')}
@@ -138,10 +133,7 @@ function PostContactStaticContent({ t }: { t: TFunction<'aboutUs'> }) {
                 })}
                 buttonText={t('section.ourTeam.cta', { defaultValue: 'Find a boutique' })}
                 buttonLink={'/boutiques' as '/'}
-                className="full-width md:flex-row"
-                cardFooterClassName="justify-center flex-auto"
-                cardDescriptionClassName="flex-none"
-                buttonClassName="w-fit"
+                className="py-0"
             />
         </>
     );
