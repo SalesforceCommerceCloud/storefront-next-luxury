@@ -15,6 +15,7 @@
  */
 import { type FormEvent, type ReactElement, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useFetcher } from 'react-router';
 import { ChevronLeft, ChevronRight, Pencil } from 'lucide-react';
 import type { ShopperStores } from '@/scapi';
 import { Button } from '@/components/ui/button';
@@ -22,7 +23,6 @@ import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { Textarea } from '@/components/ui/textarea';
 import { cn, resolveAssetUrl } from '@/lib/utils';
-import { getAppointmentSlots } from '../../lib/boutiques';
 import type { AppointmentPiece } from '@/lib/appointment';
 import BoutiqueDirectory, { boutiqueStageGrid, boutiqueStageLeft, boutiqueStageRight } from '../boutique-directory';
 import BoutiqueMap from '../boutique-map';
@@ -106,6 +106,58 @@ function addDaysIso(iso: string, days: number): string {
     return isoFromParts(next.getFullYear(), next.getMonth(), next.getDate());
 }
 
+/**
+ * Format an ISO 8601 timestamp to a time label (HH:MM, 24-hour format) in the given timezone.
+ *
+ * @param startTimeIso - ISO 8601 timestamp
+ * @param locale - BCP 47 locale (e.g. 'en-US')
+ * @param timezone - IANA timezone string (e.g. 'Europe/London'); defaults to browser local timezone
+ * @returns Time label in the specified timezone (e.g. '14:00')
+ */
+function slotTimeLabel(startTimeIso: string, locale: string, timezone?: string): string {
+    const opts: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
+    if (timezone) opts.timeZone = timezone;
+    return new Intl.DateTimeFormat(locale, opts).format(new Date(startTimeIso));
+}
+
+/**
+ * Extract a date key (YYYY-MM-DD) from an ISO 8601 timestamp in a given timezone.
+ * The timezone should match the boutique territory so the calendar dates align with
+ * local boutique time (e.g. a slot at 11:00 UTC/London appears on Oct 29, not Oct 28
+ * for a shopper browsing in PDT).
+ *
+ * When no timezone is provided falls back to the runtime's local timezone so that
+ * the slot date keys are consistent with the calendar's date keys (both use the
+ * same timezone reference).
+ *
+ * Correct per-boutique timezones:
+ *   London / Paris / Geneva → Europe/London / Europe/Paris / Europe/Zurich
+ *   New York                → America/New_York
+ *   Tokyo                   → Asia/Tokyo
+ *
+ * @param startTimeIso - ISO 8601 timestamp
+ * @param timezone - IANA timezone string; defaults to runtime local timezone
+ * @returns Date key (YYYY-MM-DD) in the specified timezone
+ */
+function slotDateKey(startTimeIso: string, timezone?: string): string {
+    if (!timezone) {
+        // No timezone provided — use the same local timezone the calendar uses
+        // (calendar keys are generated with isoFromParts(new Date())) so dates align.
+        const d = new Date(startTimeIso);
+        return isoFromParts(d.getFullYear(), d.getMonth(), d.getDate());
+    }
+    const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: timezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }).formatToParts(new Date(startTimeIso));
+    const year = parts.find((p) => p.type === 'year')?.value ?? '';
+    const month = parts.find((p) => p.type === 'month')?.value ?? '';
+    const day = parts.find((p) => p.type === 'day')?.value ?? '';
+    return `${year}-${month}-${day}`;
+}
+
 function monthKey(year: number, monthIndex: number): string {
     return `${year}-${String(monthIndex + 1).padStart(2, '0')}`;
 }
@@ -147,13 +199,13 @@ function MonthCalendar({
     locale,
     minDate,
     selected,
-    storeId,
+    hasSlots,
     onSelect,
 }: {
     locale: string;
     minDate: string;
     selected: string;
-    storeId: string | undefined;
+    hasSlots: (iso: string) => boolean;
     onSelect: (iso: string) => void;
 }): ReactElement {
     const { t } = useTranslation('watch');
@@ -216,8 +268,7 @@ function MonthCalendar({
                         <span key={padKey} />
                     ))}
                     {monthDays.map((iso) => {
-                        const available =
-                            iso >= minDate && iso <= maxDate && getAppointmentSlots(storeId, iso).length > 0;
+                        const available = iso >= minDate && iso <= maxDate && hasSlots(iso);
                         const isSelected = selected === iso;
                         const isToday = iso === minDate;
                         return (
@@ -253,6 +304,45 @@ type BoutiqueAppointmentProps = {
     productName?: string;
     piece?: AppointmentPiece | null;
     catalog?: AppointmentPiece[];
+    /**
+     * Real appointment availability slots — used as a prop fallback for tests/Storybook
+     * when the `useFetcher` hasn't run yet. In production the component fetches its own
+     * availability via the `/resource/appointment-availability` resource route.
+     */
+    availability?: { startTime: string; endTime: string }[];
+    /**
+     * Minimum advance notice in minutes before a slot can be booked.
+     * Slots starting sooner than this from now are hidden in the calendar.
+     * Sourced from `config.features.appointment.advanceNoticeMinutes` (BM-configurable).
+     * Default: 120 (2 hours).
+     */
+    advanceNoticeMinutes?: number;
+    /**
+     * IANA timezone of the boutique territory (e.g. 'Europe/London').
+     * Used to group availability slots by local date so the calendar correctly
+     * highlights dates in the boutique's timezone rather than the shopper's browser timezone.
+     * When omitted and the server has not returned a timezone, slot times are displayed in
+     * the shopper's local timezone (useful for tests and Storybook where slots are authored
+     * in local time).
+     */
+    timezone?: string;
+    /**
+     * Callback to book an appointment via the real resource route.
+     * When absent (Storybook, existing tests), the component falls back to sessionStorage demo mode.
+     * Submit `formData` to the `/resource/appointment-book` action via `useFetcher` in the parent.
+     */
+    onBook?: (formData: FormData) => void;
+    /**
+     * Whether the booking submission is in-flight. Sourced from `bookingFetcher.state !== 'idle'`
+     * in the parent page. Used to disable the submit button while waiting for the response.
+     */
+    bookingSubmitting?: boolean;
+    /**
+     * Result of the last booking submission. Sourced from `bookingFetcher.data` in the parent page.
+     * The component watches this via `useEffect` to transition to the confirmation screen or show
+     * an error when the fetcher settles.
+     */
+    bookingResult?: { success: boolean; serviceAppointmentId?: string; error?: string };
 };
 
 function formatReviewDate(iso: string, locale: string): string {
@@ -506,6 +596,7 @@ function StoreStill({ store }: { store: ShopperStores.schemas['Store'] }): React
                 <p className="mt-2 font-serif text-3xl">{store.name}</p>
                 <p className="mt-2 text-sm opacity-90">{addressLine(store)}</p>
                 {store.storeHours ? <p className="mt-1 text-sm opacity-90">{store.storeHours}</p> : null}
+                {store.phone ? <p className="mt-1 text-sm opacity-75">{store.phone}</p> : null}
             </div>
         </aside>
     );
@@ -517,6 +608,12 @@ export default function BoutiqueAppointment({
     productName,
     piece,
     catalog = [],
+    availability,
+    advanceNoticeMinutes = 120,
+    timezone,
+    onBook,
+    bookingSubmitting,
+    bookingResult,
 }: BoutiqueAppointmentProps): ReactElement {
     const { t, i18n } = useTranslation('watch');
     const [done, setDone] = useState(false);
@@ -527,13 +624,84 @@ export default function BoutiqueAppointment({
     const [workType, setWorkType] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    // Store the full slot at pick time so submit doesn't depend on daySlots being recomputed.
+    const [chosenSlot, setChosenSlot] = useState<{ startTime: string; endTime: string } | null>(null);
+    const [bookingError, setBookingError] = useState<string | null>(null);
     const store = stores.find((entry) => entry.id === storeId) ?? null;
     const locked = useMemo(() => enrichPiece(piece, productId, productName), [piece, productId, productName]);
     const effectiveCatalog = useMemo(() => (locked ? [] : catalog), [locked, catalog]);
     const [pickedId, setPickedId] = useState(locked?.id ?? '');
     const selected = locked ?? effectiveCatalog.find((entry) => entry.id === pickedId) ?? null;
     const minDate = useMemo(() => localIsoToday(), []);
-    const slots = useMemo(() => getAppointmentSlots(store?.id, date), [store?.id, date]);
+
+    const availabilityFetcher = useFetcher<{
+        success: boolean;
+        slots: { startTime: string; endTime: string }[];
+        timezone?: string;
+    }>();
+
+    // Transition to the confirmation screen (or show an error) when the booking fetcher settles.
+    useEffect(() => {
+        if (bookingResult?.success) {
+            setDone(true);
+        } else if (bookingResult && !bookingResult.success) {
+            setBookingError(bookingResult.error || t('boutiquesPage.bookingError'));
+        }
+    }, [bookingResult, t]);
+
+    // Prefer fetcher data (production); fall back to the `availability` prop (tests/Storybook).
+    const realSlots = availabilityFetcher.data?.success ? availabilityFetcher.data.slots : availability;
+    const isLoadingAvailability = availabilityFetcher.state === 'loading';
+
+    // Territory timezone: prefer what the server returned (OperatingHours.TimeZone), then the
+    // prop (boutique-level override). When neither is available (e.g. in Storybook / tests where
+    // availability is prop-driven and slots are authored in local time), leave undefined so
+    // slotTimeLabel and slotDateKey fall back to the runtime's local timezone — making test
+    // assertions timezone-safe.
+    const territoryTimezone = availabilityFetcher.data?.timezone ?? timezone;
+
+    // Group real slots by local date for calendar highlighting and time-slot display.
+    // Slots starting within `advanceNoticeMinutes` of now are filtered out.
+    // The threshold is BM-configurable via site preference `sfnextAppointmentAdvanceNoticeMinutes`
+    // (sourced from config.features.appointment.advanceNoticeMinutes, default 120 = 2 hours).
+    const availableByDate = useMemo(() => {
+        if (!realSlots) return null;
+        const cutoff = Date.now() + advanceNoticeMinutes * 60 * 1000;
+        const map = new Map<string, { label: string; startTime: string; endTime: string }[]>();
+        for (const slot of realSlots) {
+            if (new Date(slot.startTime).getTime() < cutoff) continue; // too soon
+            const key = slotDateKey(slot.startTime, territoryTimezone);
+            const entry = {
+                label: slotTimeLabel(slot.startTime, i18n.language, territoryTimezone),
+                startTime: slot.startTime,
+                endTime: slot.endTime,
+            };
+            const existing = map.get(key);
+            if (existing) existing.push(entry);
+            else map.set(key, [entry]);
+        }
+        return map;
+    }, [realSlots, i18n.language, territoryTimezone, advanceNoticeMinutes]);
+
+    const availabilityUnavailable =
+        availabilityFetcher.state === 'idle' &&
+        availabilityFetcher.data !== undefined &&
+        (availabilityFetcher.data.success === false ||
+            (availabilityFetcher.data.success === true && availableByDate !== null && availableByDate.size === 0));
+
+    const daySlots = useMemo(() => {
+        if (!availableByDate) return [];
+        return availableByDate.get(date) ?? [];
+    }, [availableByDate, date]);
+
+    // Format the ISO startTime for human-readable display (e.g. '10:00').
+    // The `time` state stores the raw ISO so it can be passed to onBook; display
+    // and the demo sessionStorage path use the formatted label instead.
+    const timeLabel = useMemo(
+        () => (time ? slotTimeLabel(time, i18n.language, territoryTimezone) : ''),
+        [time, i18n.language, territoryTimezone]
+    );
+
     const selectedService = SERVICES.find((entry) => entry.id === reason);
     const stepIndex = STEPS.indexOf(step);
 
@@ -566,11 +734,22 @@ export default function BoutiqueAppointment({
         if (!service) return;
         setReason(service.id);
         setWorkType(service.workType);
+
+        // Fetch real availability for this boutique + service (next 30 days).
+        const startTime = new Date().toISOString();
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 30);
+        void availabilityFetcher.load(
+            `/resource/appointment-availability?startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endDate.toISOString())}&storeId=${encodeURIComponent(storeId)}&serviceId=${encodeURIComponent(id)}`
+        );
+
         advanceTo('when');
     };
 
-    const pickTime = (slot: string) => {
-        setTime(slot);
+    const pickTime = (slotStartTime: string) => {
+        const slot = daySlots.find((s) => s.startTime === slotStartTime) ?? null;
+        setTime(slotStartTime);
+        setChosenSlot(slot); // cache at pick time — submit won't re-lookup from daySlots
         advanceTo('review');
     };
 
@@ -581,25 +760,56 @@ export default function BoutiqueAppointment({
         const formProductId = String(form.get('productId') ?? '').trim();
         const formProductName = String(form.get('productName') ?? '').trim();
         const formProductReference = String(form.get('productReference') ?? '').trim();
-        const payload = {
-            storeId: store.id,
-            storeName: store.name,
-            productId: selected?.id || formProductId || null,
-            productName: selected?.name || formProductName || null,
-            productReference: selected?.reference || formProductReference || null,
-            reason,
-            workType,
-            name: String(form.get('name') ?? '').trim(),
-            email: String(form.get('email') ?? '').trim(),
-            phone: String(form.get('phone') ?? '').trim(),
-            date,
-            time,
-            notes: String(form.get('notes') ?? '').trim(),
-        };
-        if (!payload.name || !payload.email || !payload.date || !payload.time) return;
-        const key = `luxury-appointment:${payload.productId || 'browse'}:${store.id}`;
-        sessionStorage.setItem(key, JSON.stringify(payload));
-        setDone(true);
+        const name = String(form.get('name') ?? '').trim();
+        const email = String(form.get('email') ?? '').trim();
+        const phone = String(form.get('phone') ?? '').trim();
+        const notes = String(form.get('notes') ?? '').trim();
+
+        if (!name || !email || !date || !time) return;
+
+        if (onBook) {
+            // Use the slot cached at pick time — avoids any re-computation dependency on daySlots.
+            if (!chosenSlot) {
+                setBookingError(t('boutiquesPage.bookingError'));
+                return;
+            }
+
+            // Build the subject from selected product name + service title (filter falsy, join with ' · ').
+            const subjectParts = [selected?.name, selectedService ? t(selectedService.titleKey) : undefined].filter(
+                Boolean
+            );
+            const subject = subjectParts.length > 0 ? subjectParts.join(' · ') : undefined;
+
+            setBookingError(null);
+            const fd = new FormData();
+            fd.append('schedStartTime', chosenSlot.startTime);
+            fd.append('schedEndTime', chosenSlot.endTime);
+            fd.append('email', email);
+            if (subject) fd.append('subject', subject);
+            if (reason) fd.append('serviceId', reason);
+            if (store.id) fd.append('storeId', store.id);
+            onBook(fd);
+        } else {
+            // Storybook / test path: no booking backend wired, persist to sessionStorage for story inspection.
+            const payload = {
+                storeId: store.id,
+                storeName: store.name,
+                productId: selected?.id || formProductId || null,
+                productName: selected?.name || formProductName || null,
+                productReference: selected?.reference || formProductReference || null,
+                reason,
+                workType,
+                name,
+                email,
+                phone,
+                date,
+                time: timeLabel,
+                notes,
+            };
+            const key = `luxury-appointment:${payload.productId || 'browse'}:${store.id}`;
+            sessionStorage.setItem(key, JSON.stringify(payload));
+            setDone(true);
+        }
     };
 
     const confirmationStatusRef = useRef<HTMLParagraphElement>(null);
@@ -683,7 +893,7 @@ export default function BoutiqueAppointment({
                                     title={
                                         date ? formatReviewDate(date, i18n.language) : t('boutiquesPage.stepNavWhen')
                                     }
-                                    detail={time || undefined}
+                                    detail={timeLabel || undefined}
                                 />
                             </dl>
                         </section>
@@ -717,48 +927,68 @@ export default function BoutiqueAppointment({
             ) : null}
 
             {step === 'when' && store ? (
-                <fieldset className="mt-6 flex min-w-0 flex-col gap-5 p-0">
-                    <legend className="float-none mb-0 p-0 font-serif text-2xl">{t('boutiquesPage.stepWhen')}</legend>
-                    <div className="grid gap-8 lg:grid-cols-[minmax(26rem,36rem)_minmax(10rem,14rem)] lg:items-start">
-                        <MonthCalendar
-                            locale={i18n.language}
-                            minDate={minDate}
-                            selected={date}
-                            storeId={store.id ?? undefined}
-                            onSelect={(iso) => {
-                                setDate(iso);
-                                setTime('');
-                            }}
-                        />
-                        <div className="lg:border-l lg:border-border lg:pl-6">
-                            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                                {t('boutiquesPage.availableTimes')}
-                            </p>
-                            {!date ? (
-                                <p className="mt-4 text-sm text-muted-foreground">{t('boutiquesPage.pickDateFirst')}</p>
-                            ) : slots.length === 0 ? (
-                                <p className="mt-4 text-sm text-muted-foreground">
-                                    {t('boutiquesPage.noFilterMatches')}
-                                </p>
-                            ) : (
-                                <ul className="mt-4 flex flex-col gap-2">
-                                    {slots.map((slot) => (
-                                        <li key={slot}>
-                                            <Button
-                                                type="button"
-                                                variant={time === slot ? 'default' : 'outline'}
-                                                className="h-auto w-full py-3"
-                                                onClick={() => pickTime(slot)}
-                                                aria-pressed={time === slot}>
-                                                {slot}
-                                            </Button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
+                availabilityUnavailable ? (
+                    <div
+                        role="status"
+                        className="mt-6 rounded-lg border border-border p-6 text-sm text-muted-foreground">
+                        <p>{t('boutiquesPage.appointmentUnavailable')}</p>
+                        {store?.phone && <p className="mt-3 font-medium text-foreground">{store.phone}</p>}
                     </div>
-                </fieldset>
+                ) : isLoadingAvailability && !availableByDate ? (
+                    <div role="status" className="flex items-center justify-center py-12 text-sm text-muted-foreground">
+                        Loading availability…
+                    </div>
+                ) : (availableByDate && availableByDate.size > 0) || !isLoadingAvailability ? (
+                    <fieldset className="mt-6 flex min-w-0 flex-col gap-5 p-0">
+                        <legend className="float-none mb-0 p-0 font-serif text-2xl">
+                            {t('boutiquesPage.stepWhen')}
+                        </legend>
+                        <div className="grid gap-8 lg:grid-cols-[minmax(26rem,36rem)_minmax(10rem,14rem)] lg:items-start">
+                            <MonthCalendar
+                                locale={i18n.language}
+                                minDate={minDate}
+                                selected={date}
+                                hasSlots={(iso) =>
+                                    isLoadingAvailability ? false : (availableByDate?.get(iso)?.length ?? 0) > 0
+                                }
+                                onSelect={(iso) => {
+                                    setDate(iso);
+                                    setTime('');
+                                    setChosenSlot(null);
+                                }}
+                            />
+                            <div className="lg:border-l lg:border-border lg:pl-6">
+                                <p className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                                    {t('boutiquesPage.availableTimes')}
+                                </p>
+                                {!date ? (
+                                    <p className="mt-4 text-sm text-muted-foreground">
+                                        {t('boutiquesPage.pickDateFirst')}
+                                    </p>
+                                ) : daySlots.length === 0 ? (
+                                    <p className="mt-4 text-sm text-muted-foreground">
+                                        {t('boutiquesPage.noFilterMatches')}
+                                    </p>
+                                ) : (
+                                    <ul className="mt-4 flex flex-col gap-2">
+                                        {daySlots.map((s) => (
+                                            <li key={s.startTime}>
+                                                <Button
+                                                    type="button"
+                                                    variant={time === s.startTime ? 'default' : 'outline'}
+                                                    className="h-auto w-full py-3"
+                                                    onClick={() => pickTime(s.startTime)}
+                                                    aria-pressed={time === s.startTime}>
+                                                    {s.label}
+                                                </Button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+                    </fieldset>
+                ) : null
             ) : null}
 
             {step === 'review' && store ? (
@@ -784,7 +1014,7 @@ export default function BoutiqueAppointment({
                             />
                             <SummaryRow
                                 title={date ? formatReviewDate(date, i18n.language) : t('boutiquesPage.stepNavWhen')}
-                                detail={time || undefined}
+                                detail={timeLabel || undefined}
                                 onEdit={() => goTo('when')}
                             />
                         </div>
@@ -866,9 +1096,17 @@ export default function BoutiqueAppointment({
                                     {t('boutiquesPage.confirmNeedsTime')}
                                 </p>
                             ) : null}
+                            {bookingError ? (
+                                <p
+                                    role="alert"
+                                    data-testid="appointment-booking-error"
+                                    className="text-xs text-destructive">
+                                    {bookingError}
+                                </p>
+                            ) : null}
                             <Button
                                 type="submit"
-                                disabled={!date || !time}
+                                disabled={bookingSubmitting || !date || !time}
                                 aria-describedby={!date || !time ? 'appointment-confirm-hint' : undefined}>
                                 {t('boutiquesPage.submit')}
                             </Button>

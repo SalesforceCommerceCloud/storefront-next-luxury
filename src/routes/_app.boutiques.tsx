@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { ReactElement } from 'react';
-import type { LoaderFunctionArgs } from 'react-router';
+import { type ReactElement, useCallback } from 'react';
+import { useFetcher, type LoaderFunctionArgs } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import type { ShopperStores } from '@/scapi';
 import { SeoMeta } from '@/components/seo-meta';
@@ -25,6 +25,7 @@ import { fetchBoutiques } from '@/lib/stores.server';
 import { fetchCategories } from '@/lib/api/categories.server';
 import { fetchProductById } from '@/lib/api/products.server';
 import { toAppointmentPiece, type AppointmentPiece } from '@/lib/appointment';
+// getAppointmentProvider is used by resource.appointment-availability (lazy per-boutique fetch)
 import { boutiqueImagePath } from '../lib/boutiques';
 import { resolveStoreImageUrl } from '../lib/store-image';
 
@@ -35,9 +36,12 @@ export type BoutiquesPageData = {
     productName?: string;
     piece?: AppointmentPiece;
     catalog: AppointmentPiece[];
+    availability?: { startTime: string; endTime: string }[];
+    advanceNoticeMinutes: number;
 };
 
 export async function loader({ request, context }: LoaderFunctionArgs): Promise<BoutiquesPageData> {
+    const config = getConfig(context);
     const requestUrl = new URL(request.url);
     const requestedId = requestUrl.searchParams.get('product')?.trim() || undefined;
 
@@ -54,12 +58,17 @@ export async function loader({ request, context }: LoaderFunctionArgs): Promise<
 
     const piece = product ? toAppointmentPiece(product) : undefined;
 
+    // Availability is NOT pre-fetched at page load — no boutique is selected yet and there is no
+    // stable storeId to query. The boutique-appointment wizard fetches availability lazily via
+    // the `resource.appointment-availability` route once the shopper selects a boutique.
+    // Passing `undefined` here signals the component to use demo slots as a fallback.
+    const availability: { startTime: string; endTime: string }[] | undefined = undefined;
+
     // Boutique facades are provisioned in the storefront catalog static (same repo as category images),
     // and SCAPI returns the store's `image` as a catalog-relative path. Resolve it to a DIS URL by
     // borrowing the version prefix from any category image — dropping the version segment so DIS serves
     // the current one. No-op (store keeps its original image) when nothing is resolvable, so the tiles
     // degrade to text exactly as before until the boutique `<image>` values are imported.
-    const config = getConfig(context);
     const templateUrl = categories
         .map((category) => category.image)
         .find((url): url is string => typeof url === 'string' && url.length > 0);
@@ -75,11 +84,22 @@ export async function loader({ request, context }: LoaderFunctionArgs): Promise<
         productName: piece?.name,
         piece,
         catalog: [],
+        availability,
+        advanceNoticeMinutes: config.features.appointment?.advanceNoticeMinutes ?? 120,
     };
 }
 
 export default function BoutiquesPage({ loaderData }: { loaderData: BoutiquesPageData }): ReactElement {
     const { t } = useTranslation('watch');
+
+    const bookingFetcher = useFetcher<{ success: boolean; serviceAppointmentId?: string; error?: string }>();
+
+    const onBook = useCallback(
+        (formData: FormData) => {
+            void bookingFetcher.submit(formData, { method: 'POST', action: '/resource/appointment-book' });
+        },
+        [bookingFetcher]
+    );
 
     return (
         <div className="flex h-full min-h-0 w-full flex-1 flex-col">
@@ -95,6 +115,11 @@ export default function BoutiquesPage({ loaderData }: { loaderData: BoutiquesPag
                 productName={loaderData.productName}
                 piece={loaderData.piece}
                 catalog={loaderData.catalog}
+                availability={loaderData.availability}
+                advanceNoticeMinutes={loaderData.advanceNoticeMinutes}
+                onBook={onBook}
+                bookingSubmitting={bookingFetcher.state !== 'idle'}
+                bookingResult={bookingFetcher.data}
             />
         </div>
     );

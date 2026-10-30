@@ -131,8 +131,32 @@ export const Browse: Story = {
 // controls are gone. `snapshot: false` keeps this out of the snapshot suite — composeStories
 // renders the initial (location) step, so a snapshot here would add no value; the booking
 // flow is instead exercised by the interaction + a11y runs.
+// Always-future availability: 14 days from now so slots clear the advance-notice filter.
+const futureDate = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+const slotDay = new Date(futureDate.getFullYear(), futureDate.getMonth(), futureDate.getDate());
+const mockSlots = [
+    {
+        startTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 10, 0).toISOString(),
+        endTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 10, 30).toISOString(),
+    },
+    {
+        startTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 14, 0).toISOString(),
+        endTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 14, 30).toISOString(),
+    },
+];
+
 export const Confirmed: Story = {
-    parameters: { snapshot: false },
+    parameters: {
+        snapshot: false,
+        mockRoutes: [
+            {
+                path: '/resource/appointment-availability',
+                // No timezone — component falls back to browser/runner local time,
+                // which matches how the local-time slot constructors above build the times.
+                loader: () => ({ success: true, slots: mockSlots }),
+            },
+        ],
+    },
     args: {
         stores: mockStores,
         piece: mockPiece,
@@ -147,7 +171,8 @@ export const Confirmed: Story = {
         // 1. Location -> 2. Service -> 3. Time -> 4. Review -> submit.
         await userEvent.click(await canvas.findByRole('button', { name: /geneva boutique/i }));
         await userEvent.click(await canvas.findByRole('button', { name: /see a timepiece/i }));
-        if (canvas.queryAllByTestId('appointment-day').length === 0) {
+        // Navigate forward until the enabled slot day appears (slots are 14 days out, up to 2 months ahead).
+        for (let i = 0; i < 3 && canvas.queryAllByTestId('appointment-day').length === 0; i++) {
             await userEvent.click(canvas.getByRole('button', { name: /next month/i }));
         }
         await userEvent.click((await canvas.findAllByTestId('appointment-day'))[0]);

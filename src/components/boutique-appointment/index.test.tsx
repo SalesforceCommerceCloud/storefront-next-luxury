@@ -15,11 +15,26 @@
  */
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import React, { useCallback, useState } from 'react';
 import type { ShopperStores } from '@/scapi';
 import type { AppointmentPiece } from '@/lib/appointment';
 import BoutiqueAppointment from './index';
 import { AllProvidersWrapper } from '@/test-utils/context-provider';
+
+// useFetcher requires a data router context which is absent in unit tests.
+// `mockUseFetcher` is a vi.fn() so individual tests can override the return value.
+// The default (set in beforeEach) simulates an idle fetcher that has never loaded —
+// tests drive availability via the `availability` prop (the prop-fallback path).
+const mockUseFetcher = vi.hoisted(() => vi.fn());
+
+vi.mock('react-router', async (importOriginal) => {
+    const actual = await importOriginal<typeof import('react-router')>();
+    return {
+        ...actual,
+        useFetcher: mockUseFetcher,
+    };
+});
 
 const mockStores: ShopperStores.schemas['Store'][] = [
     {
@@ -69,6 +84,32 @@ const mockStores: ShopperStores.schemas['Store'][] = [
     },
 ];
 
+// Always-future availability: 14 days from now at fixed local hours so the slots
+// always clear the 120-minute advance-notice filter regardless of when the tests run.
+// slotDateKey and slotTimeLabel use local time, so constructing with explicit hour
+// components keeps assertions timezone-safe.
+const futureDate = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+const slotDay = new Date(futureDate.getFullYear(), futureDate.getMonth(), futureDate.getDate());
+const mockAvailability = [
+    {
+        startTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 10, 0, 0, 0).toISOString(),
+        endTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 10, 30, 0, 0).toISOString(),
+    },
+    {
+        startTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 12, 0, 0, 0).toISOString(),
+        endTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 12, 30, 0, 0).toISOString(),
+    },
+    {
+        startTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 14, 0, 0, 0).toISOString(),
+        endTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 14, 30, 0, 0).toISOString(),
+    },
+    {
+        startTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 16, 0, 0, 0).toISOString(),
+        endTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 16, 30, 0, 0).toISOString(),
+    },
+];
+const slotDayIso = `${slotDay.getFullYear()}-${String(slotDay.getMonth() + 1).padStart(2, '0')}-${String(slotDay.getDate()).padStart(2, '0')}`;
+
 const mockCatalog: AppointmentPiece[] = [
     {
         id: 'ln-heritage-001',
@@ -86,15 +127,42 @@ const mockCatalog: AppointmentPiece[] = [
     },
 ];
 
-function renderAppointment(productId?: string) {
+/**
+ * Controlled wrapper that simulates the page's useFetcher bookingResult state in tests.
+ * When `initialBookingResult` is provided, calling `onBook` immediately sets `bookingResult`
+ * to that value (synchronously in state, triggering the component's useEffect).
+ */
+function ControlledAppointment({
+    onBookSpy,
+    initialBookingResult,
+    ...props
+}: React.ComponentProps<typeof BoutiqueAppointment> & {
+    onBookSpy?: (formData: FormData) => void;
+    initialBookingResult?: { success: boolean; serviceAppointmentId?: string; error?: string };
+}) {
+    const [bookingResult, setBookingResult] = useState<
+        { success: boolean; serviceAppointmentId?: string; error?: string } | undefined
+    >(undefined);
+    const onBook = useCallback(
+        (fd: FormData) => {
+            onBookSpy?.(fd);
+            if (initialBookingResult !== undefined) setBookingResult(initialBookingResult);
+        },
+        [onBookSpy, initialBookingResult]
+    );
+    return <BoutiqueAppointment {...props} onBook={onBook} bookingResult={bookingResult} />;
+}
+
+function renderAppointment(productId?: string, availability = mockAvailability) {
     const piece = productId ? mockCatalog.find((p) => p.id === productId) : null;
     return render(
         <AllProvidersWrapper>
-            <BoutiqueAppointment
+            <ControlledAppointment
                 stores={mockStores}
-                productId={productId}
-                piece={piece ?? null}
                 catalog={mockCatalog}
+                availability={availability}
+                initialBookingResult={{ success: true, serviceAppointmentId: 'SA-test' }}
+                {...(productId ? { productId, piece: piece ?? null } : {})}
             />
         </AllProvidersWrapper>
     );
@@ -105,10 +173,13 @@ async function pickGeneva(user: ReturnType<typeof userEvent.setup>) {
 }
 
 async function pickFirstSlot(user: ReturnType<typeof userEvent.setup>) {
-    if (screen.queryAllByTestId('appointment-day').length === 0) {
+    // Slots are always 14 days out (slotDayIso). Navigate forward until the enabled day appears.
+    for (let i = 0; i < 3 && screen.queryAllByTestId('appointment-day').length === 0; i++) {
         await user.click(screen.getByRole('button', { name: /next month/i }));
     }
-    await user.click(screen.getAllByTestId('appointment-day')[0]);
+    const availableDays = screen.getAllByTestId('appointment-day');
+    const dayButton = availableDays.find((btn) => btn.getAttribute('data-date') === slotDayIso);
+    await user.click(dayButton ?? availableDays[0]);
     await user.click(screen.getByRole('button', { name: '10:00' }));
 }
 
@@ -119,6 +190,15 @@ async function advanceToReview(user: ReturnType<typeof userEvent.setup>) {
 }
 
 describe('BoutiqueAppointment', () => {
+    beforeEach(() => {
+        // Default: idle fetcher that has never run — availability is driven by the `availability` prop.
+        mockUseFetcher.mockReturnValue({
+            load: vi.fn(),
+            state: 'idle' as const,
+            data: undefined,
+        });
+    });
+
     test('starts on location with the map and boutique list', () => {
         renderAppointment('ln-heritage-001');
         const directory = screen.getByTestId('boutique-directory');
@@ -167,22 +247,32 @@ describe('BoutiqueAppointment', () => {
 
     test('stores the named piece with the appointment request', async () => {
         const user = userEvent.setup();
-        renderAppointment('ln-heritage-001');
+        const onBook = vi.fn();
+        render(
+            <AllProvidersWrapper>
+                <ControlledAppointment
+                    stores={mockStores}
+                    catalog={mockCatalog}
+                    availability={mockAvailability}
+                    productId="ln-heritage-001"
+                    piece={mockCatalog.find((p) => p.id === 'ln-heritage-001') ?? null}
+                    onBookSpy={onBook}
+                    initialBookingResult={{ success: true, serviceAppointmentId: 'SA-test' }}
+                />
+            </AllProvidersWrapper>
+        );
         await advanceToReview(user);
         await user.type(screen.getByLabelText(/^name$/i), 'Ada Lovelace');
         await user.type(screen.getByLabelText(/^email$/i), 'ada@example.com');
         await user.click(screen.getByRole('button', { name: /request appointment/i }));
         expect(screen.getByTestId('appointment-success')).toHaveTextContent(/the classic automatic/i);
-        const stored = JSON.parse(
-            sessionStorage.getItem('luxury-appointment:ln-heritage-001:ln-boutique-geneva') ?? '{}'
-        ) as Record<string, string>;
-        expect(stored.productId).toBe('ln-heritage-001');
-        expect(stored.productName).toBe('The Classic Automatic');
-        expect(stored.productReference).toBe('LN-HER-001-SS-LB-BK');
-        expect(stored.reason).toBe('view');
-        expect(stored.workType).toBe('private');
-        expect(stored.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-        expect(stored.time).toBe('10:00');
+        // Verify the piece and slot details are forwarded to the booking callback via FormData.
+        expect(onBook).toHaveBeenCalledWith(expect.any(FormData));
+        const formData = onBook.mock.calls[0][0] as FormData;
+        expect(formData.get('schedStartTime')).toBe(mockAvailability[0].startTime);
+        expect(formData.get('schedEndTime')).toBe(mockAvailability[0].endTime);
+        expect(formData.get('email')).toBe('ada@example.com');
+        expect(String(formData.get('subject'))).toContain('The Classic Automatic');
     });
 
     test('choose a time shows a month calendar and a list of times', async () => {
@@ -195,7 +285,9 @@ describe('BoutiqueAppointment', () => {
         if (screen.queryAllByTestId('appointment-day').length === 0) {
             await user.click(screen.getByRole('button', { name: /next month/i }));
         }
-        await user.click(screen.getAllByTestId('appointment-day')[0]);
+        const days = screen.getAllByTestId('appointment-day');
+        const dayButton = days.find((btn) => btn.getAttribute('data-date') === slotDayIso);
+        await user.click(dayButton ?? days[0]);
         expect(screen.getByRole('button', { name: '10:00' })).toBeInTheDocument();
         expect(screen.queryByText(/choose a date to see times/i)).not.toBeInTheDocument();
     });
@@ -259,5 +351,184 @@ describe('BoutiqueAppointment', () => {
         // The 1-4 step controls are gone and the details are read-only (no Edit).
         expect(screen.queryByTestId('appointment-stepper')).not.toBeInTheDocument();
         expect(within(summary).queryByRole('button', { name: /edit/i })).not.toBeInTheDocument();
+    });
+
+    test('real availability slots render as calendar days and time buttons', async () => {
+        const user = userEvent.setup();
+        // Near-future weekday: pick a date 5 days from now (likely to be a weekday).
+        const now = new Date();
+        const target = new Date(now);
+        target.setDate(target.getDate() + 5);
+        const startTime1 = new Date(target);
+        startTime1.setHours(10, 0, 0, 0);
+        const endTime1 = new Date(startTime1);
+        endTime1.setHours(10, 30, 0, 0);
+        const startTime2 = new Date(target);
+        startTime2.setHours(14, 0, 0, 0);
+        const endTime2 = new Date(startTime2);
+        endTime2.setHours(14, 30, 0, 0);
+
+        render(
+            <AllProvidersWrapper>
+                <BoutiqueAppointment
+                    stores={mockStores}
+                    catalog={mockCatalog}
+                    availability={[
+                        { startTime: startTime1.toISOString(), endTime: endTime1.toISOString() },
+                        { startTime: startTime2.toISOString(), endTime: endTime2.toISOString() },
+                    ]}
+                />
+            </AllProvidersWrapper>
+        );
+
+        await pickGeneva(user);
+        await user.click(screen.getByRole('button', { name: /see a timepiece/i }));
+
+        // The target date may be in the next calendar month; navigate if no days are visible yet.
+        if (screen.queryAllByTestId('appointment-day').length === 0) {
+            await user.click(screen.getByRole('button', { name: /next month/i }));
+        }
+
+        // The target date should be clickable (has slots).
+        const targetDateKey = `${target.getFullYear()}-${String(target.getMonth() + 1).padStart(2, '0')}-${String(target.getDate()).padStart(2, '0')}`;
+        const availableDays = screen.getAllByTestId('appointment-day');
+        const dayButton = availableDays.find((btn) => btn.getAttribute('data-date') === targetDateKey);
+        expect(dayButton).toBeDefined();
+        expect(dayButton).toBeEnabled();
+
+        if (dayButton) await user.click(dayButton);
+
+        // The derived time labels should appear as buttons.
+        expect(screen.getByRole('button', { name: '10:00' })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: '14:00' })).toBeInTheDocument();
+    });
+
+    test('onBook callback is called with ISO slot bounds and email on submit', async () => {
+        const user = userEvent.setup();
+        const onBook = vi.fn();
+
+        const now = new Date();
+        const target = new Date(now);
+        target.setDate(target.getDate() + 5);
+        const startTime = new Date(target);
+        startTime.setHours(10, 0, 0, 0);
+        const endTime = new Date(startTime);
+        endTime.setHours(10, 30, 0, 0);
+
+        render(
+            <AllProvidersWrapper>
+                <ControlledAppointment
+                    stores={mockStores}
+                    catalog={mockCatalog}
+                    availability={[{ startTime: startTime.toISOString(), endTime: endTime.toISOString() }]}
+                    onBookSpy={onBook}
+                    initialBookingResult={{ success: true, serviceAppointmentId: 'SA-test' }}
+                />
+            </AllProvidersWrapper>
+        );
+
+        await pickGeneva(user);
+        await user.click(screen.getByRole('button', { name: /see a timepiece/i }));
+
+        // The target date may be in the next calendar month; navigate if no days are visible yet.
+        if (screen.queryAllByTestId('appointment-day').length === 0) {
+            await user.click(screen.getByRole('button', { name: /next month/i }));
+        }
+
+        const targetDateKey = `${target.getFullYear()}-${String(target.getMonth() + 1).padStart(2, '0')}-${String(target.getDate()).padStart(2, '0')}`;
+        const availableDays = screen.getAllByTestId('appointment-day');
+        const dayButton = availableDays.find((btn) => btn.getAttribute('data-date') === targetDateKey);
+        if (dayButton) await user.click(dayButton);
+        await user.click(screen.getByRole('button', { name: '10:00' }));
+
+        await user.type(screen.getByLabelText(/^name$/i), 'Ada Lovelace');
+        await user.type(screen.getByLabelText(/^email$/i), 'ada@example.com');
+        await user.click(screen.getByRole('button', { name: /request appointment/i }));
+
+        // onBook is called with FormData; verify the booking-critical fields.
+        expect(onBook).toHaveBeenCalledWith(expect.any(FormData));
+        const formData = onBook.mock.calls[0][0] as FormData;
+        expect(formData.get('schedStartTime')).toBe(startTime.toISOString());
+        expect(formData.get('schedEndTime')).toBe(endTime.toISOString());
+        expect(formData.get('email')).toBe('ada@example.com');
+        // Service name is 'See a timepiece' for the 'view' service id
+        expect(String(formData.get('subject'))).toContain('See a timepiece');
+
+        expect(screen.getByTestId('appointment-success')).toBeInTheDocument();
+    });
+
+    test('shows unavailable message when availability fetch returns success:false', async () => {
+        // Simulate the server responding with feature-flag off (or any error path that sets
+        // success:false). The component renders the "boutiquesPage.appointmentUnavailable" notice
+        // and the boutique phone number instead of the calendar.
+        mockUseFetcher.mockReturnValue({
+            load: vi.fn(),
+            state: 'idle' as const,
+            data: { success: false, error: 'Appointment booking is not enabled' },
+        });
+
+        const user = userEvent.setup();
+        renderAppointment();
+
+        // Navigate to the 'when' step: pick a boutique then pick a service.
+        await pickGeneva(user);
+        await user.click(screen.getByRole('button', { name: /see a timepiece/i }));
+
+        // The unavailable notice should appear.
+        expect(screen.getByText(/currently unavailable/i)).toBeInTheDocument();
+
+        // The boutique phone number should appear so the shopper can call directly.
+        // The phone renders in both the side-panel (StoreStill) and the notice; assert at least one.
+        expect(screen.getAllByText('+41 22 000 00 00').length).toBeGreaterThan(0);
+
+        // The calendar (day-picker buttons) must NOT be rendered.
+        expect(screen.queryAllByTestId('appointment-day')).toHaveLength(0);
+    });
+
+    test('onBook error renders the booking error message', async () => {
+        const user = userEvent.setup();
+
+        const now = new Date();
+        const target = new Date(now);
+        target.setDate(target.getDate() + 5);
+        const startTime = new Date(target);
+        startTime.setHours(10, 0, 0, 0);
+        const endTime = new Date(startTime);
+        endTime.setHours(10, 30, 0, 0);
+
+        render(
+            <AllProvidersWrapper>
+                <ControlledAppointment
+                    stores={mockStores}
+                    catalog={mockCatalog}
+                    availability={[{ startTime: startTime.toISOString(), endTime: endTime.toISOString() }]}
+                    initialBookingResult={{ success: false, error: 'Appointment slot no longer available' }}
+                />
+            </AllProvidersWrapper>
+        );
+
+        await pickGeneva(user);
+        await user.click(screen.getByRole('button', { name: /see a timepiece/i }));
+
+        // The target date may be in the next calendar month; navigate if no days are visible yet.
+        if (screen.queryAllByTestId('appointment-day').length === 0) {
+            await user.click(screen.getByRole('button', { name: /next month/i }));
+        }
+
+        const targetDateKey = `${target.getFullYear()}-${String(target.getMonth() + 1).padStart(2, '0')}-${String(target.getDate()).padStart(2, '0')}`;
+        const availableDays = screen.getAllByTestId('appointment-day');
+        const dayButton = availableDays.find((btn) => btn.getAttribute('data-date') === targetDateKey);
+        if (dayButton) await user.click(dayButton);
+        await user.click(screen.getByRole('button', { name: '10:00' }));
+
+        await user.type(screen.getByLabelText(/^name$/i), 'Ada Lovelace');
+        await user.type(screen.getByLabelText(/^email$/i), 'ada@example.com');
+        await user.click(screen.getByRole('button', { name: /request appointment/i }));
+
+        const errorMessage = screen.getByTestId('appointment-booking-error');
+        expect(errorMessage).toBeInTheDocument();
+        expect(errorMessage).toHaveTextContent('Appointment slot no longer available');
+
+        expect(screen.queryByTestId('appointment-success')).not.toBeInTheDocument();
     });
 });

@@ -15,12 +15,22 @@
  */
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { MemoryRouter } from 'react-router';
 import type { ShopperStores } from '@/scapi';
 import BoutiqueLocator from './index';
 import { AllProvidersWrapper } from '@/test-utils/context-provider';
 import { createMockLuxuryWatch, createMockAppointmentPiece } from '../../test-support/mock-watch';
+
+const mockUseFetcher = vi.hoisted(() => vi.fn());
+
+vi.mock('react-router', async (importOriginal) => {
+    const actual = await importOriginal<typeof import('react-router')>();
+    return {
+        ...actual,
+        useFetcher: mockUseFetcher,
+    };
+});
 
 const mockStores: ShopperStores.schemas['Store'][] = [
     {
@@ -74,6 +84,24 @@ const mockWatch = createMockLuxuryWatch();
 const mockPiece = createMockAppointmentPiece(mockWatch);
 const mockCatalog = [mockPiece];
 
+const futureDate = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+const slotDay = new Date(futureDate.getFullYear(), futureDate.getMonth(), futureDate.getDate());
+const slotDayIso = `${slotDay.getFullYear()}-${String(slotDay.getMonth() + 1).padStart(2, '0')}-${String(slotDay.getDate()).padStart(2, '0')}`;
+const mockAvailability = [
+    {
+        startTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 10, 0, 0, 0).toISOString(),
+        endTime: new Date(slotDay.getFullYear(), slotDay.getMonth(), slotDay.getDate(), 10, 30, 0, 0).toISOString(),
+    },
+];
+
+beforeEach(() => {
+    mockUseFetcher.mockReturnValue({
+        load: vi.fn(),
+        state: 'idle' as const,
+        data: undefined,
+    });
+});
+
 function renderLocator(productName?: string) {
     return render(
         <MemoryRouter>
@@ -84,6 +112,7 @@ function renderLocator(productName?: string) {
                     productName={productName}
                     piece={productName ? mockPiece : undefined}
                     catalog={mockCatalog}
+                    availability={mockAvailability}
                 />
             </AllProvidersWrapper>
         </MemoryRouter>
@@ -91,10 +120,12 @@ function renderLocator(productName?: string) {
 }
 
 async function pickFirstSlot(user: ReturnType<typeof userEvent.setup>) {
-    if (screen.queryAllByTestId('appointment-day').length === 0) {
+    for (let i = 0; i < 3 && screen.queryAllByTestId('appointment-day').length === 0; i++) {
         await user.click(screen.getByRole('button', { name: /next month/i }));
     }
-    await user.click(screen.getAllByTestId('appointment-day')[0]);
+    const availableDays = screen.getAllByTestId('appointment-day');
+    const dayButton = availableDays.find((btn) => btn.getAttribute('data-date') === slotDayIso);
+    await user.click(dayButton ?? availableDays[0]);
     await user.click(screen.getByRole('button', { name: '10:00' }));
 }
 

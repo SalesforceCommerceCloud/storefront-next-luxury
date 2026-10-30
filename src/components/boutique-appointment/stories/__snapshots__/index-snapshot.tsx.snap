@@ -312,6 +312,16 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
             >
               Geneva Boutique
             </p>
+            <p
+              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
+            >
+              Tue–Sat 10:00–18:00
+            </p>
+            <p
+              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground"
+            >
+              +41 22 000 00 00
+            </p>
           </div>
           <p
             class="pointer-events-none absolute bottom-2 left-2 text-[0.625rem] text-muted-foreground"
@@ -990,6 +1000,16 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
             >
               Geneva Boutique
+            </p>
+            <p
+              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
+            >
+              Tue–Sat 10:00–18:00
+            </p>
+            <p
+              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground"
+            >
+              +41 22 000 00 00
             </p>
           </div>
           <p

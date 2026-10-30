@@ -19,9 +19,19 @@ import { composeStories } from '@storybook/react-vite';
 import * as Stories from './index.stories';
 import { render, cleanup } from '@testing-library/react';
 
+// useFetcher requires a data router context which is absent in snapshot tests.
+// Mock it with an idle fetcher so the component renders without errors; availability
+// is driven by the `availability` prop (the prop-fallback path).
+const mockUseFetcher = vi.hoisted(() => vi.fn());
+vi.mock('react-router', async (importOriginal) => {
+    const actual = await importOriginal<typeof import('react-router')>();
+    return { ...actual, useFetcher: mockUseFetcher };
+});
+
 const composed = composeStories(Stories);
 
 beforeAll(() => {
+    mockUseFetcher.mockReturnValue({ load: vi.fn(), state: 'idle' as const, data: undefined });
     vi.useFakeTimers();
     vi.setSystemTime(new Date('2026-09-15T12:00:00.000Z'));
 });

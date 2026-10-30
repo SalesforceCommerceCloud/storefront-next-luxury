@@ -24,6 +24,11 @@ type BoutiqueLocatorProps = {
     productName?: string;
     piece?: AppointmentPiece | null;
     catalog?: AppointmentPiece[];
+    availability?: { startTime: string; endTime: string }[];
+    advanceNoticeMinutes?: number;
+    onBook?: (formData: FormData) => void;
+    bookingSubmitting?: boolean;
+    bookingResult?: { success: boolean; serviceAppointmentId?: string; error?: string };
 };
 
 export default function BoutiqueLocator({
@@ -32,6 +37,11 @@ export default function BoutiqueLocator({
     productName,
     piece,
     catalog,
+    availability,
+    advanceNoticeMinutes,
+    onBook,
+    bookingSubmitting,
+    bookingResult,
 }: BoutiqueLocatorProps): ReactElement {
     return (
         <div
@@ -44,6 +54,11 @@ export default function BoutiqueLocator({
                 productName={productName}
                 piece={piece}
                 catalog={catalog}
+                availability={availability}
+                advanceNoticeMinutes={advanceNoticeMinutes}
+                onBook={onBook}
+                bookingSubmitting={bookingSubmitting}
+                bookingResult={bookingResult}
             />
         </div>
     );

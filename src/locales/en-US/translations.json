@@ -2474,6 +2474,7 @@
             "notes": "Notes",
             "submit": "Request appointment",
             "confirmNeedsTime": "Select a date and time to confirm.",
+            "bookingError": "Something went wrong booking your appointment. Please try again.",
             "success": "Your request for {{salon}} is with our advisors. We will confirm shortly.",
             "successProduct": "Advisors will prepare {{product}}.",
             "filterCountry": "Country",
@@ -2523,7 +2524,8 @@
             "workConsultation": "Consultation",
             "workConsultationHint": "Talk through the collection without a reserved piece.",
             "workService": "Servicing drop-off",
-            "workServiceHint": "Leave a watch with the boutique."
+            "workServiceHint": "Leave a watch with the boutique.",
+            "appointmentUnavailable": "Online appointment booking is currently unavailable. Please contact the boutique directly by phone."
         },
         "collectionsPage": {
             "title": "Collections"

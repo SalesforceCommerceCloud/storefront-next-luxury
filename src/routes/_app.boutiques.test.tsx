@@ -94,7 +94,10 @@ vi.mock('@/lib/api/categories.server', () => ({
 // getConfig reads from the request context store; the loader tests use a bare context, so stub it.
 vi.mock('@salesforce/storefront-next-runtime/config', async (importOriginal) => ({
     ...(await importOriginal<typeof import('@salesforce/storefront-next-runtime/config')>()),
-    getConfig: vi.fn(() => ({ images: { host: 'https://edge.disstg.commercecloud.salesforce.com' } })),
+    getConfig: vi.fn(() => ({
+        images: { host: 'https://edge.disstg.commercecloud.salesforce.com' },
+        features: { appointment: { enabled: false, provider: 'scapi' as const, advanceNoticeMinutes: 120 } },
+    })),
 }));
 
 vi.mock('@/lib/api/search.server', () => ({
@@ -142,7 +145,12 @@ describe('BoutiquesPage', () => {
             <MemoryRouter>
                 <AllProvidersWrapper>
                     <BoutiquesPage
-                        loaderData={{ pageUrl: 'http://localhost/boutiques', stores: mockStores, catalog: [] }}
+                        loaderData={{
+                            pageUrl: 'http://localhost/boutiques',
+                            stores: mockStores,
+                            catalog: [],
+                            advanceNoticeMinutes: 120,
+                        }}
                     />
                 </AllProvidersWrapper>
             </MemoryRouter>

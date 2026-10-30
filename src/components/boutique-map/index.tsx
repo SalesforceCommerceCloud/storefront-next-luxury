@@ -140,9 +140,21 @@ export default function BoutiqueMap({ stores, selectedId, hideLabel = false }: B
                     <circle className="fill-primary" cx="16" cy="14" r="5.5" />
                 </svg>
                 {hideLabel ? null : (
-                    <p className="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground">
-                        {selected.name}
-                    </p>
+                    <>
+                        <p className="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground">
+                            {selected.name}
+                        </p>
+                        {selected.storeHours ? (
+                            <p className="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground">
+                                {selected.storeHours}
+                            </p>
+                        ) : null}
+                        {selected.phone ? (
+                            <p className="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground">
+                                {selected.phone}
+                            </p>
+                        ) : null}
+                    </>
                 )}
             </div>
             <p className="pointer-events-none absolute bottom-2 left-2 text-[0.625rem] text-muted-foreground">
