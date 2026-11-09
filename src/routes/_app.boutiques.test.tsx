@@ -80,6 +80,23 @@ const mockFetchProductById = vi.hoisted(() =>
     })
 );
 
+vi.mock('@/middlewares/auth.server', () => ({
+    getAuth: vi.fn(() => ({ userType: 'registered', customerId: 'test-customer-id' })),
+}));
+
+vi.mock('@/lib/logger.server', () => ({
+    getLogger: vi.fn(() => ({ warn: vi.fn(), info: vi.fn(), error: vi.fn() })),
+}));
+
+vi.mock('@/lib/url.server', () => ({
+    buildUrlFromContext: vi.fn(() => '/login'),
+}));
+
+vi.mock('@/route-paths', () => ({
+    routes: { login: '/login' },
+    resourceRoutes: {},
+}));
+
 vi.mock('@/lib/stores.server', () => ({
     fetchBoutiques: vi.fn(() => Promise.resolve([])),
 }));
@@ -126,7 +143,7 @@ vi.mock('react-router', async (importOriginal) => {
 });
 
 describe('BoutiquesPage', () => {
-    test('renders the full-page locator with a map', () => {
+    test('renders the full-page locator with a map for authenticated shoppers', () => {
         const mockStores = [
             {
                 id: 'ln-boutique-geneva',
@@ -160,6 +177,20 @@ describe('BoutiquesPage', () => {
         expect(screen.getByTestId('boutique-directory')).toBeInTheDocument();
         expect(screen.getByTestId('boutique-map')).toBeInTheDocument();
         expect(screen.getByTestId('boutique-appointment')).toBeInTheDocument();
+    });
+
+    test('loader throws a redirect for guest shoppers', async () => {
+        const { getAuth } = await import('@/middlewares/auth.server');
+        vi.mocked(getAuth).mockReturnValueOnce({ userType: 'guest', customerId: undefined } as never);
+        await expect(
+            loader({
+                request: new Request('http://localhost/global/en-US/boutiques'),
+                url: new URL('http://localhost/global/en-US/boutiques'),
+                params: {},
+                context: {} as never,
+                pattern: '/boutiques',
+            })
+        ).rejects.toMatchObject({ status: 302 });
     });
 
     test('loader returns a canonical page URL and optional product', async () => {

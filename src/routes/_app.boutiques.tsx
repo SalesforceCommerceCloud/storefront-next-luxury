@@ -14,17 +14,21 @@
  * limitations under the License.
  */
 import { type ReactElement, useCallback } from 'react';
-import { useFetcher, type LoaderFunctionArgs } from 'react-router';
+import { redirect, useFetcher, type LoaderFunctionArgs } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import type { ShopperStores } from '@/scapi';
 import { SeoMeta } from '@/components/seo-meta';
 import { buildCanonicalUrl } from '@/utils/canonical-url';
 import { getConfig } from '@salesforce/storefront-next-runtime/config';
 import BoutiqueLocator from '@/components/boutique-locator';
+import { getLogger } from '@/lib/logger.server';
 import { fetchBoutiques } from '@/lib/stores.server';
 import { fetchCategories } from '@/lib/api/categories.server';
 import { fetchProductById } from '@/lib/api/products.server';
 import { toAppointmentPiece, type AppointmentPiece } from '@/lib/appointment';
+import { getAuth as getAuthServer } from '@/middlewares/auth.server';
+import { buildUrlFromContext } from '@/lib/url.server';
+import { routes } from '@/route-paths';
 // getAppointmentProvider is used by resource.appointment-availability (lazy per-boutique fetch)
 import { boutiqueImagePath } from '../lib/boutiques';
 import { resolveStoreImageUrl } from '../lib/store-image';
@@ -42,6 +46,15 @@ export type BoutiquesPageData = {
 
 export async function loader({ request, context }: LoaderFunctionArgs): Promise<BoutiquesPageData> {
     const config = getConfig(context);
+    const logger = getLogger(context);
+    const session = getAuthServer(context);
+    if (session.userType !== 'registered' || !session.customerId) {
+        logger.warn('Boutiques: unauthenticated access denied, redirecting to login');
+        const returnPath = new URL(request.url).pathname + new URL(request.url).search;
+        const loginUrl = new URL(buildUrlFromContext(routes.login, context), request.url);
+        loginUrl.searchParams.set('returnUrl', returnPath);
+        throw redirect(loginUrl.toString());
+    }
     const requestUrl = new URL(request.url);
     const requestedId = requestUrl.searchParams.get('product')?.trim() || undefined;
 
