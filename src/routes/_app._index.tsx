@@ -38,6 +38,7 @@ import { getLogger } from '@/lib/logger.server';
 import hero01 from '/images/hero-01.webp';
 import hero02 from '/images/hero-02.webp';
 import hero03 from '/images/hero-03.webp';
+import finderBand from '/images/finder-band.webp';
 import HeroCarousel, { type HeroSlide } from '@/components/hero-carousel';
 import HomeParallax from '@/components/home-parallax';
 import { ProductCarouselSkeleton } from '@/components/product-carousel';
@@ -344,8 +345,9 @@ export default function HomePage({ loaderData }: { loaderData: HomePageData }) {
                     data-slot="luxury-finder-band"
                     className="relative overflow-hidden bg-primary text-primary-foreground">
                     <img
-                        src="/images/finder-band.webp"
+                        src={finderBand}
                         alt=""
+                        loading="lazy"
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-primary/75" />

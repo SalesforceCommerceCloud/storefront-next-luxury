@@ -290,6 +290,13 @@ describe('HomePage', () => {
             expect(screen.getByText('Geneva, 1964')).toBeInTheDocument();
         });
 
+        test('defers loading the below-the-fold finder image', async () => {
+            const { container } = renderComponent();
+            await screen.findByTestId('collection-grid');
+            const image = container.querySelector('[data-slot="luxury-finder-band"] img');
+            expect(image).toHaveAttribute('loading', 'lazy');
+        });
+
         test('renders the hero scene (carousel + featured) and collections as static content', async () => {
             renderComponent();
             // The hero carousel is static JSX — not gated on a Page Designer region.

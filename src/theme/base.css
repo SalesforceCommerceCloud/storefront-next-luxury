@@ -174,7 +174,7 @@ footer img.h-4 {
          * sit under the carbon header. When conceal-on-scroll translates the
          * bar away, the still is already there — no paper strip at the top.
          */
-        margin-top: calc(-1 * var(--header-height, 72px));
+        margin-top: calc(-1 * var(--luxury-home-header-height));
     }
 
     /*
@@ -185,7 +185,7 @@ footer img.h-4 {
      * still's in-flow height so the hero is not twice as tall.
      */
     [data-slot='luxury-home-scene'] {
-        --luxury-hero-height: calc(100dvh - var(--header-height, 72px));
+        --luxury-hero-height: calc(100dvh - var(--luxury-home-header-height));
         position: relative;
     }
 
@@ -217,7 +217,7 @@ footer img.h-4 {
     [data-slot='luxury-home-hero'] [data-slot='hero-carousel'] {
         position: relative;
         z-index: 1;
-        margin-top: var(--header-height, 72px);
+        margin-top: var(--luxury-home-header-height);
         height: var(--luxury-hero-height) !important;
         min-height: 32rem;
         background: transparent;
@@ -342,7 +342,10 @@ main:not([data-layout='empty']):has([data-slot='luxury-pdp']) {
 
 /* Home sits flush under the carbon bar — no extra 2rem. */
 main:not([data-layout='empty']):has([data-slot='luxury-home-hero']) {
-    padding-top: var(--header-height, 120px);
+    /* Mobile chrome: 36px controls + 24px padding + 1px border. */
+    --luxury-home-header-fallback: 61px;
+    --luxury-home-header-height: var(--header-height, var(--luxury-home-header-fallback));
+    padding-top: var(--luxury-home-header-height);
 }
 
 /* Boutique finder / booking fills the viewport under the bar. */
@@ -365,7 +368,8 @@ main:not([data-layout='empty']):has([data-slot='luxury-finder']) {
     }
 
     main:not([data-layout='empty']):has([data-slot='luxury-home-hero']) {
-        padding-top: var(--header-height, 72px);
+        --luxury-home-header-fallback: 72px;
+        padding-top: var(--luxury-home-header-height);
     }
 
     /*
