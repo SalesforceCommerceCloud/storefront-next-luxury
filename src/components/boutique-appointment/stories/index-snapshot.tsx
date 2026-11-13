@@ -25,7 +25,7 @@ import { render, cleanup } from '@testing-library/react';
 const mockUseFetcher = vi.hoisted(() => vi.fn());
 vi.mock('react-router', async (importOriginal) => {
     const actual = await importOriginal<typeof import('react-router')>();
-    return { ...actual, useFetcher: mockUseFetcher };
+    return { ...actual, useFetcher: mockUseFetcher, useRouteLoaderData: vi.fn().mockReturnValue(undefined) };
 });
 
 const composed = composeStories(Stories);

@@ -14,34 +14,42 @@
  * limitations under the License.
  */
 import { describe, expect, test } from 'vitest';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import { boutiqueImagePath, filterBoutiques, getAppointmentSlots } from './boutiques';
 
-const mockStores: ShopperStores.schemas['Store'][] = [
+const mockStores: ServiceTerritoryOption[] = [
     {
         id: 'ln-boutique-geneva',
+        sfId: 'SF001',
         name: 'Geneva Boutique',
+        timezone: 'Europe/Zurich',
         city: 'Geneva',
         countryCode: 'CH',
         postalCode: '1201',
     },
     {
         id: 'ln-boutique-london',
+        sfId: 'SF002',
         name: 'London Boutique',
+        timezone: 'Europe/London',
         city: 'London',
         countryCode: 'GB',
         postalCode: 'W1K 2RH',
     },
     {
         id: 'ln-boutique-newyork',
+        sfId: 'SF003',
         name: 'New York Boutique',
+        timezone: 'America/New_York',
         city: 'New York',
         countryCode: 'US',
         postalCode: '10065',
     },
     {
         id: 'ln-boutique-tokyo',
+        sfId: 'SF004',
         name: 'Tokyo Boutique',
+        timezone: 'Asia/Tokyo',
         city: 'Tokyo',
         countryCode: 'JP',
         postalCode: '104-0061',
@@ -65,20 +73,21 @@ describe('boutiques', () => {
 });
 
 describe('boutiqueImagePath', () => {
-    test('reads the c_facadeImage custom attribute (single dataset source)', () => {
+    test('returns the image field when set — populated by the B2C enrichment step', () => {
         expect(
             boutiqueImagePath({
                 id: 'ln-boutique-geneva',
-                c_facadeImage: 'images/salons/geneva.webp',
-            } as ShopperStores.schemas['Store'])
-        ).toBe('images/salons/geneva.webp');
+                sfId: 'SF001',
+                name: 'Geneva Boutique',
+                timezone: 'Europe/Zurich',
+                image: 'https://example.com/images/salons/geneva.webp',
+            })
+        ).toBe('https://example.com/images/salons/geneva.webp');
     });
 
-    test('returns undefined when c_facadeImage is absent — no code-side derivation', () => {
-        expect(boutiqueImagePath({ id: 'ln-boutique-geneva' })).toBeUndefined();
-        expect(boutiqueImagePath({ id: 'ln-boutique-geneva', image: 'images/salons/standard.webp' })).toBeUndefined();
+    test('returns undefined when image is absent', () => {
         expect(
-            boutiqueImagePath({ id: 'ln-boutique-geneva', c_facadeImage: '' } as ShopperStores.schemas['Store'])
+            boutiqueImagePath({ id: 'ln-boutique-geneva', sfId: 'SF001', name: 'Geneva Boutique', timezone: 'UTC' })
         ).toBeUndefined();
     });
 });

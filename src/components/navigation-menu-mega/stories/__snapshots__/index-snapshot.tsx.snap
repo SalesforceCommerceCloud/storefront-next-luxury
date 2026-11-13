@@ -59,7 +59,7 @@ exports[`CategoryNavigationMenuMega stories snapshot > Default story renders and
           <a
             class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-header-foreground hover:text-header-menu-hover-foreground"
             data-discover="true"
-            href="/global/en-GB/boutiques"
+            href="/global/en-GB/appointments"
           >
             Boutiques
           </a>
@@ -137,7 +137,7 @@ exports[`CategoryNavigationMenuMega stories snapshot > MobileView story renders 
           <a
             class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-header-foreground hover:text-header-menu-hover-foreground"
             data-discover="true"
-            href="/global/en-GB/boutiques"
+            href="/global/en-GB/appointments"
           >
             Boutiques
           </a>

@@ -17,14 +17,16 @@ import { useState, type ReactElement } from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, test, vi } from 'vitest';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import BoutiqueDirectory, { boutiqueStageGrid, boutiqueStageLeft, boutiqueStageRight } from './index';
 import { AllProvidersWrapper } from '@/test-utils/context-provider';
 
-const stores: ShopperStores.schemas['Store'][] = [
+const stores: ServiceTerritoryOption[] = [
     {
         id: 'ln-boutique-geneva',
+        sfId: 'SF001',
         name: 'Geneva Boutique',
+        timezone: 'Europe/Zurich',
         address1: '12 Quai des Bergues',
         city: 'Geneva',
         stateCode: 'GE',
@@ -33,13 +35,13 @@ const stores: ShopperStores.schemas['Store'][] = [
         phone: '+41 22 000 00 00',
         latitude: 46.207,
         longitude: 6.148,
-        inventoryId: 'inventory-ln-boutique-geneva',
-        storeHours: 'Tue–Sat 10:00–18:00',
         image: '/images/salons/geneva.webp',
     },
     {
         id: 'ln-boutique-london',
+        sfId: 'SF002',
         name: 'London Boutique',
+        timezone: 'Europe/London',
         address1: '18 Mount Street',
         city: 'London',
         stateCode: 'ENG',
@@ -48,13 +50,13 @@ const stores: ShopperStores.schemas['Store'][] = [
         phone: '+44 20 0000 0000',
         latitude: 51.5104,
         longitude: -0.1508,
-        inventoryId: 'inventory-ln-boutique-london',
-        storeHours: 'Mon–Sat 10:00–18:00',
         image: '/images/salons/london.webp',
     },
     {
         id: 'ln-boutique-newyork',
+        sfId: 'SF003',
         name: 'New York Boutique',
+        timezone: 'America/New_York',
         address1: '655 Madison Avenue',
         city: 'New York',
         stateCode: 'NY',
@@ -63,13 +65,13 @@ const stores: ShopperStores.schemas['Store'][] = [
         phone: '+1 212 000 0000',
         latitude: 40.7648,
         longitude: -73.9707,
-        inventoryId: 'inventory-ln-boutique-newyork',
-        storeHours: 'Mon–Sat 10:00–18:00',
         image: '/images/salons/newyork.webp',
     },
     {
         id: 'ln-boutique-paris',
+        sfId: 'SF004',
         name: 'Paris Boutique',
+        timezone: 'Europe/Paris',
         address1: '8 Rue de la Paix',
         city: 'Paris',
         stateCode: 'IDF',
@@ -78,13 +80,13 @@ const stores: ShopperStores.schemas['Store'][] = [
         phone: '+33 1 00 00 00 00',
         latitude: 48.8686,
         longitude: 2.331,
-        inventoryId: 'inventory-ln-boutique-paris',
-        storeHours: 'Tue–Sat 10:00–19:00',
         image: '/images/salons/paris.webp',
     },
     {
         id: 'ln-boutique-tokyo',
+        sfId: 'SF005',
         name: 'Tokyo Boutique',
+        timezone: 'Asia/Tokyo',
         address1: '4-6-16 Ginza',
         city: 'Tokyo',
         stateCode: 'TYO',
@@ -93,8 +95,6 @@ const stores: ShopperStores.schemas['Store'][] = [
         phone: '+81 3 0000 0000',
         latitude: 35.6712,
         longitude: 139.7649,
-        inventoryId: 'inventory-ln-boutique-tokyo',
-        storeHours: 'Wed–Mon 11:00–19:00',
         image: '/images/salons/tokyo.webp',
     },
 ];

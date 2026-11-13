@@ -15,13 +15,15 @@
  */
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import BoutiqueMap from './index';
 import { AllProvidersWrapper } from '@/test-utils/context-provider';
 
-const store: ShopperStores.schemas['Store'] = {
+const store: ServiceTerritoryOption = {
     id: 'ln-boutique-geneva',
+    sfId: 'SF001',
     name: 'Geneva Boutique',
+    timezone: 'Europe/Zurich',
     city: 'Geneva',
     countryCode: 'CH',
     latitude: 46.207,

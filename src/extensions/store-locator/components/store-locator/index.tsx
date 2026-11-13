@@ -47,7 +47,7 @@ export default function StoreLocator(): ReactElement {
             // Optimistic client state, then persist to the cookie via the canonical action (same as the
             // canonical store list) so the choice survives reloads and feeds PLP inventory filtering.
             setSelectedStoreInfo(store);
-            const info = { id: store.id, name: store.name || store.id, inventoryId: store.inventoryId };
+            const info = { id: store.id, name: store.name || store.id, inventoryId: store.externalId ?? store.id };
             const formData = new FormData();
             formData.set('storeInfo', JSON.stringify(info));
             void persistFetcher.submit(formData, { method: 'POST', action: resourceRoutes.setSelectedStore });

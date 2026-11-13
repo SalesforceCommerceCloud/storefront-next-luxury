@@ -313,11 +313,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               Geneva Boutique
             </p>
             <p
-              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
-            >
-              Tue–Sat 10:00–18:00
-            </p>
-            <p
               class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground"
             >
               +41 22 000 00 00
@@ -582,11 +577,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
                   12 Quai des Bergues, 1201, Geneva
                 </span>
                 <span
-                  class="mt-2 block text-sm"
-                >
-                  Tue–Sat 10:00–18:00
-                </span>
-                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +41 22 000 00 00
@@ -626,11 +616,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
                   18 Mount Street, W1K 2RH, London
                 </span>
                 <span
-                  class="mt-2 block text-sm"
-                >
-                  Mon–Sat 10:00–18:00
-                </span>
-                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +44 20 0000 0000
@@ -668,11 +653,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
                   class="mt-2 block text-sm text-muted-foreground"
                 >
                   8 Rue de la Paix, 75002, Paris
-                </span>
-                <span
-                  class="mt-2 block text-sm"
-                >
-                  Tue–Sat 10:00–19:00
                 </span>
                 <span
                   class="mt-1 block text-sm text-muted-foreground"
@@ -1002,11 +982,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               Geneva Boutique
             </p>
             <p
-              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
-            >
-              Tue–Sat 10:00–18:00
-            </p>
-            <p
               class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground"
             >
               +41 22 000 00 00
@@ -1324,11 +1299,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
                   12 Quai des Bergues, 1201, Geneva
                 </span>
                 <span
-                  class="mt-2 block text-sm"
-                >
-                  Tue–Sat 10:00–18:00
-                </span>
-                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +41 22 000 00 00
@@ -1368,11 +1338,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
                   18 Mount Street, W1K 2RH, London
                 </span>
                 <span
-                  class="mt-2 block text-sm"
-                >
-                  Mon–Sat 10:00–18:00
-                </span>
-                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +44 20 0000 0000
@@ -1410,11 +1375,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
                   class="mt-2 block text-sm text-muted-foreground"
                 >
                   8 Rue de la Paix, 75002, Paris
-                </span>
-                <span
-                  class="mt-2 block text-sm"
-                >
-                  Tue–Sat 10:00–19:00
                 </span>
                 <span
                   class="mt-1 block text-sm text-muted-foreground"

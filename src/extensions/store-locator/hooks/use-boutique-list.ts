@@ -18,40 +18,80 @@ import { useFetcher } from 'react-router';
 import type { ShopperStores } from '@/scapi';
 import type { PickupContext } from '@/extensions/store-locator/stores/store-locator-store';
 import type { BoutiqueAvailability, FetchBoutiquesResult } from '../../../routes/resource.boutiques';
+import type { AppointmentTerritoriesResult } from '@/extensions/appointment-scheduling/routes/resource.appointment-territories';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 
 interface UseBoutiqueListResult {
-    stores: ShopperStores.schemas['Store'][];
+    stores: ServiceTerritoryOption[];
     availability?: Record<string, BoutiqueAvailability>;
     isLoading: boolean;
     hasError: boolean;
 }
 
+/** Maps an SFCC store to the ServiceTerritoryOption shape used by BoutiqueDirectory. */
+function storeToTerritory(s: ShopperStores.schemas['Store']): ServiceTerritoryOption {
+    return {
+        id: s.id ?? '',
+        sfId: s.id ?? '',
+        name: s.name ?? '',
+        timezone: 'UTC',
+        externalId: s.id,
+        address1: s.address1,
+        city: s.city,
+        countryCode: s.countryCode,
+        postalCode: s.postalCode,
+        phone: s.phone,
+        latitude: typeof s.latitude === 'number' ? s.latitude : undefined,
+        longitude: typeof s.longitude === 'number' ? s.longitude : undefined,
+    };
+}
+
 /**
- * Loads every luxury boutique for the cart "Collect at Boutique" picker, so the branded list is seeded on open
- * (no postal/radius search — wrong model for a handful of flagship boutiques). When a `pickupContext` is present,
- * the request carries the line item so the loader returns per-boutique pickup availability for it.
+ * Loads the luxury boutique list for the "Collect at Boutique" picker.
  *
- * @param pickupContext - The cart line item being collected (from the store-locator provider), or null
- * @returns The boutiques, optional per-boutique availability, and fetch state
+ * Primary source: Core org service territories via `resource.appointment-territories`.
+ * Fallback: SFCC dataset stores from `resource.boutiques` (mapped to ServiceTerritoryOption).
+ *
+ * Per-boutique pickup availability (stock check) always comes from `resource.boutiques`
+ * since inventory lives in B2C — keyed by the store's `externalId` (B2C store ID).
+ *
+ * @param pickupContext - Cart line item being collected, or null
  */
 export function useBoutiqueList(pickupContext?: PickupContext | null): UseBoutiqueListResult {
-    const fetcher = useFetcher<FetchBoutiquesResult>();
+    // Primary: Core territories (boutique list from Salesforce Scheduler)
+    const territoriesFetcher = useFetcher<AppointmentTerritoriesResult>();
+    // Availability + fallback list: SFCC boutiques route
+    const boutiqueFetcher = useFetcher<FetchBoutiquesResult>();
+
     const productId = pickupContext?.productId;
     const quantity = pickupContext?.quantity ?? 1;
 
     useEffect(() => {
-        // `fetcher.load` is absent during SSR and in snapshot/story environments that stub `useFetcher`.
-        if (typeof fetcher.load !== 'function') return;
+        if (typeof territoriesFetcher.load !== 'function') return;
+        void territoriesFetcher.load('/resource/appointment-territories');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        if (typeof boutiqueFetcher.load !== 'function') return;
         const query = productId ? `?productId=${encodeURIComponent(productId)}&quantity=${quantity}` : '';
-        void fetcher.load(`/resource/boutiques${query}`);
-        // Reload only when the collected item changes; the sheet remounts per open, so this runs on open.
+        void boutiqueFetcher.load(`/resource/boutiques${query}`);
+        // Reload only when the collected item changes; the sheet remounts per open.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [productId, quantity]);
 
+    const territoriesLoaded = territoriesFetcher.data !== undefined;
+    const stores: ServiceTerritoryOption[] =
+        territoriesLoaded && territoriesFetcher.data?.success
+            ? (territoriesFetcher.data.territories ?? [])
+            : (boutiqueFetcher.data?.stores ?? []).map(storeToTerritory);
+
     return {
-        stores: fetcher.data?.success ? (fetcher.data.stores ?? []) : [],
-        availability: fetcher.data?.availability,
-        isLoading: fetcher.state === 'loading',
-        hasError: fetcher.data?.success === false,
+        stores,
+        availability: boutiqueFetcher.data?.availability,
+        isLoading: territoriesFetcher.state === 'loading' || boutiqueFetcher.state === 'loading',
+        hasError: territoriesLoaded
+            ? territoriesFetcher.data?.success === false && boutiqueFetcher.data?.success === false
+            : boutiqueFetcher.data?.success === false,
     };
 }

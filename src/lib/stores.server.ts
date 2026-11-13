@@ -18,24 +18,24 @@ import type { ShopperStores } from '@/scapi';
 import { createApiClients } from '@/lib/api-clients.server';
 import { getLogger } from '@/lib/logger.server';
 import { NormalizedApiError } from '@/lib/api/normalized-api-error';
-import { BOUTIQUE_IDS } from './boutiques';
 
 /**
- * Fetch all luxury boutique stores from SCAPI.
+ * Fetch luxury boutique stores from SCAPI by explicit store IDs, for image enrichment.
  *
- * Calls the canonical `shopperStores.getStores` SCAPI endpoint directly with the
- * fixed list of boutique store IDs, so the luxury boutique locator does not depend
- * on any optional extension (e.g. BOPIS) that may be stripped from a build.
- * Returns an array (not a Map), ordered by `BOUTIQUE_IDS`, for easier consumption
- * by UI components expecting `Store[]`.
+ * Used as the B2C enrichment step in the boutiques loader: territories come from Core
+ * (ServiceTerritory) and their `externalId` values (B2C store IDs) are passed here to
+ * retrieve facade image paths (`c_facadeImage`) stored in the SCAPI store record.
  *
  * @param context - Router context
- * @returns Array of boutique stores (empty when the API returns no data)
+ * @param ids - B2C store IDs to fetch (typically the `externalId` values of Core territories)
+ * @returns Array of SCAPI store records (empty when the API returns no data)
  * @throws {NormalizedApiError} When the API request fails
  */
-export async function fetchBoutiques(
-    context: Readonly<RouterContextProvider>
+export async function fetchBoutiquesForEnrichment(
+    context: Readonly<RouterContextProvider>,
+    ids: string[]
 ): Promise<ShopperStores.schemas['Store'][]> {
+    if (ids.length === 0) return [];
     const logger = getLogger(context);
     const clients = createApiClients(context);
 
@@ -43,7 +43,7 @@ export async function fetchBoutiques(
         const { data: storesData } = await clients.shopperStores.getStores({
             params: {
                 query: {
-                    ids: [...BOUTIQUE_IDS].join(','),
+                    ids: ids.join(','),
                 },
             },
         });
@@ -51,22 +51,15 @@ export async function fetchBoutiques(
         const storesMap = new Map<string, ShopperStores.schemas['Store']>();
         storesData?.data?.forEach((store) => {
             if (store.id) {
-                // SCAPI getStores surfaces the boutique's inventory list on the custom attr `c_inventoryListId`
-                // rather than the standard `inventoryId` field. Read it as unknown and narrow to a string before
-                // use so a missing/non-string custom attr can't leak into inventory lookups. Normalise it so BOPIS
-                // pickup (per-boutique availability + the cart line-item submit, which both read `inventoryId`) works.
-                const customInventoryId = (store as Record<string, unknown>).c_inventoryListId;
-                const inventoryId =
-                    store.inventoryId ?? (typeof customInventoryId === 'string' ? customInventoryId : undefined);
-                storesMap.set(store.id, inventoryId ? { ...store, inventoryId } : store);
+                storesMap.set(store.id, store);
             }
         });
 
-        return BOUTIQUE_IDS.map((id) => storesMap.get(id)).filter((store): store is ShopperStores.schemas['Store'] =>
-            Boolean(store)
-        );
+        return ids
+            .map((id) => storesMap.get(id))
+            .filter((store): store is ShopperStores.schemas['Store'] => Boolean(store));
     } catch (error) {
-        logger.error('shopperStores.getStores failed for boutiques', { boutiqueIds: [...BOUTIQUE_IDS] });
+        logger.error('shopperStores.getStores failed for boutique enrichment', { ids });
         throw new NormalizedApiError(error);
     }
 }

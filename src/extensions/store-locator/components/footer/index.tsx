@@ -21,7 +21,7 @@ export default function StoreLocatorFooter(): ReactElement {
     const { t } = useTranslation('watch');
     return (
         <li>
-            <Link to="/boutiques" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/appointments" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 {t('boutiques')}
             </Link>
         </li>

@@ -18,6 +18,7 @@ import { getConfig } from '@salesforce/storefront-next-runtime/config';
 import { getAppointmentProvider, type AppointmentSlot } from '@/lib/appointment-scheduler';
 import { getAuth as getAuthServer } from '@/middlewares/auth.server';
 import { getLogger } from '@/lib/logger.server';
+import { isSameOrigin } from '@/lib/origin';
 
 /**
  * Result of the appointment-availability loader.
@@ -44,8 +45,8 @@ export interface AppointmentAvailabilityResult {
  *
  * `GET /resource/appointment-availability?startTime=<ISO 8601>&endTime=<ISO 8601>`
  *
- * Each boutique maps to its own ServiceTerritory via `StoreId__c` — territory resolution is
- * per-boutique when `storeId` is provided.
+ * Each boutique maps to its own ServiceTerritory via `ExternalId__c` — territory resolution is
+ * per-boutique when `territoryId` is provided.
  *
  * @param args - Loader arguments (request carries the ISO window; context for provider selection)
  * @returns JSON response with the open slots or an error
@@ -55,6 +56,15 @@ export async function loader({
     context,
 }: LoaderFunctionArgs): Promise<ReturnType<typeof data<AppointmentAvailabilityResult>>> {
     const logger = getLogger(context);
+
+    if (!isSameOrigin(request)) {
+        logger.warn('AppointmentAvailability: cross-origin request denied', {
+            origin: request.headers.get('origin'),
+            endpoint: 'appointment-availability',
+            outcome: 'denied',
+        });
+        return data({ success: false, error: 'Forbidden' }, { status: 403 });
+    }
 
     const session = getAuthServer(context);
     if (!session.customerId) {
@@ -73,10 +83,13 @@ export async function loader({
         if (!startTime || !endTime) {
             return data({ success: false, error: 'startTime and endTime are required' }, { status: 400 });
         }
-        const storeId = url.searchParams.get('storeId') ?? undefined;
+        const territoryId = url.searchParams.get('territoryId') ?? undefined;
+        const workTypeId = url.searchParams.get('workTypeId') ?? undefined;
+        // workTypeGroupId is carried from WorkTypeOption.workTypeGroupId in the wizard — no SOQL needed.
+        const workTypeGroupId = url.searchParams.get('workTypeGroupId') ?? undefined;
 
         const provider = getAppointmentProvider(config, context);
-        const result = await provider.getAvailability({ startTime, endTime, storeId });
+        const result = await provider.getAvailability({ startTime, endTime, territoryId, workTypeId, workTypeGroupId });
 
         if (result.success) {
             const slots: AppointmentSlot[] = result.slots.map((slot) => ({

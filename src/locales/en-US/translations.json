@@ -2501,6 +2501,7 @@
             "stepNavDetails": "Review",
             "stepNavReview": "Review",
             "stepLocation": "Select a boutique",
+            "loadingServices": "Loading services…",
             "stepReason": "Why are you visiting?",
             "stepWorkType": "What kind of appointment?",
             "stepWhen": "Choose a time",

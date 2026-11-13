@@ -16,14 +16,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, within } from 'storybook/test';
 import { waitForStorybookReady } from '@storybook/test-utils';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import type { AppointmentPiece } from '@/lib/appointment';
 import BoutiqueAppointment from '../index';
 
-const mockStores: ShopperStores.schemas['Store'][] = [
+const mockStores: ServiceTerritoryOption[] = [
     {
         id: 'ln-boutique-geneva',
+        sfId: 'SF001',
         name: 'Geneva Boutique',
+        timezone: 'Europe/Zurich',
         address1: '12 Quai des Bergues',
         city: 'Geneva',
         stateCode: 'GE',
@@ -32,13 +34,13 @@ const mockStores: ShopperStores.schemas['Store'][] = [
         phone: '+41 22 000 00 00',
         latitude: 46.207,
         longitude: 6.148,
-        inventoryId: 'inventory-ln-boutique-geneva',
-        storeHours: 'Tue–Sat 10:00–18:00',
         image: '/images/salons/geneva.webp',
     },
     {
         id: 'ln-boutique-london',
+        sfId: 'SF002',
         name: 'London Boutique',
+        timezone: 'Europe/London',
         address1: '18 Mount Street',
         city: 'London',
         stateCode: 'ENG',
@@ -47,13 +49,13 @@ const mockStores: ShopperStores.schemas['Store'][] = [
         phone: '+44 20 0000 0000',
         latitude: 51.5104,
         longitude: -0.1508,
-        inventoryId: 'inventory-ln-boutique-london',
-        storeHours: 'Mon–Sat 10:00–18:00',
         image: '/images/salons/london.webp',
     },
     {
         id: 'ln-boutique-paris',
+        sfId: 'SF003',
         name: 'Paris Boutique',
+        timezone: 'Europe/Paris',
         address1: '8 Rue de la Paix',
         city: 'Paris',
         stateCode: 'IDF',
@@ -62,8 +64,6 @@ const mockStores: ShopperStores.schemas['Store'][] = [
         phone: '+33 1 00 00 00 00',
         latitude: 48.8686,
         longitude: 2.331,
-        inventoryId: 'inventory-ln-boutique-paris',
-        storeHours: 'Tue–Sat 10:00–19:00',
         image: '/images/salons/paris.webp',
     },
 ];
@@ -80,7 +80,19 @@ const meta: Meta<typeof BoutiqueAppointment> = {
     title: 'Layout/Store Locator/Boutique Appointment',
     component: BoutiqueAppointment,
     tags: ['autodocs', 'interaction'],
-    parameters: { layout: 'padded' },
+    parameters: {
+        layout: 'padded',
+        mockRoutes: [
+            {
+                path: '/resource/appointment-territories',
+                loader: () => ({ success: false, error: 'SCHEDULER_NOT_CONFIGURED' }),
+            },
+            {
+                path: '/resource/appointment-work-types',
+                loader: () => ({ success: false, error: 'SCHEDULER_NOT_CONFIGURED' }),
+            },
+        ],
+    },
 };
 
 export default meta;
@@ -154,6 +166,15 @@ export const Confirmed: Story = {
                 // No timezone — component falls back to browser/runner local time,
                 // which matches how the local-time slot constructors above build the times.
                 loader: () => ({ success: true, slots: mockSlots }),
+            },
+            {
+                // Work types: return no scheduler so component falls back to hardcoded SERVICES.
+                path: '/resource/appointment-work-types',
+                loader: () => ({ success: false, error: 'SCHEDULER_NOT_CONFIGURED' }),
+            },
+            {
+                path: '/resource/appointment-territories',
+                loader: () => ({ success: false, error: 'SCHEDULER_NOT_CONFIGURED' }),
             },
         ],
     },

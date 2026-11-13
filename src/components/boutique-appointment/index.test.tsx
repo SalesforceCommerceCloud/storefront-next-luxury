@@ -17,7 +17,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import React, { useCallback, useState } from 'react';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import type { AppointmentPiece } from '@/lib/appointment';
 import BoutiqueAppointment from './index';
 import { AllProvidersWrapper } from '@/test-utils/context-provider';
@@ -36,10 +36,12 @@ vi.mock('react-router', async (importOriginal) => {
     };
 });
 
-const mockStores: ShopperStores.schemas['Store'][] = [
+const mockStores: ServiceTerritoryOption[] = [
     {
         id: 'ln-boutique-geneva',
+        sfId: 'SF001',
         name: 'Geneva Boutique',
+        timezone: 'Europe/Zurich',
         address1: '12 Quai des Bergues',
         city: 'Geneva',
         stateCode: 'GE',
@@ -48,13 +50,13 @@ const mockStores: ShopperStores.schemas['Store'][] = [
         phone: '+41 22 000 00 00',
         latitude: 46.207,
         longitude: 6.148,
-        inventoryId: 'inventory-ln-boutique-geneva',
-        storeHours: 'Tue–Sat 10:00–18:00',
         image: '/images/salons/geneva.webp',
     },
     {
         id: 'ln-boutique-london',
+        sfId: 'SF002',
         name: 'London Boutique',
+        timezone: 'Europe/London',
         address1: '18 Mount Street',
         city: 'London',
         stateCode: 'ENG',
@@ -63,13 +65,13 @@ const mockStores: ShopperStores.schemas['Store'][] = [
         phone: '+44 20 0000 0000',
         latitude: 51.5104,
         longitude: -0.1508,
-        inventoryId: 'inventory-ln-boutique-london',
-        storeHours: 'Mon–Sat 10:00–18:00',
         image: '/images/salons/london.webp',
     },
     {
         id: 'ln-boutique-paris',
+        sfId: 'SF003',
         name: 'Paris Boutique',
+        timezone: 'Europe/Paris',
         address1: '8 Rue de la Paix',
         city: 'Paris',
         stateCode: 'IDF',
@@ -78,8 +80,6 @@ const mockStores: ShopperStores.schemas['Store'][] = [
         phone: '+33 1 00 00 00 00',
         latitude: 48.8686,
         longitude: 2.331,
-        inventoryId: 'inventory-ln-boutique-paris',
-        storeHours: 'Tue–Sat 10:00–19:00',
         image: '/images/salons/paris.webp',
     },
 ];
@@ -183,15 +183,18 @@ async function pickFirstSlot(user: ReturnType<typeof userEvent.setup>) {
     await user.click(screen.getByRole('button', { name: '10:00' }));
 }
 
+/* SFDC_EXT_APPOINTMENT_SCHEDULING */
 async function advanceToReview(user: ReturnType<typeof userEvent.setup>) {
     await pickGeneva(user);
     await user.click(screen.getByRole('button', { name: /see a timepiece/i }));
     await pickFirstSlot(user);
 }
+/* /SFDC_EXT_APPOINTMENT_SCHEDULING */
 
 describe('BoutiqueAppointment', () => {
     beforeEach(() => {
         // Default: idle fetcher that has never run — availability is driven by the `availability` prop.
+        // data: undefined means no scheduler response yet → component shows fallback SERVICES immediately.
         mockUseFetcher.mockReturnValue({
             load: vi.fn(),
             state: 'idle' as const,
@@ -213,6 +216,7 @@ describe('BoutiqueAppointment', () => {
         expect(screen.queryByRole('button', { name: /^continue$/i })).not.toBeInTheDocument();
     });
 
+    /* SFDC_EXT_APPOINTMENT_SCHEDULING */
     test('choosing a boutique opens service cards with images and duration', async () => {
         const user = userEvent.setup();
         renderAppointment();
@@ -291,6 +295,7 @@ describe('BoutiqueAppointment', () => {
         expect(screen.getByRole('button', { name: '10:00' })).toBeInTheDocument();
         expect(screen.queryByText(/choose a date to see times/i)).not.toBeInTheDocument();
     });
+    /* /SFDC_EXT_APPOINTMENT_SCHEDULING */
 
     test('stepper goes back to a completed step', async () => {
         const user = userEvent.setup();
@@ -301,6 +306,7 @@ describe('BoutiqueAppointment', () => {
         expect(screen.getByTestId('boutique-directory')).toBeInTheDocument();
     });
 
+    /* SFDC_EXT_APPOINTMENT_SCHEDULING */
     test('review edit returns to the chosen step', async () => {
         const user = userEvent.setup();
         renderAppointment();
@@ -485,6 +491,53 @@ describe('BoutiqueAppointment', () => {
         expect(screen.queryAllByTestId('appointment-day')).toHaveLength(0);
     });
 
+    describe('dynamic work types / effectiveServices', () => {
+        test('uses dynamic service names when workTypesFetcher returns success with work types', async () => {
+            const user = userEvent.setup();
+            mockUseFetcher.mockReturnValue({
+                load: vi.fn(),
+                state: 'idle' as const,
+                data: {
+                    success: true,
+                    workTypes: [{ id: 'consult', name: 'Private Consultation', durationMinutes: 45 }],
+                },
+            });
+
+            renderAppointment();
+            await pickGeneva(user);
+
+            // Only the one dynamic service card should appear (not the 6 hardcoded SERVICES).
+            expect(screen.getAllByTestId('appointment-service')).toHaveLength(1);
+            expect(screen.getByText('Private Consultation')).toBeInTheDocument();
+        });
+
+        test('falls back to hardcoded SERVICES when workTypesFetcher returns an error', async () => {
+            const user = userEvent.setup();
+            mockUseFetcher.mockReturnValue({
+                load: vi.fn(),
+                state: 'idle' as const,
+                data: { success: false, error: 'SCHEDULER_NOT_CONFIGURED' },
+            });
+
+            renderAppointment();
+            await pickGeneva(user);
+
+            // All 6 hardcoded services render.
+            expect(screen.getAllByTestId('appointment-service')).toHaveLength(6);
+            // Spot-check a translated hardcoded title key.
+            expect(screen.getByText(/try a piece on the wrist/i)).toBeVisible();
+        });
+
+        test('falls back to hardcoded SERVICES when workTypesFetcher has no data yet', async () => {
+            const user = userEvent.setup();
+            // Default beforeEach mock: data: undefined — same as no fetch has completed.
+            renderAppointment();
+            await pickGeneva(user);
+
+            expect(screen.getAllByTestId('appointment-service')).toHaveLength(6);
+        });
+    });
+
     test('onBook error renders the booking error message', async () => {
         const user = userEvent.setup();
 
@@ -531,4 +584,5 @@ describe('BoutiqueAppointment', () => {
 
         expect(screen.queryByTestId('appointment-success')).not.toBeInTheDocument();
     });
+    /* /SFDC_EXT_APPOINTMENT_SCHEDULING */
 });

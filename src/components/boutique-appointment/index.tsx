@@ -17,7 +17,7 @@ import { type FormEvent, type ReactElement, type ReactNode, useEffect, useMemo, 
 import { useTranslation } from 'react-i18next';
 import { useFetcher } from 'react-router';
 import { ChevronLeft, ChevronRight, Pencil } from 'lucide-react';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
@@ -28,6 +28,17 @@ import BoutiqueDirectory, { boutiqueStageGrid, boutiqueStageLeft, boutiqueStageR
 import BoutiqueMap from '../boutique-map';
 
 const BOOKING_WINDOW_DAYS = 90;
+
+interface ServiceEntry {
+    id: string;
+    workType: string;
+    minutes: number;
+    titleKey: string | null;
+    title?: string;
+    hintKey?: string;
+    image: string;
+    workTypeGroupId?: string;
+}
 
 const STEPS = ['location', 'service', 'when', 'review'] as const;
 type WizardStep = (typeof STEPS)[number];
@@ -299,7 +310,7 @@ function MonthCalendar({
 }
 
 type BoutiqueAppointmentProps = {
-    stores: ShopperStores.schemas['Store'][];
+    stores: ServiceTerritoryOption[];
     productId?: string;
     productName?: string;
     piece?: AppointmentPiece | null;
@@ -355,7 +366,7 @@ function formatReviewDate(iso: string, locale: string): string {
     }).format(new Date(year, month - 1, day));
 }
 
-function addressLine(store: ShopperStores.schemas['Store']): string {
+function addressLine(store: ServiceTerritoryOption): string {
     return [store.address1, store.postalCode, store.city].filter(Boolean).join(', ');
 }
 
@@ -570,7 +581,7 @@ function ReviewDetail({ term, title, detail }: { term: string; title: string; de
     );
 }
 
-function StoreStill({ store }: { store: ShopperStores.schemas['Store'] }): ReactElement {
+function StoreStill({ store }: { store: ServiceTerritoryOption }): ReactElement {
     const { i18n } = useTranslation('watch');
     const countryLabel = (() => {
         if (!store.countryCode) return undefined;
@@ -595,7 +606,6 @@ function StoreStill({ store }: { store: ShopperStores.schemas['Store'] }): React
                 ) : null}
                 <p className="mt-2 font-serif text-3xl">{store.name}</p>
                 <p className="mt-2 text-sm opacity-90">{addressLine(store)}</p>
-                {store.storeHours ? <p className="mt-1 text-sm opacity-90">{store.storeHours}</p> : null}
                 {store.phone ? <p className="mt-1 text-sm opacity-75">{store.phone}</p> : null}
             </div>
         </aside>
@@ -619,7 +629,7 @@ export default function BoutiqueAppointment({
     const [done, setDone] = useState(false);
     const [step, setStep] = useState<WizardStep>('location');
     const [maxReached, setMaxReached] = useState(0);
-    const [storeId, setStoreId] = useState('');
+    const [externalId, setExternalId] = useState('');
     const [reason, setReason] = useState('');
     const [workType, setWorkType] = useState('');
     const [date, setDate] = useState('');
@@ -627,12 +637,70 @@ export default function BoutiqueAppointment({
     // Store the full slot at pick time so submit doesn't depend on daySlots being recomputed.
     const [chosenSlot, setChosenSlot] = useState<{ startTime: string; endTime: string } | null>(null);
     const [bookingError, setBookingError] = useState<string | null>(null);
-    const store = stores.find((entry) => entry.id === storeId) ?? null;
+    const store = stores.find((entry) => entry.id === externalId) ?? null;
     const locked = useMemo(() => enrichPiece(piece, productId, productName), [piece, productId, productName]);
     const effectiveCatalog = useMemo(() => (locked ? [] : catalog), [locked, catalog]);
     const [pickedId, setPickedId] = useState(locked?.id ?? '');
     const selected = locked ?? effectiveCatalog.find((entry) => entry.id === pickedId) ?? null;
     const minDate = useMemo(() => localIsoToday(), []);
+
+    const workTypesFetcher = useFetcher<{
+        success: boolean;
+        workTypes?: { id: string; name: string; durationMinutes: number; workTypeGroupId: string }[];
+    }>();
+
+    // ref tracks which store is currently in-flight (won't cause re-renders)
+    const fetchingForStore = useRef('');
+    // state tracks which store's data is actually loaded and valid to display
+    const [dataExternalId, setDataExternalId] = useState('');
+
+    useEffect(() => {
+        if (externalId && workTypesFetcher.state === 'idle' && externalId !== fetchingForStore.current) {
+            fetchingForStore.current = externalId;
+            void workTypesFetcher.load(
+                `/resource/appointment-work-types?territoryId=${encodeURIComponent(externalId)}`
+            );
+        }
+    }, [externalId, workTypesFetcher]);
+
+    // Mark data as valid for the current store when the fetch completes.
+    // Uses the echoed territoryId from the response (added by resource.appointment-work-types) to
+    // identify which store's data arrived, falling back to the in-flight ref when absent.
+    // externalId is in the deps so the effect re-fires when the store changes, letting
+    // fetchingForStore.current (just updated by effect 1 above) resolve the pending store.
+    useEffect(() => {
+        if (workTypesFetcher.state === 'idle' && workTypesFetcher.data !== undefined) {
+            const respondedId = (workTypesFetcher.data as { territoryId?: string })?.territoryId;
+            setDataExternalId(respondedId ?? fetchingForStore.current);
+        }
+    }, [externalId, workTypesFetcher.state, workTypesFetcher.data]);
+
+    const dynamicServices = useMemo(() => {
+        if (
+            workTypesFetcher.data?.success &&
+            workTypesFetcher.data.workTypes?.length &&
+            dataExternalId === externalId
+        ) {
+            return workTypesFetcher.data.workTypes.map((wt) => ({
+                id: wt.id,
+                workType: wt.id,
+                minutes: wt.durationMinutes,
+                titleKey: null as null,
+                title: wt.name,
+                image: resolveAssetUrl('/images/salons/salon-interior.webp'),
+                workTypeGroupId: wt.workTypeGroupId,
+            }));
+        }
+        return null;
+    }, [workTypesFetcher.data, dataExternalId, externalId]);
+
+    // Loading: boutique selected, data has arrived (data !== undefined) but not yet for this store.
+    // When data is undefined the scheduler is unconfigured — show fallback services immediately.
+    const isLoadingWorkTypes =
+        externalId !== '' && externalId !== dataExternalId && workTypesFetcher.data !== undefined;
+    const effectiveServices: ServiceEntry[] = isLoadingWorkTypes
+        ? []
+        : (dynamicServices ?? (SERVICES as unknown as ServiceEntry[]));
 
     const availabilityFetcher = useFetcher<{
         success: boolean;
@@ -702,7 +770,7 @@ export default function BoutiqueAppointment({
         [time, i18n.language, territoryTimezone]
     );
 
-    const selectedService = SERVICES.find((entry) => entry.id === reason);
+    const selectedService = effectiveServices.find((entry) => entry.id === reason);
     const stepIndex = STEPS.indexOf(step);
 
     const goTo = (next: WizardStep) => {
@@ -721,16 +789,16 @@ export default function BoutiqueAppointment({
     };
 
     const pickBoutique = (id: string) => {
-        if (id !== storeId) {
+        if (id !== externalId) {
             setDate('');
             setTime('');
         }
-        setStoreId(id);
+        setExternalId(id);
         advanceTo('service');
     };
 
-    const pickService = (id: (typeof SERVICES)[number]['id']) => {
-        const service = SERVICES.find((entry) => entry.id === id);
+    const pickService = (id: string) => {
+        const service = effectiveServices.find((entry) => entry.id === id);
         if (!service) return;
         setReason(service.id);
         setWorkType(service.workType);
@@ -739,8 +807,9 @@ export default function BoutiqueAppointment({
         const startTime = new Date().toISOString();
         const endDate = new Date();
         endDate.setDate(endDate.getDate() + 30);
+        const groupId = service.workTypeGroupId ?? '';
         void availabilityFetcher.load(
-            `/resource/appointment-availability?startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endDate.toISOString())}&storeId=${encodeURIComponent(storeId)}&serviceId=${encodeURIComponent(id)}`
+            `/resource/appointment-availability?startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endDate.toISOString())}&territoryId=${encodeURIComponent(externalId)}&workTypeId=${encodeURIComponent(id)}${groupId ? `&workTypeGroupId=${encodeURIComponent(groupId)}` : ''}`
         );
 
         advanceTo('when');
@@ -775,9 +844,12 @@ export default function BoutiqueAppointment({
             }
 
             // Build the subject from selected product name + service title (filter falsy, join with ' · ').
-            const subjectParts = [selected?.name, selectedService ? t(selectedService.titleKey) : undefined].filter(
-                Boolean
-            );
+            const serviceTitle = selectedService
+                ? selectedService.titleKey
+                    ? t(selectedService.titleKey)
+                    : (selectedService as { title?: string }).title
+                : undefined;
+            const subjectParts = [selected?.name, serviceTitle].filter(Boolean);
             const subject = subjectParts.length > 0 ? subjectParts.join(' · ') : undefined;
 
             setBookingError(null);
@@ -786,13 +858,13 @@ export default function BoutiqueAppointment({
             fd.append('schedEndTime', chosenSlot.endTime);
             fd.append('email', email);
             if (subject) fd.append('subject', subject);
-            if (reason) fd.append('serviceId', reason);
-            if (store.id) fd.append('storeId', store.id);
+            if (reason) fd.append('workTypeId', reason);
+            if (store.id) fd.append('territoryId', store.id);
             onBook(fd);
         } else {
             // Storybook / test path: no booking backend wired, persist to sessionStorage for story inspection.
             const payload = {
-                storeId: store.id,
+                externalId: store.id,
                 storeName: store.name,
                 productId: selected?.id || formProductId || null,
                 productName: selected?.name || formProductName || null,
@@ -879,7 +951,10 @@ export default function BoutiqueAppointment({
                                     term={t('boutiquesPage.stepNavService')}
                                     title={
                                         selectedService
-                                            ? t(selectedService.titleKey)
+                                            ? selectedService.titleKey
+                                                ? t(selectedService.titleKey)
+                                                : ((selectedService as { title?: string }).title ??
+                                                  t('boutiquesPage.stepNavService'))
                                             : t('boutiquesPage.stepNavService')
                                     }
                                     detail={
@@ -910,19 +985,31 @@ export default function BoutiqueAppointment({
             {step === 'service' ? (
                 <fieldset className="mt-6 flex min-w-0 flex-col p-0">
                     <legend className="float-none mb-0 p-0 font-serif text-2xl">{t('boutiquesPage.stepReason')}</legend>
-                    <div className="mt-5 grid grid-cols-1 gap-4 @3xl:grid-cols-2">
-                        {SERVICES.map((entry) => (
-                            <ServiceCard
-                                key={entry.id}
-                                selected={reason === entry.id}
-                                title={t(entry.titleKey)}
-                                details={t(entry.hintKey)}
-                                minutes={entry.minutes}
-                                image={entry.id === 'view' && locked?.image ? locked.image : entry.image}
-                                onSelect={() => pickService(entry.id)}
-                            />
-                        ))}
-                    </div>
+                    {isLoadingWorkTypes ? (
+                        <div
+                            role="status"
+                            className="flex items-center justify-center py-12 text-sm text-muted-foreground">
+                            {t('boutiquesPage.loadingServices')}
+                        </div>
+                    ) : (
+                        <div className="mt-5 grid grid-cols-1 gap-4 @3xl:grid-cols-2">
+                            {effectiveServices.map((entry) => (
+                                <ServiceCard
+                                    key={entry.id}
+                                    selected={reason === entry.id}
+                                    title={
+                                        entry.titleKey
+                                            ? t(entry.titleKey)
+                                            : ((entry as { title?: string }).title ?? entry.id)
+                                    }
+                                    details={entry.hintKey ? t(entry.hintKey) : ''}
+                                    minutes={entry.minutes}
+                                    image={entry.id === 'view' && locked?.image ? locked.image : entry.image}
+                                    onSelect={() => pickService(entry.id)}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </fieldset>
             ) : null}
 
@@ -1003,7 +1090,11 @@ export default function BoutiqueAppointment({
                             />
                             <SummaryRow
                                 title={
-                                    selectedService ? t(selectedService.titleKey) : t('boutiquesPage.stepNavService')
+                                    selectedService
+                                        ? selectedService.titleKey
+                                            ? t(selectedService.titleKey)
+                                            : (selectedService.title ?? t('boutiquesPage.stepNavService'))
+                                        : t('boutiquesPage.stepNavService')
                                 }
                                 detail={
                                     selectedService
@@ -1134,7 +1225,7 @@ export default function BoutiqueAppointment({
             {step === 'location' ? (
                 <BoutiqueDirectory
                     stores={stores}
-                    selectedId={storeId}
+                    selectedId={externalId}
                     onSelect={pickBoutique}
                     lead={pieceLead}
                     chrome={chrome}

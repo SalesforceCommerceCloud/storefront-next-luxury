@@ -22,7 +22,7 @@ import { action } from './resource.appointment-book';
 
 vi.mock('@salesforce/storefront-next-runtime/config');
 vi.mock('@/middlewares/auth.server', () => ({
-    getAuth: vi.fn(() => ({ customerId: 'test-customer-id' })),
+    getAuth: vi.fn(() => ({ customerId: 'test-customer-id', userType: 'registered' })),
 }));
 vi.mock('@/lib/logger.server', () => ({
     getLogger: vi.fn(() => ({ error: vi.fn(), warn: vi.fn(), info: vi.fn(), debug: vi.fn() })),
@@ -45,7 +45,7 @@ const VALID_FORM_DATA = {
 describe('resource.appointment-book action', () => {
     beforeEach(() => {
         vi.clearAllMocks();
-        vi.mocked(getAuth).mockReturnValue({ customerId: 'test-customer-id' } as never);
+        vi.mocked(getAuth).mockReturnValue({ customerId: 'test-customer-id', userType: 'registered' } as never);
         vi.mocked(getConfig).mockReturnValue({ features: { appointment: { enabled: true } } } as never);
     });
 
@@ -65,6 +65,16 @@ describe('resource.appointment-book action', () => {
         const result = await action(createActionArgs(request, {} as never, { pattern: ROUTE_PATTERN }));
 
         expectStatus(result, 405);
+        expect(result.data.success).toBe(false);
+    });
+
+    test('returns 401 when guest (non-registered) session tries to book', async () => {
+        vi.mocked(getAuth).mockReturnValue({ customerId: 'guest-123', userType: 'guest' } as never);
+
+        const request = createFormDataRequest(BOOK_URL, 'POST', VALID_FORM_DATA);
+        const result = await action(createActionArgs(request, {} as never, { pattern: ROUTE_PATTERN }));
+
+        expectStatus(result, 401);
         expect(result.data.success).toBe(false);
     });
 

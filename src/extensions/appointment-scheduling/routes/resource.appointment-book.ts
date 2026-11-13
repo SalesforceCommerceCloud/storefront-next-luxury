@@ -43,7 +43,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  * - `scapi` (default): calls the Appointment Commerce App (CAP) via SCAPI
  * - `bff`: storefront Node → Salesforce Core org directly (OAuth 2.0 client-credentials)
  *
- * The shopper correlation id (`b2cCustomerId`, carried on `ServiceAppointment.b2cCustomerId__c`) is
+ * The shopper external id (`shopperExternalId`, carried on `ServiceAppointment.ExternalId__c`) is
  * derived here from the authenticated SLAS session — never trusted from the browser. The Core-side
  * record-triggered Flow emails the confirmation.
  *
@@ -63,18 +63,25 @@ export async function action({
         return data({ success: false, error: 'Method not allowed' }, { status: 405 });
     }
 
-    // b2cCustomerId is derived from the session (guest or registered), never from the request body.
+    // shopperExternalId is derived from the registered session, never from the request body.
+    // Guests are rejected — a durable registered identity is required so the ServiceAppointment
+    // can be correlated back to the shopper in Core (via ExternalId__c).
     const session = getAuthServer(context);
-    if (!session.customerId) {
-        return data({ success: false, error: 'An active shopper session is required to book' }, { status: 401 });
+    if (session.userType !== 'registered' || !session.customerId) {
+        logger.warn('AppointmentBook: guest session denied', {
+            userType: session.userType,
+            endpoint: 'appointment-book',
+            outcome: 'denied',
+        });
+        return data({ success: false, error: 'A registered shopper session is required to book' }, { status: 401 });
     }
 
     let schedStartTime: string;
     let schedEndTime: string;
     let email: string;
     let subject: string | undefined;
-    let serviceId: string | undefined;
-    let storeId: string | undefined;
+    let workTypeId: string | undefined;
+    let territoryId: string | undefined;
     try {
         const form = await request.formData();
         schedStartTime = String(form.get('schedStartTime') ?? '');
@@ -85,10 +92,10 @@ export async function action({
         if (subject && subject.length > 255) {
             subject = subject.slice(0, 255);
         }
-        const rawServiceId = form.get('serviceId');
-        serviceId = typeof rawServiceId === 'string' && rawServiceId.trim() ? rawServiceId.trim() : undefined;
-        const rawStoreId = form.get('storeId');
-        storeId = typeof rawStoreId === 'string' && rawStoreId.trim() ? rawStoreId.trim() : undefined;
+        const rawWorkTypeId = form.get('workTypeId');
+        workTypeId = typeof rawWorkTypeId === 'string' && rawWorkTypeId.trim() ? rawWorkTypeId.trim() : undefined;
+        const rawTerritoryId = form.get('territoryId');
+        territoryId = typeof rawTerritoryId === 'string' && rawTerritoryId.trim() ? rawTerritoryId.trim() : undefined;
     } catch {
         return data({ success: false, error: 'Invalid form data' }, { status: 400 });
     }
@@ -119,10 +126,10 @@ export async function action({
             schedStartTime,
             schedEndTime,
             email,
-            b2cCustomerId: session.customerId,
+            shopperExternalId: session.customerId,
             subject,
-            serviceId,
-            storeId,
+            workTypeId,
+            territoryId,
         });
 
         if (result.success) {

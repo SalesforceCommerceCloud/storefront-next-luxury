@@ -15,7 +15,7 @@
  */
 import { useEffect, useMemo, useState, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { cn } from '@/lib/utils';
@@ -32,7 +32,7 @@ export const boutiqueStageRight =
 export type BoutiqueAvailabilityMap = Record<string, { inStock: boolean; ats?: number }>;
 
 type BoutiqueDirectoryProps = {
-    stores: ShopperStores.schemas['Store'][];
+    stores: ServiceTerritoryOption[];
     selectedId?: string;
     onSelect: (id: string) => void;
     lead?: ReactElement | null;
@@ -58,7 +58,7 @@ function regionName(countryCode: string | undefined, locale: string): string | u
     }
 }
 
-function addressLine(store: ShopperStores.schemas['Store']): string {
+function addressLine(store: ServiceTerritoryOption): string {
     return [store.address1, store.postalCode, store.city].filter(Boolean).join(', ');
 }
 
@@ -83,8 +83,10 @@ export default function BoutiqueDirectory({
     // With availability, surface in-stock boutiques first without dropping the others (they stay selectable-off).
     const visible = useMemo(() => {
         if (!availability) return filtered;
-        const inStockRank = (store: ShopperStores.schemas['Store']) =>
-            Number(Boolean(store.id && availability[store.id]?.inStock));
+        const inStockRank = (store: ServiceTerritoryOption) => {
+            const key = store.externalId ?? store.id;
+            return Number(Boolean(key && availability[key]?.inStock));
+        };
         return [...filtered].sort((a, b) => inStockRank(b) - inStockRank(a));
     }, [filtered, availability]);
 
@@ -226,9 +228,6 @@ export default function BoutiqueDirectory({
                                                 <span className="mt-2 block text-sm text-muted-foreground">
                                                     {addressLine(store)}
                                                 </span>
-                                                {store.storeHours ? (
-                                                    <span className="mt-2 block text-sm">{store.storeHours}</span>
-                                                ) : null}
                                                 {store.phone ? (
                                                     <span className="mt-1 block text-sm text-muted-foreground">
                                                         {store.phone}

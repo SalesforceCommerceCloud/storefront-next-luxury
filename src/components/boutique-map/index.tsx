@@ -15,10 +15,10 @@
  */
 import { useMemo, type ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 
 type BoutiqueMapProps = {
-    stores: ShopperStores.schemas['Store'][];
+    stores: ServiceTerritoryOption[];
     selectedId?: string;
     /** Hide the centered boutique-name label (e.g. when a surrounding caption already names it). */
     hideLabel?: boolean;
@@ -144,11 +144,6 @@ export default function BoutiqueMap({ stores, selectedId, hideLabel = false }: B
                         <p className="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground">
                             {selected.name}
                         </p>
-                        {selected.storeHours ? (
-                            <p className="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground">
-                                {selected.storeHours}
-                            </p>
-                        ) : null}
                         {selected.phone ? (
                             <p className="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground">
                                 {selected.phone}

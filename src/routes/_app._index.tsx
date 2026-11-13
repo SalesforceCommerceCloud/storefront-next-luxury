@@ -376,7 +376,7 @@ export default function HomePage({ loaderData }: { loaderData: HomePageData }) {
                             imageAlt={t('pair.boutiques.imageAlt')}
                             buttonText={t('pair.boutiques.cta')}
                             buttonAriaLabel={t('pair.boutiques.cta')}
-                            buttonLink="/boutiques"
+                            buttonLink="/appointments"
                             showBackground={false}
                             showBorder={false}
                             loading="lazy"

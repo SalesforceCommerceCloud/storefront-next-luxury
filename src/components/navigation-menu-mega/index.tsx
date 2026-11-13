@@ -176,7 +176,7 @@ export default function ResponsiveNavigationMenu(props: ResponsiveNavigationMenu
                 </li>
                 <li>
                     <Link
-                        to="/boutiques"
+                        to="/appointments"
                         className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-header-foreground hover:text-header-menu-hover-foreground">
                         {t('boutiques')}
                     </Link>

@@ -56,7 +56,7 @@ describe('StoreLocatorFooter', () => {
         renderWithRouter(<StoreLocatorFooter />);
         const link = screen.getByRole('link', { name: /boutiques/i });
         expect(link).toBeInTheDocument();
-        expect(link).toHaveAttribute('href', `/${mockAltSiteObject.id}/${defaultMockLocale.id}/boutiques`);
+        expect(link).toHaveAttribute('href', `/${mockAltSiteObject.id}/${defaultMockLocale.id}/appointments`);
     });
 
     it('has proper styling classes matching footer links', () => {

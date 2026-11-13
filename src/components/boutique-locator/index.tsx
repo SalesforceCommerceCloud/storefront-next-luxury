@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 import type { ReactElement } from 'react';
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import type { AppointmentPiece } from '@/lib/appointment';
 import BoutiqueAppointment from '../boutique-appointment';
 
 type BoutiqueLocatorProps = {
-    stores: ShopperStores.schemas['Store'][];
+    stores: ServiceTerritoryOption[];
     productId?: string;
     productName?: string;
     piece?: AppointmentPiece | null;

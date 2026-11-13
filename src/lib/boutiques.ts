@@ -13,50 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { ShopperStores } from '@/scapi';
+import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 
 /**
- * The five luxury boutique store IDs configured in sites/Luxury/stores.xml.
- */
-export const BOUTIQUE_IDS = [
-    'ln-boutique-geneva',
-    'ln-boutique-london',
-    'ln-boutique-newyork',
-    'ln-boutique-paris',
-    'ln-boutique-tokyo',
-] as const;
-
-/**
- * Catalog-relative facade path for a boutique, read solely from the dataset-provisioned `facadeImage`
- * store custom attribute (SCAPI surfaces custom attributes as `c_*`). This is the single source of
- * truth for the boutique image path — it lives only in the store record, never derived in storefront
- * code, so there is no path convention duplicated between the dataset and the app. Resolved to a DIS
- * URL by `resolveStoreImageUrl`.
+ * Resolved facade image URL for a boutique, taken directly from the `image` field on the
+ * `ServiceTerritoryOption`. This field is populated by the B2C enrichment step in the boutiques
+ * loader (`_app.boutiques.tsx`) and then stored on the territory object for downstream use.
  *
- * The path is carried on a custom attribute rather than the built-in store `image` field because
- * SCAPI's `getStores` does not surface the standard `image` field on this instance.
- *
- * @param store - The boutique store.
- * @returns The catalog-relative facade path from `c_facadeImage`, or `undefined` when it is unset.
+ * @param territory - The boutique territory.
+ * @returns The resolved image URL, or `undefined` when it is unset.
  */
-export function boutiqueImagePath(store: ShopperStores.schemas['Store']): string | undefined {
-    const facade = (store as { c_facadeImage?: unknown }).c_facadeImage;
-    return typeof facade === 'string' && facade.length > 0 ? facade : undefined;
+export function boutiqueImagePath(territory: ServiceTerritoryOption): string | undefined {
+    return territory.image;
 }
 
 /**
- * Filter stores by country code and postal/city query.
+ * Filter boutiques by country code and postal/city query.
  *
- * @param stores - Stores to filter
+ * @param stores - Boutiques to filter
  * @param countryCode - ISO country code (empty = all)
  * @param postalQuery - Postal code or city query (empty = all)
- * @returns Filtered stores
+ * @returns Filtered boutiques
  */
 export function filterBoutiques(
-    stores: ShopperStores.schemas['Store'][],
+    stores: ServiceTerritoryOption[],
     countryCode: string,
     postalQuery: string
-): ShopperStores.schemas['Store'][] {
+): ServiceTerritoryOption[] {
     const postal = postalQuery.trim().toLowerCase().replaceAll(/\s+/g, '');
     return stores.filter((store) => {
         if (countryCode && store.countryCode !== countryCode) return false;
@@ -67,12 +50,12 @@ export function filterBoutiques(
 }
 
 /**
- * Extract unique country codes from stores.
+ * Extract unique country codes from boutiques.
  *
- * @param stores - Stores to extract country codes from
+ * @param stores - Boutiques to extract country codes from
  * @returns Array of unique country codes
  */
-export function boutiqueCountryCodes(stores: ShopperStores.schemas['Store'][]): string[] {
+export function boutiqueCountryCodes(stores: ServiceTerritoryOption[]): string[] {
     return [...new Set(stores.flatMap((store) => (store.countryCode ? [store.countryCode] : [])))];
 }
 

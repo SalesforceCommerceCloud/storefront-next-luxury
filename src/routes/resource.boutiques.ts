@@ -17,7 +17,7 @@
 import { data, type LoaderFunctionArgs } from 'react-router';
 import { getConfig } from '@salesforce/storefront-next-runtime/config';
 import type { ShopperStores } from '@/scapi';
-import { fetchBoutiques } from '../lib/stores.server';
+import { fetchBoutiquesForEnrichment } from '../lib/stores.server';
 import { fetchCategories } from '@/lib/api/categories.server';
 import { createApiClients } from '@/lib/api-clients.server';
 import { getLogger } from '@/lib/logger.server';
@@ -28,7 +28,21 @@ import { isStoreOutOfStock } from '@/lib/product/inventory-utils';
 // @sfdc-extension-block-end SFDC_EXT_BOPIS
 import { extractResponseError } from '@/lib/utils';
 import { resolveStoreImageUrl } from '../lib/store-image';
-import { boutiqueImagePath } from '../lib/boutiques';
+
+/** The five luxury boutique store IDs used for the BOPIS picker. */
+const BOUTIQUE_IDS = [
+    'ln-boutique-geneva',
+    'ln-boutique-london',
+    'ln-boutique-newyork',
+    'ln-boutique-paris',
+    'ln-boutique-tokyo',
+] as const;
+
+/** Catalog-relative facade path for a boutique store, read from the `c_facadeImage` custom attribute. */
+function boutiqueFacadePath(store: ShopperStores.schemas['Store']): string | undefined {
+    const facade = (store as { c_facadeImage?: unknown }).c_facadeImage;
+    return typeof facade === 'string' && facade.length > 0 ? facade : undefined;
+}
 
 /** Per-boutique pickup availability for the item a shopper is collecting. */
 export interface BoutiqueAvailability {
@@ -78,15 +92,18 @@ export async function loader({
         // does, otherwise the picker renders a broken `demandware.static` image. Category fetch failure is
         // swallowed — the tiles just degrade to text.
         const [rawStores, categories] = await Promise.all([
-            fetchBoutiques(context),
+            fetchBoutiquesForEnrichment(context, [...BOUTIQUE_IDS]),
             fetchCategories(context, 'root', 1).catch(() => []),
         ]);
         const config = getConfig(context);
         const templateUrl = categories
-            .map((category) => category.image)
-            .find((imageUrl): imageUrl is string => typeof imageUrl === 'string' && imageUrl.length > 0);
-        const stores = rawStores.map((store) => {
-            const resolved = resolveStoreImageUrl(boutiqueImagePath(store), templateUrl, config);
+            .map((category: { image?: string }) => category.image)
+            .find(
+                (imageUrl: string | undefined): imageUrl is string =>
+                    typeof imageUrl === 'string' && imageUrl.length > 0
+            );
+        const stores = rawStores.map((store: ShopperStores.schemas['Store']) => {
+            const resolved = resolveStoreImageUrl(boutiqueFacadePath(store), templateUrl, config);
             return resolved ? { ...store, image: resolved } : store;
         });
 

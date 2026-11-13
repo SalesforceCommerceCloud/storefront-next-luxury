@@ -226,7 +226,7 @@ exports[`Header stories snapshot > Default story renders and matches snapshot 1`
                 <li>
                   <a
                     class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-header-foreground hover:text-header-menu-hover-foreground"
-                    href="/RefArchGlobal/en-GB/boutiques"
+                    href="/RefArchGlobal/en-GB/appointments"
                   >
                     Boutiques
                   </a>
@@ -558,7 +558,7 @@ exports[`Header stories snapshot > MobileView story renders and matches snapshot
                   <li>
                     <a
                       class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-header-foreground hover:text-header-menu-hover-foreground"
-                      href="/RefArchGlobal/en-GB/boutiques"
+                      href="/RefArchGlobal/en-GB/appointments"
                     >
                       Boutiques
                     </a>
@@ -884,7 +884,7 @@ exports[`Header stories snapshot > WithAnnouncementBanner story renders and matc
                 <li>
                   <a
                     class="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-header-foreground hover:text-header-menu-hover-foreground"
-                    href="/RefArchGlobal/en-GB/boutiques"
+                    href="/RefArchGlobal/en-GB/appointments"
                   >
                     Boutiques
                   </a>

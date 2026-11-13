@@ -26,6 +26,9 @@ vi.mock('@/middlewares/auth.server', () => ({
 vi.mock('@/lib/logger.server', () => ({
     getLogger: vi.fn(() => ({ error: vi.fn(), warn: vi.fn(), info: vi.fn(), debug: vi.fn() })),
 }));
+vi.mock('@/lib/origin', () => ({
+    isSameOrigin: vi.fn(() => true),
+}));
 vi.mock('@/lib/appointment-scheduler', () => ({
     getAppointmentProvider: vi.fn(() => ({
         getAvailability: vi.fn(() =>
@@ -80,5 +83,22 @@ describe('resource.appointment-availability loader', () => {
         expectStatus(result, 400);
         expect(result.data.success).toBe(false);
         expect(result.data.error).toBe('startTime and endTime are required');
+    });
+
+    test('forwards workTypeGroupId from URL to provider.getAvailability()', async () => {
+        const mockGetAvailability = vi.fn().mockResolvedValue({ success: true, slots: [] });
+        const { getAppointmentProvider } = await import('@/lib/appointment-scheduler');
+        vi.mocked(getAppointmentProvider).mockReturnValue({
+            getAvailability: mockGetAvailability,
+        } as any);
+
+        const request = new Request(
+            `${BASE_URL}?startTime=2026-12-01T09:00:00Z&endTime=2026-12-01T17:00:00Z&territoryId=ln-boutique-london&workTypeGroupId=0VSSB0000002ojt4AA`
+        );
+        await loader(createLoaderArgs(request, {} as never, { pattern: ROUTE_PATTERN }));
+
+        expect(mockGetAvailability).toHaveBeenCalledWith(
+            expect.objectContaining({ workTypeGroupId: '0VSSB0000002ojt4AA' })
+        );
     });
 });
