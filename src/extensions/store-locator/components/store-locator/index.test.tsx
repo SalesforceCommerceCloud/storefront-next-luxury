@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, test, vi } from 'vitest';
 import { createMemoryRouter, RouterProvider } from 'react-router';
@@ -48,24 +48,39 @@ vi.mock('../../hooks/use-boutique-list', () => ({
 }));
 
 import StoreLocator from './index';
+const addToast = vi.hoisted(() => vi.fn());
+vi.mock('@/components/toast', () => ({ useToast: () => ({ addToast }) }));
 
 // Surfaces the provider's selected store so the test can assert the selection wiring.
 function SelectionProbe(): ReactElement {
     const selected = useStoreLocator((s) => s.selectedStoreInfo);
-    return <div data-testid="selected-store">{selected?.id ?? 'none'}</div>;
+    const isOpen = useStoreLocator((s) => s.isOpen);
+    const open = useStoreLocator((s) => s.open);
+    return (
+        <>
+            <div data-testid="selected-store">{selected?.id ?? 'none'}</div>
+            <button onClick={() => open()}>Open picker</button>
+            <div data-testid="picker-open">{String(isOpen)}</div>
+        </>
+    );
 }
 
 const locale =
     mockAltSiteObject.supportedLocales.find((l) => l.id === mockAltSiteObject.defaultLocale) ??
     mockAltSiteObject.supportedLocales[0];
 
-function renderSheetBody() {
+type SelectionResult = { success: boolean; code?: string; selectedStoreInfo?: ShopperStores.schemas['Store'] };
+
+function renderSheetBody(
+    config = mockConfig,
+    result: SelectionResult | (() => Promise<SelectionResult>) = { success: true }
+) {
     const router = createMemoryRouter(
         [
             {
                 path: '/',
                 element: (
-                    <ConfigProvider config={mockConfig}>
+                    <ConfigProvider config={config}>
                         <SiteProvider
                             site={mockAltSiteObject}
                             locale={locale}
@@ -80,7 +95,7 @@ function renderSheetBody() {
                 ),
             },
             // Persist target hit on select — stub so the fetcher submit resolves.
-            { path: '/action/set-selected-store', action: () => ({ success: true }) },
+            { path: '/action/set-selected-store', action: () => (typeof result === 'function' ? result() : result) },
         ],
         { initialEntries: ['/'] }
     );
@@ -112,5 +127,61 @@ describe('Luxury store-locator sheet body (Collect at Boutique picker)', () => {
         expect(screen.getByTestId('selected-store')).toHaveTextContent('none');
         await userEvent.click(screen.getByTestId('boutique-option-ln-boutique-newyork'));
         expect(screen.getByTestId('selected-store')).toHaveTextContent('ln-boutique-newyork');
+    });
+
+    test('holds the native selection during submission, then enables retry after failure', async () => {
+        addToast.mockClear();
+        let settle!: (result: SelectionResult) => void;
+        const submission = new Promise<SelectionResult>((resolve) => {
+            settle = resolve;
+        });
+        const action = vi.fn().mockReturnValueOnce(submission).mockResolvedValueOnce({
+            success: true,
+            selectedStoreInfo: stores[2],
+        });
+        renderSheetBody(
+            {
+                ...mockConfig,
+                features: { ...mockConfig.features, shopperContext: { enabled: true, storeSelectionEnabled: true } },
+            },
+            action
+        );
+        await userEvent.click(screen.getByRole('button', { name: 'Open picker' }));
+        const candidate = screen.getByTestId('boutique-option-ln-boutique-newyork');
+        await userEvent.click(candidate);
+        await vi.waitFor(() => expect(candidate).toBeDisabled());
+        expect(screen.getByTestId('boutique-option-ln-boutique-geneva')).toBeDisabled();
+        expect(screen.getByTestId('selected-store')).toHaveTextContent('none');
+        await userEvent.click(candidate);
+        expect(action).toHaveBeenCalledOnce();
+        await act(async () => {
+            settle({ success: false, code: 'STORE_CHANGE_CONFIRMATION_REQUIRED' });
+            await submission;
+        });
+        await vi.waitFor(() => expect(candidate).toBeEnabled());
+        expect(screen.getByTestId('selected-store')).toHaveTextContent('none');
+        expect(addToast).toHaveBeenCalledOnce();
+        expect(screen.getByTestId('picker-open')).toHaveTextContent('true');
+        await userEvent.click(candidate);
+        await vi.waitFor(() => expect(screen.getByTestId('selected-store')).toHaveTextContent('ln-boutique-newyork'));
+        expect(action).toHaveBeenCalledTimes(2);
+        expect(screen.getByTestId('picker-open')).toHaveTextContent('false');
+    });
+
+    test('reports failed native selection without publishing the candidate', async () => {
+        addToast.mockClear();
+        renderSheetBody(
+            {
+                ...mockConfig,
+                features: { ...mockConfig.features, shopperContext: { enabled: true, storeSelectionEnabled: true } },
+            },
+            { success: false, code: 'STORE_CHANGE_CONFIRMATION_REQUIRED' }
+        );
+        await userEvent.click(screen.getByTestId('boutique-option-ln-boutique-newyork'));
+        await vi.waitFor(() =>
+            expect(addToast).toHaveBeenCalledWith(expect.stringContaining('current store'), 'error')
+        );
+        expect(addToast).toHaveBeenCalledOnce();
+        expect(screen.getByTestId('selected-store')).toHaveTextContent('none');
     });
 });

@@ -35,6 +35,8 @@ type BoutiqueDirectoryProps = {
     stores: ServiceTerritoryOption[];
     selectedId?: string;
     onSelect: (id: string) => void;
+    /** Disable store commits while a selection action is pending. */
+    selectionPending?: boolean;
     lead?: ReactElement | null;
     chrome?: ReactElement | null;
     /**
@@ -70,6 +72,7 @@ export default function BoutiqueDirectory({
     chrome,
     layout = 'page',
     availability,
+    selectionPending = false,
 }: BoutiqueDirectoryProps): ReactElement {
     const { t, i18n } = useTranslation('watch');
     const [countryCode, setCountryCode] = useState('');
@@ -114,6 +117,7 @@ export default function BoutiqueDirectory({
         <section
             className="flex h-full min-h-0 flex-col"
             data-testid="boutique-directory"
+            aria-busy={selectionPending || undefined}
             data-slot="luxury-boutique-finder">
             <div className={stageClass}>
                 <div className={leftClass}>
@@ -181,7 +185,7 @@ export default function BoutiqueDirectory({
                                         <button
                                             type="button"
                                             aria-pressed={selected}
-                                            disabled={isUnavailable}
+                                            disabled={isUnavailable || selectionPending}
                                             data-testid={`boutique-option-${store.id}`}
                                             className={cn(
                                                 'flex w-full flex-col overflow-hidden border text-left transition-colors',

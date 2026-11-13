@@ -22,20 +22,21 @@ import type { AppointmentTerritoriesResult } from '@/extensions/appointment-sche
 import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 
 interface UseBoutiqueListResult {
-    stores: ServiceTerritoryOption[];
+    stores: (ServiceTerritoryOption & { inventoryId?: string })[];
     availability?: Record<string, BoutiqueAvailability>;
     isLoading: boolean;
     hasError: boolean;
 }
 
 /** Maps an SFCC store to the ServiceTerritoryOption shape used by BoutiqueDirectory. */
-function storeToTerritory(s: ShopperStores.schemas['Store']): ServiceTerritoryOption {
+function storeToTerritory(s: ShopperStores.schemas['Store']): ServiceTerritoryOption & { inventoryId?: string } {
     return {
         id: s.id ?? '',
         sfId: s.id ?? '',
         name: s.name ?? '',
         timezone: 'UTC',
         externalId: s.id,
+        inventoryId: s.inventoryId,
         address1: s.address1,
         city: s.city,
         countryCode: s.countryCode,
@@ -81,9 +82,13 @@ export function useBoutiqueList(pickupContext?: PickupContext | null): UseBoutiq
     }, [productId, quantity]);
 
     const territoriesLoaded = territoriesFetcher.data !== undefined;
-    const stores: ServiceTerritoryOption[] =
+    const inventoryByStore = new Map(boutiqueFetcher.data?.stores?.map((store) => [store.id, store.inventoryId]));
+    const stores: UseBoutiqueListResult['stores'] =
         territoriesLoaded && territoriesFetcher.data?.success
-            ? (territoriesFetcher.data.territories ?? [])
+            ? (territoriesFetcher.data.territories ?? []).map((territory) => ({
+                  ...territory,
+                  inventoryId: inventoryByStore.get(territory.externalId ?? territory.id),
+              }))
             : (boutiqueFetcher.data?.stores ?? []).map(storeToTerritory);
 
     return {
