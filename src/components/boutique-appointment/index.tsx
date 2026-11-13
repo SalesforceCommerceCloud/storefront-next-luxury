@@ -644,43 +644,27 @@ export default function BoutiqueAppointment({
     const selected = locked ?? effectiveCatalog.find((entry) => entry.id === pickedId) ?? null;
     const minDate = useMemo(() => localIsoToday(), []);
 
+    // Keyed per store so each boutique owns its own fetcher and data. A shared fetcher keeps the
+    // previous store's data until the next load settles, and its idle/data transitions arrive a
+    // render late, which made a "does this data belong to the selected store" check unreliable.
     const workTypesFetcher = useFetcher<{
         success: boolean;
         workTypes?: { id: string; name: string; durationMinutes: number; workTypeGroupId: string }[];
-    }>();
+    }>({ key: `appointment-work-types-${externalId}` });
 
-    // ref tracks which store is currently in-flight (won't cause re-renders)
-    const fetchingForStore = useRef('');
-    // state tracks which store's data is actually loaded and valid to display
-    const [dataExternalId, setDataExternalId] = useState('');
+    const loadedStoreId = useRef('');
 
     useEffect(() => {
-        if (externalId && workTypesFetcher.state === 'idle' && externalId !== fetchingForStore.current) {
-            fetchingForStore.current = externalId;
+        if (externalId && externalId !== loadedStoreId.current) {
+            loadedStoreId.current = externalId;
             void workTypesFetcher.load(
                 `/resource/appointment-work-types?territoryId=${encodeURIComponent(externalId)}`
             );
         }
     }, [externalId, workTypesFetcher]);
 
-    // Mark data as valid for the current store when the fetch completes.
-    // Uses the echoed territoryId from the response (added by resource.appointment-work-types) to
-    // identify which store's data arrived, falling back to the in-flight ref when absent.
-    // externalId is in the deps so the effect re-fires when the store changes, letting
-    // fetchingForStore.current (just updated by effect 1 above) resolve the pending store.
-    useEffect(() => {
-        if (workTypesFetcher.state === 'idle' && workTypesFetcher.data !== undefined) {
-            const respondedId = (workTypesFetcher.data as { territoryId?: string })?.territoryId;
-            setDataExternalId(respondedId ?? fetchingForStore.current);
-        }
-    }, [externalId, workTypesFetcher.state, workTypesFetcher.data]);
-
     const dynamicServices = useMemo(() => {
-        if (
-            workTypesFetcher.data?.success &&
-            workTypesFetcher.data.workTypes?.length &&
-            dataExternalId === externalId
-        ) {
+        if (workTypesFetcher.data?.success && workTypesFetcher.data.workTypes?.length) {
             return workTypesFetcher.data.workTypes.map((wt) => ({
                 id: wt.id,
                 workType: wt.id,
@@ -692,12 +676,12 @@ export default function BoutiqueAppointment({
             }));
         }
         return null;
-    }, [workTypesFetcher.data, dataExternalId, externalId]);
+    }, [workTypesFetcher.data]);
 
-    // Loading: boutique selected, data has arrived (data !== undefined) but not yet for this store.
-    // When data is undefined the scheduler is unconfigured — show fallback services immediately.
+    // Loading only while this store's request is in flight. Before the first load starts, or when the
+    // scheduler is unconfigured, the hardcoded services show immediately.
     const isLoadingWorkTypes =
-        externalId !== '' && externalId !== dataExternalId && workTypesFetcher.data !== undefined;
+        externalId !== '' && workTypesFetcher.state !== 'idle' && workTypesFetcher.data === undefined;
     const effectiveServices: ServiceEntry[] = isLoadingWorkTypes
         ? []
         : (dynamicServices ?? (SERVICES as unknown as ServiceEntry[]));
