@@ -24,6 +24,7 @@ import { Region } from '@/components/region';
 import ContentCard from '@/components/content-card';
 import { Link } from '@/components/link';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { getConfig } from '@salesforce/storefront-next-runtime/config';
 import { boutiqueAppointmentHref } from '@/lib/boutique-href';
 import WatchFinderCta from '@/components/watch-finder-cta';
@@ -39,6 +40,7 @@ import hero01 from '/images/hero-01.webp';
 import hero02 from '/images/hero-02.webp';
 import hero03 from '/images/hero-03.webp';
 import finderBand from '/images/finder-band.webp';
+import interFont from '/fonts/inter-latin-wght.woff2';
 import HeroCarousel, { type HeroSlide } from '@/components/hero-carousel';
 import HomeParallax from '@/components/home-parallax';
 import { ProductCarouselSkeleton } from '@/components/product-carousel';
@@ -104,6 +106,27 @@ function FeaturedProductsError() {
                 </div>
             )}
         </div>
+    );
+}
+
+// The parallax layer (not the carousel, whose images are hidden) paints the hero, so it is the LCP
+// element. Preloading it lets the browser fetch it with the HTML instead of after hydration. Inter is
+// the body face and otherwise loads only once CSS is parsed, which shifts text when it swaps in.
+export const links: Route.LinksFunction = () => [
+    { rel: 'preload', href: hero01, as: 'image', type: 'image/webp', fetchPriority: 'high' },
+    { rel: 'preload', href: interFont, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
+];
+
+function CollectionGridSkeleton() {
+    return (
+        <section className="section-container py-12 md:py-16" data-slot="luxury-collection-tiles-skeleton">
+            <div className="mb-8 h-10" />
+            <Grid className="grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 6 }, (_, index) => (
+                    <Skeleton key={index} className="aspect-square w-full" />
+                ))}
+            </Grid>
+        </section>
     );
 }
 
@@ -316,7 +339,7 @@ export default function HomePage({ loaderData }: { loaderData: HomePageData }) {
             {/* Post-hero sections — static. z-[1] bg keeps them above any sticky hero layer. */}
             <div className="relative z-[1] bg-background">
                 {/* Collections */}
-                <Suspense fallback={null}>
+                <Suspense fallback={<CollectionGridSkeleton />}>
                     <Await resolve={loaderData.categories}>
                         {(categories) => <CollectionGrid categories={categories} />}
                     </Await>
