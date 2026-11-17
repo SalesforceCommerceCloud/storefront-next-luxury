@@ -22,6 +22,7 @@ import type { ShopperStores } from '@/scapi';
 import { ConfigProvider } from '@salesforce/storefront-next-runtime/config';
 import { SiteProvider } from '@salesforce/storefront-next-runtime/site-context';
 import { mockAltSiteObject, mockConfig } from '@/test-utils/config';
+import { StoreLocatorLayoutProvider } from '@/extensions/store-locator/context/layout';
 import StoreLocatorProvider, { useStoreLocator } from '@/extensions/store-locator/providers/store-locator';
 
 const stores: ShopperStores.schemas['Store'][] = [
@@ -48,8 +49,6 @@ vi.mock('../../hooks/use-boutique-list', () => ({
 }));
 
 import StoreLocator from './index';
-const addToast = vi.hoisted(() => vi.fn());
-vi.mock('@/components/toast', () => ({ useToast: () => ({ addToast }) }));
 
 // Surfaces the provider's selected store so the test can assert the selection wiring.
 function SelectionProbe(): ReactElement {
@@ -73,7 +72,7 @@ type SelectionResult = { success: boolean; code?: string; selectedStoreInfo?: Sh
 
 function renderSheetBody(
     config = mockConfig,
-    result: SelectionResult | (() => Promise<SelectionResult>) = { success: true }
+    result: SelectionResult | (() => Promise<SelectionResult>) = { success: true, selectedStoreInfo: stores[2] }
 ) {
     const router = createMemoryRouter(
         [
@@ -87,7 +86,9 @@ function renderSheetBody(
                             language={mockAltSiteObject.defaultLocale}
                             currency={mockAltSiteObject.defaultCurrency}>
                             <StoreLocatorProvider>
-                                <StoreLocator />
+                                <StoreLocatorLayoutProvider forceMobile>
+                                    <StoreLocator />
+                                </StoreLocatorLayoutProvider>
                                 <SelectionProbe />
                             </StoreLocatorProvider>
                         </SiteProvider>
@@ -126,11 +127,10 @@ describe('Luxury store-locator sheet body (Collect at Boutique picker)', () => {
         renderSheetBody();
         expect(screen.getByTestId('selected-store')).toHaveTextContent('none');
         await userEvent.click(screen.getByTestId('boutique-option-ln-boutique-newyork'));
-        expect(screen.getByTestId('selected-store')).toHaveTextContent('ln-boutique-newyork');
+        await vi.waitFor(() => expect(screen.getByTestId('selected-store')).toHaveTextContent('ln-boutique-newyork'));
     });
 
     test('holds the native selection during submission, then enables retry after failure', async () => {
-        addToast.mockClear();
         let settle!: (result: SelectionResult) => void;
         const submission = new Promise<SelectionResult>((resolve) => {
             settle = resolve;
@@ -160,7 +160,7 @@ describe('Luxury store-locator sheet body (Collect at Boutique picker)', () => {
         });
         await vi.waitFor(() => expect(candidate).toBeEnabled());
         expect(screen.getByTestId('selected-store')).toHaveTextContent('none');
-        expect(addToast).toHaveBeenCalledOnce();
+        expect(await screen.findByRole('alert')).toBeInTheDocument();
         expect(screen.getByTestId('picker-open')).toHaveTextContent('true');
         await userEvent.click(candidate);
         await vi.waitFor(() => expect(screen.getByTestId('selected-store')).toHaveTextContent('ln-boutique-newyork'));
@@ -169,7 +169,6 @@ describe('Luxury store-locator sheet body (Collect at Boutique picker)', () => {
     });
 
     test('reports failed native selection without publishing the candidate', async () => {
-        addToast.mockClear();
         renderSheetBody(
             {
                 ...mockConfig,
@@ -177,11 +176,9 @@ describe('Luxury store-locator sheet body (Collect at Boutique picker)', () => {
             },
             { success: false, code: 'STORE_CHANGE_CONFIRMATION_REQUIRED' }
         );
+        await userEvent.click(screen.getByRole('button', { name: 'Open picker' }));
         await userEvent.click(screen.getByTestId('boutique-option-ln-boutique-newyork'));
-        await vi.waitFor(() =>
-            expect(addToast).toHaveBeenCalledWith(expect.stringContaining('current store'), 'error')
-        );
-        expect(addToast).toHaveBeenCalledOnce();
+        expect(await screen.findByRole('alert')).toBeInTheDocument();
         expect(screen.getByTestId('selected-store')).toHaveTextContent('none');
     });
 });

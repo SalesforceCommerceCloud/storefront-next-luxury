@@ -234,88 +234,94 @@ export default function Header({
     }
 
     return (
-        <header
-            ref={headerRef}
-            data-slot="site-header"
-            data-header-concealed={concealed ? 'true' : 'false'}
-            className={concealClass}>
-            {announcementSlot}
-            <UITarget targetId="sfcc.header.promo.top" />
-            {beforeHeader}
-            <div className="section-container">
-                <div className="relative flex flex-wrap items-center gap-x-3 py-3 lg:gap-x-6 lg:py-3.5">
-                    <div className="z-10 flex shrink-0 items-center self-stretch">
-                        <div
-                            className="flex items-center self-stretch"
-                            onMouseOver={handleNavMouseOver}
-                            onFocus={handleNavFocus}
-                            onMouseLeave={handleNavMouseLeave}>
-                            {children}
+        <>
+            <header
+                ref={headerRef}
+                data-slot="site-header"
+                data-header-concealed={concealed ? 'true' : 'false'}
+                className={concealClass}>
+                {announcementSlot}
+                <UITarget targetId="sfcc.header.promo.top" />
+                {beforeHeader}
+                <div className="section-container">
+                    <div className="relative flex flex-wrap items-center gap-x-3 py-3 lg:gap-x-6 lg:py-3.5">
+                        <div className="z-10 flex shrink-0 items-center self-stretch">
+                            <div
+                                className="flex items-center self-stretch"
+                                onMouseOver={handleNavMouseOver}
+                                onFocus={handleNavFocus}
+                                onMouseLeave={handleNavMouseLeave}>
+                                {children}
+                            </div>
+                            <Link
+                                to="/"
+                                className="flex shrink-0 items-center max-lg:absolute max-lg:left-1/2 max-lg:top-1/2 max-lg:z-0 max-lg:-translate-x-1/2 max-lg:-translate-y-1/2"
+                                data-testid="header-logo">
+                                <img
+                                    src={logo}
+                                    alt={t('logoAlt')}
+                                    className="h-auto w-auto max-h-5 max-w-[6.25rem] lg:max-h-10 lg:max-w-none [filter:var(--header-logo-filter)]"
+                                />
+                            </Link>
                         </div>
-                        <Link
-                            to="/"
-                            className="flex shrink-0 items-center max-lg:absolute max-lg:left-1/2 max-lg:top-1/2 max-lg:z-0 max-lg:-translate-x-1/2 max-lg:-translate-y-1/2"
-                            data-testid="header-logo">
-                            <img
-                                src={logo}
-                                alt={t('logoAlt')}
-                                className="h-auto w-auto max-h-5 max-w-[6.25rem] lg:max-h-10 lg:max-w-none [filter:var(--header-logo-filter)]"
+
+                        <div
+                            className="order-last mt-2 hidden w-full min-w-0 lg:block xl:order-none xl:mt-0 xl:w-auto xl:flex-1 xl:px-8"
+                            data-slot="luxury-header-search">
+                            <div className="mx-auto w-full max-w-4xl">
+                                <LocationKeyedSearch />
+                            </div>
+                        </div>
+
+                        <div className="relative z-10 ml-auto flex shrink-0 items-center justify-end gap-x-0.5 lg:gap-x-1">
+                            <div
+                                data-slot="luxury-utility-slot"
+                                className="hidden lg:flex items-center self-stretch pr-2"
                             />
-                        </Link>
-                    </div>
-
-                    <div
-                        className="order-last mt-2 hidden w-full min-w-0 lg:block xl:order-none xl:mt-0 xl:w-auto xl:flex-1 xl:px-8"
-                        data-slot="luxury-header-search">
-                        <div className="mx-auto w-full max-w-4xl">
-                            <LocationKeyedSearch />
-                        </div>
-                    </div>
-
-                    <div className="relative z-10 ml-auto flex shrink-0 items-center justify-end gap-x-0.5 lg:gap-x-1">
-                        <div
-                            data-slot="luxury-utility-slot"
-                            className="hidden lg:flex items-center self-stretch pr-2"
-                        />
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="lg:hidden cursor-pointer px-1 text-header-foreground hover:bg-transparent hover:opacity-50 transition-opacity"
-                            onClick={() => setMobileSearchOpen((open) => !open)}
-                            aria-expanded={mobileSearchOpen}
-                            aria-controls="header-mobile-search"
-                            data-testid="header-search-toggle"
-                            aria-label={
-                                mobileSearchOpen ? t('closeSearch', 'Close search') : t('openSearch', 'Open search')
-                            }>
-                            {mobileSearchOpen ? <X className="size-5" /> : <SearchIcon className="size-5" />}
-                        </Button>
-                        <UITarget targetId="sfcc.header.before.cart" />
-                        {showChat && (
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                className="cursor-pointer lg:px-2 px-1 text-header-foreground hover:bg-transparent hover:opacity-50 transition-opacity"
-                                onClick={() => openAgentWidget()}
-                                aria-label={t('openChat')}>
-                                <SparklesIcon />
+                                className="lg:hidden cursor-pointer px-1 text-header-foreground hover:bg-transparent hover:opacity-50 transition-opacity"
+                                onClick={() => setMobileSearchOpen((open) => !open)}
+                                aria-expanded={mobileSearchOpen}
+                                aria-controls="header-mobile-search"
+                                data-testid="header-search-toggle"
+                                aria-label={
+                                    mobileSearchOpen ? t('closeSearch', 'Close search') : t('openSearch', 'Open search')
+                                }>
+                                {mobileSearchOpen ? <X className="size-5" /> : <SearchIcon className="size-5" />}
                             </Button>
-                        )}
-                        <UserActions />
-                        <WishlistIcon />
-                        <CartBadge />
+                            <UITarget targetId="sfcc.header.before.cart" />
+                            {showChat && (
+                                <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    className="cursor-pointer lg:px-2 px-1 text-header-foreground hover:bg-transparent hover:opacity-50 transition-opacity"
+                                    onClick={() => openAgentWidget()}
+                                    aria-label={t('openChat')}>
+                                    <SparklesIcon />
+                                </Button>
+                            )}
+                            <UserActions />
+                            <WishlistIcon />
+                            <CartBadge />
+                        </div>
                     </div>
+
+                    <div data-slot="luxury-catalog-slot" className="hidden lg:block" />
+
+                    {mobileSearchOpen ? (
+                        <div
+                            className="pb-3 pt-1 lg:hidden"
+                            data-testid="header-search-mobile"
+                            id="header-mobile-search">
+                            <LocationKeyedSearch />
+                        </div>
+                    ) : null}
+                    <UITarget targetId="sfcc.header.bnpl.banner" />
                 </div>
-
-                <div data-slot="luxury-catalog-slot" className="hidden lg:block" />
-
-                {mobileSearchOpen ? (
-                    <div className="pb-3 pt-1 lg:hidden" data-testid="header-search-mobile" id="header-mobile-search">
-                        <LocationKeyedSearch />
-                    </div>
-                ) : null}
-                <UITarget targetId="sfcc.header.bnpl.banner" />
-            </div>
-        </header>
+            </header>
+            <UITarget targetId="sfcc.header.after" />
+        </>
     );
 }

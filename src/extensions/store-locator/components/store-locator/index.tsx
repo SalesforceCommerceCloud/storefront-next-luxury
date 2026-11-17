@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 import { useCallback, useEffect, useRef, type ReactElement } from 'react';
-import { useFetcher } from 'react-router';
-import { useConfig } from '@salesforce/storefront-next-runtime/config';
-import { isNativeStoreSelectionEnabled } from '@/lib/shopper-context/store-selection';
-import type { action as selectStoreAction } from '@/extensions/store-locator/routes/action.set-selected-store';
 import { useTranslation } from 'react-i18next';
-import { resourceRoutes } from '@/route-paths';
-import { useToast } from '@/components/toast';
 import { useStoreLocator } from '@/extensions/store-locator/providers/store-locator';
+import { useStoreSelection } from '@/extensions/store-locator/providers/selection';
+import StoreSelectionFeedback from '@/extensions/store-locator/providers/chooser-feedback';
 import BoutiqueDirectory from '../../../../components/boutique-directory';
 import { useBoutiqueList } from '../../hooks/use-boutique-list';
 
@@ -39,74 +35,42 @@ export default function StoreLocator(): ReactElement {
     const { t } = useTranslation('extStoreLocator');
     const pickupContext = useStoreLocator((s) => s.pickupContext);
     const selectedStoreInfo = useStoreLocator((s) => s.selectedStoreInfo);
-    const setSelectedStoreInfo = useStoreLocator((s) => s.setSelectedStoreInfo);
+    const selectionPending = useStoreLocator((s) => s.selectionPending);
+    const selectionError = useStoreLocator((s) => s.selectionError);
     const close = useStoreLocator((s) => s.close);
+    const { select } = useStoreSelection();
     const { stores, availability } = useBoutiqueList(pickupContext);
-    const persistFetcher = useFetcher<typeof selectStoreAction>();
-    const nativeEnabled = isNativeStoreSelectionEnabled(useConfig().features.shopperContext);
-    const selectionPending = useRef(false);
-    const isSelecting = nativeEnabled && persistFetcher.state !== 'idle';
-    const { addToast } = useToast();
-    const lastError = useRef<unknown>(null);
-    const lastSuccess = useRef<unknown>(null);
+    // Set when THIS sheet submitted a selection; the sheet closes only once that exact store is confirmed,
+    // which the cart line item then uses to submit the pickup.
+    const pendingId = useRef<string | null>(null);
+
     useEffect(() => {
-        if (!nativeEnabled || persistFetcher.state !== 'idle' || persistFetcher.data?.success !== false) return;
-        if (lastError.current === persistFetcher.data) return;
-        lastError.current = persistFetcher.data;
-        addToast(
-            t(
-                persistFetcher.data.code === 'STORE_CHANGE_CONFIRMATION_REQUIRED'
-                    ? 'storeLocator.list.storeChangeUnavailable'
-                    : 'storeLocator.list.fetchError'
-            ),
-            'error'
-        );
-    }, [nativeEnabled, persistFetcher.state, persistFetcher.data, addToast, t]);
-    useEffect(() => {
-        if (
-            nativeEnabled &&
-            persistFetcher.state === 'idle' &&
-            persistFetcher.data?.success &&
-            'selectedStoreInfo' in persistFetcher.data &&
-            lastSuccess.current !== persistFetcher.data
-        ) {
-            lastSuccess.current = persistFetcher.data;
-            setSelectedStoreInfo(persistFetcher.data.selectedStoreInfo);
+        if (!pendingId.current || selectionPending) return;
+        const id = pendingId.current;
+        if (selectionError) {
+            pendingId.current = null;
+            return;
+        }
+        if (selectedStoreInfo?.id === id) {
+            pendingId.current = null;
             close();
         }
-    }, [nativeEnabled, persistFetcher.state, persistFetcher.data, setSelectedStoreInfo, close]);
+    }, [selectionPending, selectionError, selectedStoreInfo?.id, close]);
 
     const handleSelect = useCallback(
         (id: string) => {
-            if (nativeEnabled && (selectionPending.current || persistFetcher.state !== 'idle')) return;
+            if (selectionPending) return;
             const store = stores.find((s) => s.id === id);
             if (!store?.id) return;
-            // Keep legacy optimistic selection; native mode publishes only the committed response.
             const info = {
                 id: store.externalId ?? store.id,
                 name: store.name || store.id,
                 inventoryId: store.inventoryId,
             };
-            if (!nativeEnabled) setSelectedStoreInfo(info);
-            const formData = new FormData();
-            formData.set('storeInfo', JSON.stringify(info));
-            if (!nativeEnabled) {
-                void persistFetcher.submit(formData, { method: 'POST', action: resourceRoutes.setSelectedStore });
-                close();
-                return;
-            }
-            selectionPending.current = true;
-            void (async () => {
-                try {
-                    await persistFetcher.submit(formData, { method: 'POST', action: resourceRoutes.setSelectedStore });
-                } catch {
-                    addToast(t('storeLocator.list.fetchError'), 'error');
-                } finally {
-                    selectionPending.current = false;
-                }
-            })();
+            pendingId.current = info.id;
+            select(info);
         },
-        [nativeEnabled, stores, setSelectedStoreInfo, persistFetcher, close, addToast, t]
+        [selectionPending, stores, select]
     );
 
     // Wrap in the same labelled landmark the canonical store-locator renders (`store-locator-heading`), so the
@@ -122,8 +86,9 @@ export default function StoreLocator(): ReactElement {
                 availability={availability}
                 selectedId={stores.find((store) => (store.externalId ?? store.id) === selectedStoreInfo?.id)?.id}
                 onSelect={handleSelect}
-                selectionPending={isSelecting}
+                selectionPending={selectionPending}
             />
+            <StoreSelectionFeedback />
         </section>
     );
 }

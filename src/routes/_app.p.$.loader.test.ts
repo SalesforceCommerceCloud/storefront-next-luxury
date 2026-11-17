@@ -25,6 +25,7 @@ import { siteContext } from '@salesforce/storefront-next-runtime/site-context';
 
 // Mock fetchProductById directly
 const mockFetchProductById = vi.hoisted(() => vi.fn());
+const mockFetchProductsByIds = vi.hoisted(() => vi.fn(() => Promise.resolve([])));
 const mockAttemptRouteSeoFallback = vi.hoisted(() => vi.fn());
 // @sfdc-extension-block-start SFDC_EXT_SHIPPING_DELIVERY
 const mockGetInitialDeliveryDestination = vi.hoisted(() =>
@@ -34,7 +35,7 @@ const mockGetInitialDeliveryDestination = vi.hoisted(() =>
 
 vi.mock('@/lib/api/products.server', () => ({
     fetchProductById: mockFetchProductById,
-    fetchProductsByIds: vi.fn(() => Promise.resolve([])),
+    fetchProductsByIds: mockFetchProductsByIds,
 }));
 
 vi.mock('@/lib/seo/route-fallback.server', () => ({
@@ -79,6 +80,11 @@ vi.mock('@/lib/product/recommendations.server', () => ({
 
 // @sfdc-extension-block-start SFDC_EXT_BOPIS
 import { selectedStoreContext } from '@/extensions/store-locator/middlewares/selected-store.server';
+vi.mock('@/extensions/store-locator/lib/resolve-selected-store.server', () => ({
+    resolveSelectedStore: vi.fn((context) =>
+        Promise.resolve({ selectedStoreInfo: context.get(selectedStoreContext), store: null, error: null })
+    ),
+}));
 // @sfdc-extension-block-end SFDC_EXT_BOPIS
 
 describe('Product Route Loaders', () => {
@@ -188,6 +194,7 @@ describe('Product Route Loaders', () => {
         test('returns the resolved product with its primaryCategory expansion', async () => {
             const productWithCategory = {
                 ...mockProduct,
+                inventory: { id: 'site', ats: 5, stockLevel: 5, orderable: true },
                 primaryCategory: {
                     id: 'test-category-123',
                     name: 'Test Category',
@@ -213,6 +220,7 @@ describe('Product Route Loaders', () => {
             expect(result.product).toEqual(productWithCategory);
             // The breadcrumb source is carried on the product — no separate category fetch.
             expect(mockFetchProductById).toHaveBeenCalledTimes(1);
+            expect(mockFetchProductsByIds).not.toHaveBeenCalled();
         });
 
         test('resolves the product ID from the configured alias splat', async () => {
@@ -299,6 +307,7 @@ describe('Product Route Loaders', () => {
         test('does not fetch the master product for a variant (breadcrumbs come from the expansion)', async () => {
             const variantProduct = {
                 ...mockProduct,
+                inventory: { id: 'site', ats: 2, stockLevel: 2, orderable: true },
                 id: 'variant-product-123',
                 primaryCategoryId: null,
                 master: { masterId: 'master-product-123' },
@@ -321,6 +330,7 @@ describe('Product Route Loaders', () => {
 
             expect(result.product).toEqual(variantProduct);
             expect(mockFetchProductById).toHaveBeenCalledTimes(1);
+            expect(mockFetchProductsByIds).not.toHaveBeenCalled();
         });
 
         test('throws Response with original status when product fetch fails with NormalizedApiError', async () => {
@@ -434,7 +444,7 @@ describe('Product Route Loaders', () => {
 
     // @sfdc-extension-block-start SFDC_EXT_BOPIS
     describe('loader function with BOPIS extension', () => {
-        test('includes inventoryIds when store is selected in context', async () => {
+        test('includes inventoryIds only in deferred availability when store is selected', async () => {
             mockFetchProductById.mockResolvedValueOnce(mockProduct);
 
             mockSelectedStoreInfo = {
@@ -447,7 +457,7 @@ describe('Product Route Loaders', () => {
             const params = { '*': 'test-product-123' };
             const context = mockContext;
 
-            await loader({
+            const result = await loader({
                 request,
                 params: { siteId: 'test-site', localeId: 'en-US', ...params },
                 context,
@@ -455,12 +465,13 @@ describe('Product Route Loaders', () => {
                 pattern: '/p/*',
             });
 
-            // Verify fetchProductById was called with inventoryIds parameter
-            expect(mockFetchProductById).toHaveBeenCalledWith(
-                context,
-                'test-product-123',
-                expect.objectContaining({ inventoryIds: ['inventory-123'] })
-            );
+            await result.pickupInventory;
+            expect(mockFetchProductById.mock.calls[0][2]).not.toHaveProperty('inventoryIds');
+            const { fetchProductsByIds } = await import('@/lib/api/products.server');
+            expect(fetchProductsByIds).toHaveBeenCalledWith(context, ['test-product-123'], {
+                expand: ['availability'],
+                inventoryIds: ['inventory-123'],
+            });
 
             mockSelectedStoreInfo = null;
         });

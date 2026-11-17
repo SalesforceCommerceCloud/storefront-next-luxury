@@ -108,6 +108,8 @@ const { storeLocatorState } = vi.hoisted(() => ({
 }));
 
 vi.mock('@/extensions/store-locator/providers/store-locator', () => ({
+    useSelectedStoreSource: () => null,
+    useLateAuthRecovery: () => () => {},
     default: ({ children }: { children: React.ReactNode }) => children,
     useStoreLocator: (selector: (state: typeof storeLocatorState) => unknown) => selector(storeLocatorState),
 }));
