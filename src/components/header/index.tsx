@@ -38,9 +38,9 @@ import { useTranslation } from 'react-i18next';
 import logo from '/images/logo.svg';
 import { Search as SearchIcon, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { SparklesIcon } from '@/components/icons';
+import ChatPill from '@/components/header/chat-pill';
 import { useConfig } from '@salesforce/storefront-next-runtime/config';
-import { openAgentWidget, isCimulateEnabled, validateCimulateConfig } from '@/components/cimulate';
+import { isCimulateEnabled, validateCimulateConfig } from '@/components/cimulate';
 import { UITarget } from '@/targets/ui-target';
 import { cn } from '@/lib/utils';
 import { Component } from '@/lib/decorators/component';
@@ -292,16 +292,7 @@ export default function Header({
                                 {mobileSearchOpen ? <X className="size-5" /> : <SearchIcon className="size-5" />}
                             </Button>
                             <UITarget targetId="sfcc.header.before.cart" />
-                            {showChat && (
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="cursor-pointer lg:px-2 px-1 text-header-foreground hover:bg-transparent hover:opacity-50 transition-opacity"
-                                    onClick={() => openAgentWidget()}
-                                    aria-label={t('openChat')}>
-                                    <SparklesIcon />
-                                </Button>
-                            )}
+                            {showChat && <ChatPill label={config.cimulateAgent?.headerText} />}
                             <UserActions />
                             <WishlistIcon />
                             <CartBadge />
