@@ -19,6 +19,7 @@ import type { ServiceTerritoryOption } from '@/lib/appointment-scheduler';
 import { Input } from '@/components/ui/input';
 import { NativeSelect, NativeSelectOption } from '@/components/ui/native-select';
 import { cn } from '@/lib/utils';
+import { DynamicImage } from '@/components/dynamic-image';
 import { boutiqueCountryCodes, filterBoutiques } from '../../lib/boutiques';
 import BoutiqueMap from '../boutique-map';
 
@@ -197,11 +198,12 @@ export default function BoutiqueDirectory({
                                             )}
                                             onClick={() => store.id && !isUnavailable && onSelect(store.id)}>
                                             {store.image ? (
-                                                <img
+                                                <DynamicImage
                                                     src={store.image}
                                                     alt=""
                                                     className="aspect-[4/3] w-full object-cover"
                                                     data-testid="boutique-facade"
+                                                    widths={[400, 800]}
                                                 />
                                             ) : null}
                                             <span className="flex min-w-0 flex-col p-4">

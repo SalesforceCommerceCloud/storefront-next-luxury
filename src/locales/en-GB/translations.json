@@ -2506,7 +2506,7 @@
             "submit": "Request appointment",
             "confirmNeedsTime": "Select a date and time to confirm.",
             "bookingError": "Something went wrong booking your appointment. Please try again.",
-            "success": "Your request for {{salon}} is with our advisors. We will confirm shortly.",
+            "success": "Your appointment at {{salon}} is confirmed.",
             "successProduct": "Advisors will prepare {{product}}.",
             "filterCountry": "Country",
             "filterPostal": "ZIP or postal code",

@@ -354,7 +354,8 @@ main:not([data-layout='empty']):has([data-slot='luxury-home-hero']) {
 }
 
 /* Boutique finder / booking fills the viewport under the bar. */
-main:not([data-layout='empty']):has([data-slot='luxury-boutique-locator']) {
+main:not([data-layout='empty']):has([data-slot='luxury-boutique-locator']),
+main:not([data-layout='empty']):has([data-slot='luxury-boutique-finder']) {
     padding-top: var(--header-height, 120px);
 }
 
@@ -384,16 +385,20 @@ main:not([data-layout='empty']):has([data-slot='luxury-finder']) {
      * only the list scrolls.
      */
     html:has([data-slot='luxury-boutique-locator']),
-    body:has([data-slot='luxury-boutique-locator']) {
+    html:has([data-slot='luxury-boutique-finder']),
+    body:has([data-slot='luxury-boutique-locator']),
+    body:has([data-slot='luxury-boutique-finder']) {
         overflow: hidden;
         height: 100dvh;
     }
 
-    body:has([data-slot='luxury-boutique-locator']) footer {
+    body:has([data-slot='luxury-boutique-locator']) footer,
+    body:has([data-slot='luxury-boutique-finder']) footer {
         display: none;
     }
 
-    main:not([data-layout='empty']):has([data-slot='luxury-boutique-locator']) {
+    main:not([data-layout='empty']):has([data-slot='luxury-boutique-locator']),
+    main:not([data-layout='empty']):has([data-slot='luxury-boutique-finder']) {
         display: flex;
         flex-direction: column;
         height: 100dvh;

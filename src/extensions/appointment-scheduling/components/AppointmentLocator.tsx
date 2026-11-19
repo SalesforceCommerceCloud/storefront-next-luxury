@@ -16,26 +16,33 @@
 /** @sfdc-extension-file SFDC_EXT_APPOINTMENT_SCHEDULING */
 import type { ReactElement } from 'react';
 import { useAppointment } from '@/extensions/appointment-scheduling/context/appointment-context';
-import BoutiqueLocator from '@/components/boutique-locator';
+import LuxuryAppointmentWizard from './LuxuryAppointmentWizard';
 
 /**
- * Luxury overlay — renders BoutiqueLocator (map + facade images) using territory data
- * from AppointmentProvider context set by the appointments page loader.
- * Switching from BFF to CAP (provider=scapi) requires no change here.
+ * Luxury overlay — renders AppointmentWizard with territory data and loader-enriched
+ * work types / slots from AppointmentProvider context set by the appointments page loader.
+ *
+ * Work types are always dataset-provisioned (via enrichFromCatalog in the loader) so they
+ * serve as the fallback even when schedulerEnabled=false.
  */
 export default function AppointmentLocator(): ReactElement | null {
     const appointment = useAppointment();
     if (!appointment) return null;
 
-    const { territories, advanceNoticeMinutes, onBook, bookingSubmitting, bookingResult } = appointment;
-
     return (
-        <BoutiqueLocator
-            stores={territories}
-            advanceNoticeMinutes={advanceNoticeMinutes}
-            onBook={onBook}
-            bookingSubmitting={bookingSubmitting}
-            bookingResult={bookingResult}
+        <LuxuryAppointmentWizard
+            stores={appointment.territories}
+            workTypes={appointment.workTypes}
+            slots={appointment.slots}
+            isNavigating={appointment.isNavigating}
+            advanceNoticeMinutes={appointment.advanceNoticeMinutes}
+            onBook={appointment.onBook}
+            bookingSubmitting={appointment.bookingSubmitting}
+            bookingResult={appointment.bookingResult}
+            schedulerEnabled={appointment.schedulerEnabled}
+            fallbackServices={appointment.workTypes}
+            shopperName={appointment.shopperName}
+            shopperEmail={appointment.shopperEmail}
         />
     );
 }

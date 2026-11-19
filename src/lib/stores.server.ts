@@ -19,6 +19,15 @@ import { createApiClients } from '@/lib/api-clients.server';
 import { getLogger } from '@/lib/logger.server';
 import { NormalizedApiError } from '@/lib/api/normalized-api-error';
 
+/** The five luxury boutique store IDs — single source of truth for all boutique fetches. */
+export const BOUTIQUE_IDS = [
+    'ln-boutique-geneva',
+    'ln-boutique-london',
+    'ln-boutique-newyork',
+    'ln-boutique-paris',
+    'ln-boutique-tokyo',
+] as const;
+
 /**
  * Fetch luxury boutique stores from SCAPI by explicit store IDs, for image enrichment.
  *

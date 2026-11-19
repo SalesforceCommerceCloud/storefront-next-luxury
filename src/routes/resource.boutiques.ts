@@ -17,7 +17,7 @@
 import { data, type LoaderFunctionArgs } from 'react-router';
 import { getConfig } from '@salesforce/storefront-next-runtime/config';
 import type { ShopperStores } from '@/scapi';
-import { fetchBoutiquesForEnrichment } from '../lib/stores.server';
+import { fetchBoutiquesForEnrichment, BOUTIQUE_IDS } from '../lib/stores.server';
 import { fetchCategories } from '@/lib/api/categories.server';
 import { createApiClients } from '@/lib/api-clients.server';
 import { getLogger } from '@/lib/logger.server';
@@ -28,15 +28,6 @@ import { isStoreOutOfStock } from '@/lib/product/inventory-utils';
 // @sfdc-extension-block-end SFDC_EXT_BOPIS
 import { extractResponseError } from '@/lib/utils';
 import { resolveStoreImageUrl } from '../lib/store-image';
-
-/** The five luxury boutique store IDs used for the BOPIS picker. */
-const BOUTIQUE_IDS = [
-    'ln-boutique-geneva',
-    'ln-boutique-london',
-    'ln-boutique-newyork',
-    'ln-boutique-paris',
-    'ln-boutique-tokyo',
-] as const;
 
 /** Catalog-relative facade path for a boutique store, read from the `c_facadeImage` custom attribute. */
 function boutiqueFacadePath(store: ShopperStores.schemas['Store']): string | undefined {

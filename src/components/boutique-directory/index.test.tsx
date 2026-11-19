@@ -50,7 +50,7 @@ const stores: ServiceTerritoryOption[] = [
         phone: '+44 20 0000 0000',
         latitude: 51.5104,
         longitude: -0.1508,
-        image: '/images/salons/london.webp',
+        image: 'https://example.com/images/london.webp',
     },
     {
         id: 'ln-boutique-newyork',
@@ -65,7 +65,7 @@ const stores: ServiceTerritoryOption[] = [
         phone: '+1 212 000 0000',
         latitude: 40.7648,
         longitude: -73.9707,
-        image: '/images/salons/newyork.webp',
+        image: 'https://example.com/images/newyork.webp',
     },
     {
         id: 'ln-boutique-paris',
@@ -95,7 +95,7 @@ const stores: ServiceTerritoryOption[] = [
         phone: '+81 3 0000 0000',
         latitude: 35.6712,
         longitude: 139.7649,
-        image: '/images/salons/tokyo.webp',
+        image: 'https://example.com/images/tokyo.webp',
     },
 ];
 

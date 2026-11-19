@@ -41,7 +41,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11628.png"
               style="left: 0px; top: 0px;"
               width="256"
@@ -51,7 +50,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11628.png"
               style="left: 256px; top: 0px;"
               width="256"
@@ -61,7 +59,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11628.png"
               style="left: 512px; top: 0px;"
               width="256"
@@ -71,7 +68,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11628.png"
               style="left: 768px; top: 0px;"
               width="256"
@@ -81,7 +77,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11628.png"
               style="left: 1024px; top: 0px;"
               width="256"
@@ -91,7 +86,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11629.png"
               style="left: 0px; top: 256px;"
               width="256"
@@ -101,7 +95,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11629.png"
               style="left: 256px; top: 256px;"
               width="256"
@@ -111,7 +104,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11629.png"
               style="left: 512px; top: 256px;"
               width="256"
@@ -121,7 +113,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11629.png"
               style="left: 768px; top: 256px;"
               width="256"
@@ -131,7 +122,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11629.png"
               style="left: 1024px; top: 256px;"
               width="256"
@@ -141,7 +131,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11630.png"
               style="left: 0px; top: 512px;"
               width="256"
@@ -151,7 +140,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11630.png"
               style="left: 256px; top: 512px;"
               width="256"
@@ -161,7 +149,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11630.png"
               style="left: 512px; top: 512px;"
               width="256"
@@ -171,7 +158,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11630.png"
               style="left: 768px; top: 512px;"
               width="256"
@@ -181,7 +167,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11630.png"
               style="left: 1024px; top: 512px;"
               width="256"
@@ -191,7 +176,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11631.png"
               style="left: 0px; top: 768px;"
               width="256"
@@ -201,7 +185,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11631.png"
               style="left: 256px; top: 768px;"
               width="256"
@@ -211,7 +194,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11631.png"
               style="left: 512px; top: 768px;"
               width="256"
@@ -221,7 +203,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11631.png"
               style="left: 768px; top: 768px;"
               width="256"
@@ -231,7 +212,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11631.png"
               style="left: 1024px; top: 768px;"
               width="256"
@@ -241,7 +221,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11632.png"
               style="left: 0px; top: 1024px;"
               width="256"
@@ -251,7 +230,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11632.png"
               style="left: 256px; top: 1024px;"
               width="256"
@@ -261,7 +239,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11632.png"
               style="left: 512px; top: 1024px;"
               width="256"
@@ -271,7 +248,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11632.png"
               style="left: 768px; top: 1024px;"
               width="256"
@@ -281,7 +257,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11632.png"
               style="left: 1024px; top: 1024px;"
               width="256"
@@ -311,11 +286,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
               class="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
             >
               Geneva Boutique
-            </p>
-            <p
-              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground"
-            >
-              +41 22 000 00 00
             </p>
           </div>
           <p
@@ -549,7 +519,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
             <button
               aria-pressed="true"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-foreground bg-muted/40"
-              data-testid="boutique-option-ln-boutique-geneva"
               type="button"
             >
               <img
@@ -577,6 +546,11 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
                   12 Quai des Bergues, 1201, Geneva
                 </span>
                 <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–18:00
+                </span>
+                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +41 22 000 00 00
@@ -588,7 +562,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
-              data-testid="boutique-option-ln-boutique-london"
               type="button"
             >
               <img
@@ -616,6 +589,11 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
                   18 Mount Street, W1K 2RH, London
                 </span>
                 <span
+                  class="mt-2 block text-sm"
+                >
+                  Mon–Sat 10:00–18:00
+                </span>
+                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +44 20 0000 0000
@@ -627,7 +605,6 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
-              data-testid="boutique-option-ln-boutique-paris"
               type="button"
             >
               <img
@@ -653,6 +630,11 @@ exports[`BoutiqueAppointment stories snapshot > Browse story renders and matches
                   class="mt-2 block text-sm text-muted-foreground"
                 >
                   8 Rue de la Paix, 75002, Paris
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–19:00
                 </span>
                 <span
                   class="mt-1 block text-sm text-muted-foreground"
@@ -710,7 +692,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11628.png"
               style="left: 0px; top: 0px;"
               width="256"
@@ -720,7 +701,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11628.png"
               style="left: 256px; top: 0px;"
               width="256"
@@ -730,7 +710,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11628.png"
               style="left: 512px; top: 0px;"
               width="256"
@@ -740,7 +719,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11628.png"
               style="left: 768px; top: 0px;"
               width="256"
@@ -750,7 +728,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11628.png"
               style="left: 1024px; top: 0px;"
               width="256"
@@ -760,7 +737,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11629.png"
               style="left: 0px; top: 256px;"
               width="256"
@@ -770,7 +746,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11629.png"
               style="left: 256px; top: 256px;"
               width="256"
@@ -780,7 +755,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11629.png"
               style="left: 512px; top: 256px;"
               width="256"
@@ -790,7 +764,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11629.png"
               style="left: 768px; top: 256px;"
               width="256"
@@ -800,7 +773,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11629.png"
               style="left: 1024px; top: 256px;"
               width="256"
@@ -810,7 +782,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11630.png"
               style="left: 0px; top: 512px;"
               width="256"
@@ -820,7 +791,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11630.png"
               style="left: 256px; top: 512px;"
               width="256"
@@ -830,7 +800,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11630.png"
               style="left: 512px; top: 512px;"
               width="256"
@@ -840,7 +809,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11630.png"
               style="left: 768px; top: 512px;"
               width="256"
@@ -850,7 +818,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11630.png"
               style="left: 1024px; top: 512px;"
               width="256"
@@ -860,7 +827,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11631.png"
               style="left: 0px; top: 768px;"
               width="256"
@@ -870,7 +836,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11631.png"
               style="left: 256px; top: 768px;"
               width="256"
@@ -880,7 +845,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11631.png"
               style="left: 512px; top: 768px;"
               width="256"
@@ -890,7 +854,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11631.png"
               style="left: 768px; top: 768px;"
               width="256"
@@ -900,7 +863,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11631.png"
               style="left: 1024px; top: 768px;"
               width="256"
@@ -910,7 +872,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16941/11632.png"
               style="left: 0px; top: 1024px;"
               width="256"
@@ -920,7 +881,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16942/11632.png"
               style="left: 256px; top: 1024px;"
               width="256"
@@ -930,7 +890,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16943/11632.png"
               style="left: 512px; top: 1024px;"
               width="256"
@@ -940,7 +899,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16944/11632.png"
               style="left: 768px; top: 1024px;"
               width="256"
@@ -950,7 +908,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="absolute max-w-none grayscale contrast-[1.08]"
               draggable="false"
               height="256"
-              loading="lazy"
               src="https://tile.openstreetmap.org/15/16945/11632.png"
               style="left: 1024px; top: 1024px;"
               width="256"
@@ -980,11 +937,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
               class="mt-1 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-foreground"
             >
               Geneva Boutique
-            </p>
-            <p
-              class="mt-0.5 max-w-[12rem] bg-background/90 px-2 py-0.5 text-center text-[0.6875rem] text-muted-foreground"
-            >
-              +41 22 000 00 00
             </p>
           </div>
           <p
@@ -1271,7 +1223,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
             <button
               aria-pressed="true"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-foreground bg-muted/40"
-              data-testid="boutique-option-ln-boutique-geneva"
               type="button"
             >
               <img
@@ -1299,6 +1250,11 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
                   12 Quai des Bergues, 1201, Geneva
                 </span>
                 <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–18:00
+                </span>
+                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +41 22 000 00 00
@@ -1310,7 +1266,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
-              data-testid="boutique-option-ln-boutique-london"
               type="button"
             >
               <img
@@ -1338,6 +1293,11 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
                   18 Mount Street, W1K 2RH, London
                 </span>
                 <span
+                  class="mt-2 block text-sm"
+                >
+                  Mon–Sat 10:00–18:00
+                </span>
+                <span
                   class="mt-1 block text-sm text-muted-foreground"
                 >
                   +44 20 0000 0000
@@ -1349,7 +1309,6 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
             <button
               aria-pressed="false"
               class="flex w-full flex-col overflow-hidden border text-left transition-colors border-border hover:border-foreground/40"
-              data-testid="boutique-option-ln-boutique-paris"
               type="button"
             >
               <img
@@ -1375,6 +1334,11 @@ exports[`BoutiqueAppointment stories snapshot > FromPdp story renders and matche
                   class="mt-2 block text-sm text-muted-foreground"
                 >
                   8 Rue de la Paix, 75002, Paris
+                </span>
+                <span
+                  class="mt-2 block text-sm"
+                >
+                  Tue–Sat 10:00–19:00
                 </span>
                 <span
                   class="mt-1 block text-sm text-muted-foreground"
