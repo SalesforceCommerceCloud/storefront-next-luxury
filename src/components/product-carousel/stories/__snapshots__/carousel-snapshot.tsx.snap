@@ -203,21 +203,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 1
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -395,21 +380,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 2
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -587,21 +557,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 3
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -779,21 +734,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 4
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -971,21 +911,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 5
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -1163,21 +1088,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 6
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -1355,21 +1265,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 7
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -1547,21 +1442,6 @@ exports[`ProductCarousel stories snapshot > Default story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 8
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -1847,21 +1727,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 1
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -2039,21 +1904,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 2
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -2231,21 +2081,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 3
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -2423,21 +2258,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 4
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -2615,21 +2435,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 5
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -2807,21 +2612,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 6
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -2999,21 +2789,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 7
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -3191,21 +2966,6 @@ exports[`ProductCarousel stories snapshot > NoTitle story renders and matches sn
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 8
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -3489,21 +3249,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 1
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -3681,21 +3426,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 2
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -3873,21 +3603,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 3
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -4065,21 +3780,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 4
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -4257,21 +3957,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 5
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -4449,21 +4134,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 6
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -4641,21 +4311,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 7
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -4833,21 +4488,6 @@ exports[`ProductCarousel stories snapshot > PageDesignerMode story renders and m
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 8
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -5132,21 +4772,6 @@ exports[`ProductCarousel stories snapshot > SingleProduct story renders and matc
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 1
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -5439,21 +5064,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 1
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -5631,21 +5241,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 2
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -5823,21 +5418,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 3
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -6015,21 +5595,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 4
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -6207,21 +5772,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 5
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -6399,21 +5949,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 6
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -6591,21 +6126,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 7
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -6783,21 +6303,6 @@ exports[`ProductCarousel stories snapshot > WithShopAllLink story renders and ma
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 8
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -7088,21 +6593,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 1
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -7280,21 +6770,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 2
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -7472,21 +6947,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 3
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -7664,21 +7124,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 4
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -7856,21 +7301,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 5
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -8048,21 +7478,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 6
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -8240,21 +7655,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 7
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -8432,21 +7832,6 @@ exports[`ProductCarousel stories snapshot > WithSubtitle story renders and match
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 8
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -8730,21 +8115,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 1
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -8922,21 +8292,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 2
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -9114,21 +8469,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 3
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -9306,21 +8646,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 4
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -9498,21 +8823,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 5
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -9690,21 +9000,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 6
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -9882,21 +9177,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 7
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -10074,21 +9354,6 @@ exports[`ProductCarousel stories snapshot > WithSuspenseWrapper story renders an
                           Current price: £63.99
                         </span>
                          
-                        <span
-                          aria-hidden="true"
-                          class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-                        >
-                          £67.99
-                        </span>
-                        <span
-                          aria-atomic="true"
-                          aria-live="polite"
-                          class="sr-only"
-                        >
-                          Laptop Briefcase with wheels (37L) 8
-                           
-                          List price: £67.99
-                        </span>
                       </div>
                     </div>
                   </div>

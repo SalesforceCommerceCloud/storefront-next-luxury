@@ -198,21 +198,6 @@ exports[`ProductMerchandisingGrid stories snapshot > Playground story renders an
               Current price: £63.99
             </span>
              
-            <span
-              aria-hidden="true"
-              class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-            >
-              £67.99
-            </span>
-            <span
-              aria-atomic="true"
-              aria-live="polite"
-              class="sr-only"
-            >
-              Featured product 1
-               
-              List price: £67.99
-            </span>
           </div>
         </div>
       </div>
@@ -394,29 +379,24 @@ exports[`ProductMerchandisingGrid stories snapshot > Playground story renders an
               Current price: £18.55
             </span>
              
-            <span
-              aria-hidden="true"
-              class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-            >
-              £31.36
-            </span>
-            <span
-              aria-atomic="true"
-              aria-live="polite"
-              class="sr-only"
-            >
-              Featured product 2
-               
-              List price from £31.36
-            </span>
           </div>
           <div
             class="items-center gap-2 text-xs text-active-foreground mt-1"
           >
             <span
-              class="line-clamp-2 text-[inherit] font-medium"
+              class="line-clamp-2 text-[inherit] font-medium block"
             >
               Buy one Long Center Seam Skirt and get 2 tops
+            </span>
+            <span
+              class="line-clamp-2 text-[inherit] font-medium block"
+            >
+              $50 Fixed Products Amount Above 100
+            </span>
+            <span
+              class="line-clamp-2 text-[inherit] font-medium block"
+            >
+              Bonus Product for Order Amounts Above 250
             </span>
           </div>
         </div>
@@ -785,21 +765,6 @@ exports[`ProductMerchandisingGrid stories snapshot > Playground story renders an
               Current price: £63.99
             </span>
              
-            <span
-              aria-hidden="true"
-              class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-            >
-              £67.99
-            </span>
-            <span
-              aria-atomic="true"
-              aria-live="polite"
-              class="sr-only"
-            >
-              Featured product 4
-               
-              List price: £67.99
-            </span>
           </div>
         </div>
       </div>
@@ -981,29 +946,24 @@ exports[`ProductMerchandisingGrid stories snapshot > Playground story renders an
               Current price: £18.55
             </span>
              
-            <span
-              aria-hidden="true"
-              class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-            >
-              £31.36
-            </span>
-            <span
-              aria-atomic="true"
-              aria-live="polite"
-              class="sr-only"
-            >
-              Featured product 5
-               
-              List price from £31.36
-            </span>
           </div>
           <div
             class="items-center gap-2 text-xs text-active-foreground mt-1"
           >
             <span
-              class="line-clamp-2 text-[inherit] font-medium"
+              class="line-clamp-2 text-[inherit] font-medium block"
             >
               Buy one Long Center Seam Skirt and get 2 tops
+            </span>
+            <span
+              class="line-clamp-2 text-[inherit] font-medium block"
+            >
+              $50 Fixed Products Amount Above 100
+            </span>
+            <span
+              class="line-clamp-2 text-[inherit] font-medium block"
+            >
+              Bonus Product for Order Amounts Above 250
             </span>
           </div>
         </div>
@@ -1372,21 +1332,6 @@ exports[`ProductMerchandisingGrid stories snapshot > Playground story renders an
               Current price: £63.99
             </span>
              
-            <span
-              aria-hidden="true"
-              class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-            >
-              £67.99
-            </span>
-            <span
-              aria-atomic="true"
-              aria-live="polite"
-              class="sr-only"
-            >
-              Featured product 7
-               
-              List price: £67.99
-            </span>
           </div>
         </div>
       </div>
@@ -1568,29 +1513,24 @@ exports[`ProductMerchandisingGrid stories snapshot > Playground story renders an
               Current price: £18.55
             </span>
              
-            <span
-              aria-hidden="true"
-              class="font-medium text-left text-muted-foreground text-xs leading-none line-through"
-            >
-              £31.36
-            </span>
-            <span
-              aria-atomic="true"
-              aria-live="polite"
-              class="sr-only"
-            >
-              Featured product 8
-               
-              List price from £31.36
-            </span>
           </div>
           <div
             class="items-center gap-2 text-xs text-active-foreground mt-1"
           >
             <span
-              class="line-clamp-2 text-[inherit] font-medium"
+              class="line-clamp-2 text-[inherit] font-medium block"
             >
               Buy one Long Center Seam Skirt and get 2 tops
+            </span>
+            <span
+              class="line-clamp-2 text-[inherit] font-medium block"
+            >
+              $50 Fixed Products Amount Above 100
+            </span>
+            <span
+              class="line-clamp-2 text-[inherit] font-medium block"
+            >
+              Bonus Product for Order Amounts Above 250
             </span>
           </div>
         </div>
