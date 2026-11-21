@@ -21,6 +21,7 @@ import { useBoutiqueList } from './use-boutique-list';
 vi.mock('react-router', async (importOriginal) => ({
     ...(await importOriginal<typeof import('react-router')>()),
     useFetcher: vi.fn(),
+    useFormAction: () => '/',
 }));
 
 const territory = {

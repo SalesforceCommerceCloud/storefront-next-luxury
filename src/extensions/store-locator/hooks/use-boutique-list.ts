@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { useEffect } from 'react';
-import { useFetcher } from 'react-router';
+import { useAuthFetcher as useFetcher } from '@/hooks/use-auth-fetcher';
 import type { ShopperStores } from '@/scapi';
 import type { PickupContext } from '@/extensions/store-locator/stores/store-locator-store';
 import type { BoutiqueAvailability, FetchBoutiquesResult } from '../../../routes/resource.boutiques';
