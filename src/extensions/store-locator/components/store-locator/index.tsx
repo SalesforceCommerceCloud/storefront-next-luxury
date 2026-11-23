@@ -23,6 +23,7 @@ import { useBoutiqueList } from '../../hooks/use-boutique-list';
 
 /**
  * Store-locator body for the luxury vertical — the surface the cart "Collect at Boutique" flow opens.
+ * Fulfillment-first store entry is out of scope for this boutique surface (see store-entry-capabilities).
  *
  * The canonical picker is a postal/radius search that stays empty until the shopper searches and, for a handful
  * of flagship boutiques, returns nothing. Instead this seeds the branded {@link BoutiqueDirectory} with all
