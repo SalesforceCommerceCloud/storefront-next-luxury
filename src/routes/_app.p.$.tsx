@@ -45,6 +45,7 @@ import { RegionDefinition } from '@/lib/decorators/region-definition';
 import { fetchPageWithComponentData } from '@/lib/page-designer/page-loader.server';
 import { JsonLd } from '@/components/json-ld';
 import { SeoMeta } from '@/components/seo-meta';
+import { resolveSeoDescription } from '@/utils/seo-description.server';
 import { generateProductSchema } from '@/utils/product-schema';
 import { buildCanonicalUrl } from '@/utils/canonical-url';
 import { getLogger } from '@/lib/logger.server';
@@ -116,6 +117,8 @@ export type ProductPageData = {
     page: ReturnType<typeof fetchPageWithComponentData>;
     pageKey: string;
     pageUrl: string;
+    /** Plain-text meta description, resolved in the loader so the HTML parser stays server-side. */
+    seoDescription?: string;
     productSchema: Promise<ReturnType<typeof generateProductSchema> | null>;
     alsoBuyRecommendations: Promise<Recommendation>;
     straps: ShopperProducts.schemas['Product'][];
@@ -328,11 +331,24 @@ export async function loader(args: Route.LoaderArgs): Promise<ProductPageData> {
     };
     // @sfdc-extension-block-end SFDC_EXT_PRODUCT_CONTENT
 
+    // Catalog copy can contain authored HTML (`shortDescription` is markup), so resolve the meta
+    // description to plain text here, falling back to generated copy when the product has none.
+    const { t } = getTranslation(context);
+    const seoDescription = resolveSeoDescription([
+        product.pageDescription,
+        product.shortDescription,
+        t('common:seoDescriptionFallback', {
+            name: product.name || product.id,
+            siteName: t('common:defaultSiteName'),
+        }),
+    ]);
+
     return {
         product,
         page,
         pageKey: productId,
         pageUrl,
+        seoDescription,
         productSchema: productSchemaPromise,
         // @sfdc-extension-line SFDC_EXT_BOPIS
         pickupInventory,
@@ -379,6 +395,7 @@ export const shouldRevalidate = shouldRevalidateProduct;
 function ProductContent({
     product,
     url,
+    seoDescription,
     straps,
     // @sfdc-extension-block-start SFDC_EXT_RATINGS_REVIEWS
     reviewsSummary,
@@ -391,6 +408,7 @@ function ProductContent({
 }: {
     product: ShopperProducts.schemas['Product'];
     url: string;
+    seoDescription?: string;
     straps: ShopperProducts.schemas['Product'][];
     // @sfdc-extension-block-start SFDC_EXT_RATINGS_REVIEWS
     reviewsSummary: ReviewsSummaryData;
@@ -423,7 +441,7 @@ function ProductContent({
                         {/* @sfdc-extension-block-end SFDC_EXT_RATINGS_REVIEWS */}
                         <SeoMeta
                             title={product.name}
-                            description={product.pageDescription || product.shortDescription}
+                            description={seoDescription}
                             openGraph={{
                                 type: 'product',
                                 url,
@@ -487,6 +505,7 @@ function ProductDetailView({ loaderData }: { loaderData: ProductPageData }) {
             <ProductContent
                 product={loaderData.product}
                 url={loaderData.pageUrl}
+                seoDescription={loaderData.seoDescription}
                 straps={loaderData.straps}
                 // @sfdc-extension-block-start SFDC_EXT_RATINGS_REVIEWS
                 reviewsSummary={loaderData.reviewsSummary}
